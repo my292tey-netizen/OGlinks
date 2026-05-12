@@ -1,426 +1,590 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Movies Link - Best Movies Direct Links</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #ffffff;
-            color: #222;
-            line-height: 1.6;
-        }
-        header {
-            background: #ffffff;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-bottom: 3px solid #ffcc00;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        h1 { color: #1a1a2e; font-size: 1.8rem; font-weight: 800; }
+<!DOCTYPE html>  <html lang="hi">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Free Movies Link - Best Movies Direct Links</title>  
+    <style>  
+        * { margin: 0; padding: 0; box-sizing: border-box; }  
+        body {  
+            font-family: 'Segoe UI', Arial, sans-serif;  
+            background: #ffffff;  
+            color: #222;  
+            line-height: 1.6;  
+        }  
+        header {  
+            background: #ffffff;  
+            padding: 15px 0;  
+            position: sticky;  
+            top: 0;  
+            z-index: 100;  
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);  
+            border-bottom: 3px solid #ffcc00;  
+        }  
+        .container {  
+            max-width: 1200px;  
+            margin: 0 auto;  
+            padding: 0 15px;  
+        }  
+        .nav {  
+            display: flex;  
+            justify-content: space-between;  
+            align-items: center;  
+        }  
+        h1 { color: #1a1a2e; font-size: 1.8rem; font-weight: 800; }  .hamburger { font-size: 28px; cursor: pointer; color: #1a1a2e; z-index: 1001; }  
 
-        .hamburger { font-size: 28px; cursor: pointer; color: #1a1a2e; z-index: 1001; }
+    .nav-links {   
+        position: fixed;   
+        top: 0;   
+        right: -100%;   
+        width: 280px;   
+        height: 100vh;   
+        background: #ffffff;   
+        display: flex;  
+        flex-direction: column;   
+        padding: 80px 20px 20px 20px;   
+        transition: 0.4s ease-in-out;   
+        z-index: 1000;   
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);  
+    }  
+    .nav-links.active { right: 0; }  
 
-        .nav-links { 
-            position: fixed; 
-            top: 0; 
-            right: -100%; 
-            width: 280px; 
-            height: 100vh; 
-            background: #ffffff; 
-            display: flex;
-            flex-direction: column; 
-            padding: 80px 20px 20px 20px; 
-            transition: 0.4s ease-in-out; 
-            z-index: 1000; 
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        }
-        .nav-links.active { right: 0; }
+    .nav-links a {   
+        text-decoration: none;   
+        color: #1a1a2e;   
+        font-weight: 600;   
+        font-size: 1.1rem;  
+        padding: 15px 0;  
+        border-bottom: 1px solid #f1f1f1;  
+        display: block;  
+    }  
 
-        .nav-links a { 
-            text-decoration: none; 
-            color: #1a1a2e; 
-            font-weight: 600; 
-            font-size: 1.1rem;
-            padding: 15px 0;
-            border-bottom: 1px solid #f1f1f1;
-            display: block;
-        }
+    .btn-fb { color: #1877F2 !important; }  
+    .btn-wa { color: #25D366 !important; }  
 
-        .btn-fb { color: #1877F2 !important; }
-        .btn-wa { color: #25D366 !important; }
+    .facing-issue-btn {  
+        margin-top: auto;   
+        background: #ff4757;  
+        color: #ffffff !important;  
+        text-align: center;  
+        padding: 12px !important;  
+        border-radius: 8px;  
+        border-bottom: none !important;  
+    }  
 
-        .facing-issue-btn {
-            margin-top: auto; 
-            background: #ff4757;
-            color: #ffffff !important;
-            text-align: center;
-            padding: 12px !important;
-            border-radius: 8px;
-            border-bottom: none !important;
-        }
+    .search-container { text-align: center; margin: 20px 0; }  
+    #searchInput {  
+        width: 100%;  
+        max-width: 600px;  
+        padding: 12px 20px;  
+        font-size: 1rem;  
+        border: 2px solid #ddd;  
+        border-radius: 50px;  
+        outline: none;  
+    }  
 
-        .search-container { text-align: center; margin: 20px 0; }
-        #searchInput {
-            width: 100%;
-            max-width: 600px;
-            padding: 12px 20px;
-            font-size: 1rem;
-            border: 2px solid #ddd;
-            border-radius: 50px;
-            outline: none;
-        }
+    .pinned-section { margin-bottom: 20px; }  
+    .how-to-card {  
+        max-width: 320px;  
+        margin: 0 auto;  
+        border: 2px solid #ffcc00;  
+        background: #f9f9f9;  
+        border-radius: 15px;  
+        overflow: hidden;  
+    }  
+    .how-to-card img {  
+        width: 100%;  
+        height: 160px;  
+        object-fit: contain;  
+        background: #fff;  
+        padding: 10px;  
+        display: block;  
+    }  
 
-        .pinned-section { margin-bottom: 20px; }
-        .how-to-card {
-            max-width: 320px;
-            margin: 0 auto;
-            border: 2px solid #ffcc00;
-            background: #f9f9f9;
-            border-radius: 15px;
-            overflow: hidden;
-        }
-        .how-to-card img {
-            width: 100%;
-            height: 160px;
-            object-fit: contain;
-            background: #fff;
-            padding: 10px;
-            display: block;
-        }
+    .gallery {  
+        display: grid;  
+        grid-template-columns: repeat(2, 1fr);  
+        gap: 15px;  
+        padding: 10px 0;  
+    }  
+    .card {  
+        background: #ffffff;  
+        border-radius: 12px;  
+        overflow: hidden;  
+        border: 1px solid #eee;  
+        display: flex;  
+        flex-direction: column;  
+        height: auto;   
+        padding-bottom: 15px;  
+    }  
+      
+    .card img {   
+        width: 100%;   
+        height: 250px;   
+        object-fit: cover;   
+        display: block;  
+    }  
+      
+    .info { padding: 10px; text-align: center; flex-grow: 1; }  
+    .info h3 {   
+        font-size: 0.95rem;   
+        color: #1a1a2e;   
+        margin-bottom: 12px;   
+        min-height: 45px;   
+    }  
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            padding: 10px 0;
-        }
-        .card {
-            background: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #eee;
-            display: flex;
-            flex-direction: column;
-            height: auto; 
-            padding-bottom: 15px;
-        }
+    .get-movie-btn {  
+        display: block;  
+        width: 90%;  
+        margin: 0 auto;  
+        background: #ffcc00;  
+        color: #1a1a2e;  
+        text-align: center;  
+        padding: 10px;  
+        font-size: 0.85rem;  
+        font-weight: bold;  
+        border-radius: 6px;  
+        text-decoration: none;  
+        cursor: pointer;  
+        border: none;  
+    }  
+    .get-movie-btn:hover { background: #e6b800; }  
+    .btn-tutorial { background: #1a1a2e; color: #fff; font-size: 0.75rem; width: 100%; }  
+
+    .modal {  
+        display: none;  
+        position: fixed;  
+        z-index: 2000;  
+        left: 0; top: 0; width: 100%; height: 100%;  
+        background: rgba(0,0,0,0.8);  
+        overflow-y: auto;  
+    }  
+    .modal-content {  
+        background: #fff;  
+        margin: 5% auto;  
+        padding: 20px;  
+        border-radius: 15px;  
+        width: 90%;  
+        max-width: 500px;  
+        text-align: center;  
+        position: relative;  
+    }  
+    .episode-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 15px; }  
+    .episode-btn { padding: 8px; background: #f1f1f1; color: #1a1a2e; text-decoration: none; border-radius: 6px; border: 1px solid #ddd; font-weight: bold; font-size: 0.8rem; }  
+    .episode-btn:hover { background: #ffcc00; }  
+
+    footer {   
+        text-align: center;   
+        padding: 40px 0;   
+        border-top: 1px solid #eee;   
+        margin-top: 20px;   
+    }  
+    .anish-name {  
+        font-size: 1.2rem;  
+        font-weight: 900;  
+        letter-spacing: 2px;  
+        color: #1a1a2e;  
+        text-transform: uppercase;  
+        position: relative;  
+        display: inline-block;  
+    }  
+    .anish-name span {  
+        color: #ffcc00;  
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);  
+    }  
+
+    .sponsor-box {  
+        margin-top: 15px;  
+        border-top: 1px dashed #ddd;  
+        padding-top: 15px;  
+    }  
+    .wa-link {  
+        text-decoration: none;  
+        color: #25D366;  
+        font-weight: bold;  
+        font-size: 1rem;  
+        display: flex;  
+        align-items: center;  
+        justify-content: center;  
+        gap: 5px;  
+    }  
+
+    @media (min-width: 769px) {  
+        .gallery { grid-template-columns: repeat(4, 1fr); }  
+        .card img { height: 350px; }  
+    }  
+</style>
+
+</head>  
+<body>  <header>  
+    <div class="container">  
+        <div class="nav">  
+            <h1>Free Movies Link</h1>  
+            <div class="hamburger" onclick="toggleMenu()">☰</div>  
+              
+            <nav class="nav-links" id="navLinks">  
+                <a href="#" onclick="toggleMenu()">🏠 Home</a>  
+                <a href="#gallery" onclick="toggleMenu()">🎬 Movies List</a>  
+                <a href="https://chat.whatsapp.com/Hp8KdSUs8aZ8ljMWhQhxuM" target="_blank" class="btn-wa">🟢 WhatsApp Support</a>  
+                <a href="https://www.facebook.com/share/1B4bJmCc6v/" target="_blank" class="btn-fb">🔵 Follow on Facebook</a>  
+                <a href="https://t.me/your_contact" target="_blank">📞 Contact Us</a>  
+                <a href="https://t.me/your_admin" target="_blank" class="facing-issue-btn">⚠️ Facing any issues?</a>  
+            </nav>  
+        </div>  
+    </div>  
+</header>  
+
+<div class="container">  
+    <div class="search-container">  
+        <input type="text" id="searchInput" placeholder="Search movies, series or anime..." onkeyup="filterMovies()">  
+    </div>  
+
+    <div class="pinned-section" id="how-to-section">  
+        <div class="card how-to-card">  
+            <img src="https://i.ibb.co/zT312sD0/image.jpg" alt="How to open link">  
+            <div class="info">  
+                <h3 style="font-size: 0.8rem; min-height: auto;">How to open link?</h3>  
+                <a href="https://youtu.be/65RE_OY7i84" target="_blank" class="get-movie-btn btn-tutorial">▶️ WATCH VIDEO</a>  
+            </div>  
+        </div>  
+    </div>  
+
+    <div class="gallery" id="gallery">  
+        <!-- Thamma -->  
+        <div class="card">  
+            <img src="https://i.ibb.co/JjJ0K2Fb/1000023785.jpg" alt="Thamma">  
+            <div class="info">  
+                <h3>Thamma (2026) [Hindi Dubbed]</h3>  
+                <a href="https://www.diskwala.com/app/6a0191547996306c22e02a05" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>  
+            </div>  
+        </div>  
+
+    <!-- Jujutsu Kaisen Combined -->
+<div class="card">
+    <img src="https://i.ibb.co/QRwW9PM/images-2.jpg" alt="Jujutsu Kaisen">
+    <div class="info">
+        <h3>Jujutsu Kaisen [Hindi Dubbed]</h3>
+        <button class="get-movie-btn" onclick="openJJKMain()">GET EPISODES</button>
+    </div>
+</div>
+
+        <!-- Bloodhounds -->  
+        <div class="card">  
+            <img src="https://i.ibb.co/CKtrR04K/p24811658-b-v8-ac.jpg" alt="Bloodhounds">  
+            <div class="info">  
+                <h3>Bloodhounds (S01) Hindi Dubbed [Complete]</h3>  
+                <button class="get-movie-btn" onclick="openEpisodes()">GET EPISODES</button>  
+            </div>  
+        </div>  
+
+        <div class="card">  
+            <img src="https://m.media-amazon.com/images/M/MV5BMjA5MTY2OTYyNV5BMl5BanBnXkFtZTgwNjA2MTI2NjE@._V1_.jpg" alt="Mortal Kombat II">  
+            <div class="info">  
+                <h3>Mortal Kombat II (2026) [Hindi-Eng]</h3>  
+                <a href="#" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>  
+            </div>  
+        </div>  
+
+        <div class="card">  
+            <img src="https://i.ibb.co/Q3jSDW3C/a0ddf192b5103e62a0591d540962e94fcb93dd155e2f64b54d5e3a9d7faa32c8.jpg" alt="Bigil">  
+            <div class="info">  
+                <h3>Bigil (2026) Dual Audio [Hindi Dubbed]</h3>  
+                <a href="https://www.diskwala.com/app/69f6f34d49748cec6c20b7ac" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>  
+            </div>  
+        </div>  
+    </div>  
+</div>  
+<!-- Jana Nayagan -->
+<div class="card">
+    <img src="https://i.ibb.co/4ZHFsXB8/mqdefault.jpg" alt="Jana Nayagan">
+    <div class="info">
+        <h3>Jana Nayagan [Hindi Dubbed]</h3>
+        <a href="https://www.diskwala.com/app/69ff436fd96f638117a5a071" target="_blank" class="get-movie-btn">
+            DOWNLOAD NOW
+        </a>
+    </div>
+</div>
+
+<!-- Liger -->
+<div class="card">
+    <img src="https://i.ibb.co/SZv9TQK/Liger.webp" alt="Liger">
+    <div class="info">
+        <h3>Liger [Hindi Dubbed]</h3>
+        <a href="https://www.diskwala.com/app/6a01c1f57996306c22e0b3a6" target="_blank" class="get-movie-btn">
+            DOWNLOAD NOW
+        </a>
+    </div>
+</div>
+
+<!-- Charly 777 -->
+<div class="card">
+    <img src="https://i.ibb.co/j9M52Nvm/80667a21179842c3592700d782df4831339c32cdff79e9b7a7ce5087fc6431b1.png" alt="Charly 777">
+    <div class="info">
+        <h3>Charly 777 [Hindi Dubbed]</h3>
+        <a href="https://www.diskwala.com/app/69fdaeead96f638117a1eeff" target="_blank" class="get-movie-btn">
+            DOWNLOAD NOW
+        </a>
+    </div>
+</div>
+
+<!-- Border 2 -->
+<div class="card">
+    <img src="https://i.ibb.co/vxqbrbt0/MV5-BYjdh-Nm-E4-MTIt-Yj-Zl-Yi00-Mj-Q2-LTli-OGMt-N2-Vi-Mz-U0-M2-M3-ODMy-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg" alt="Border 2">
+    <div class="info">
+        <h3>Border 2 [Hindi]</h3>
+        <a href="https://www.diskwala.com/app/69fc56fdd96f6381179ea8a2" target="_blank" class="get-movie-btn">
+            DOWNLOAD NOW
+        </a>
+    </div>
+</div>
+
+<!-- Dhurandhar 2 -->
+<div class="card">
+    <img src="https://i.ibb.co/zWDM56md/MV5-BNTU1-Zjk4-MTYt-Mjc2-YS00-Nj-I5-LWJk-OWEt-Mj-Jl-OGQ0-ZTVj-Nm-Fj-Xk-Ey-Xk-Fqc-Gc-V1.jpg" alt="Dhurandhar 2">
+    <div class="info">
+        <h3>Dhurandhar 2 [Hindi Dubbed]</h3>
+       <a href="https://www.diskwala.com/app/69fc9a56d96f6381179f6b79" target="_blank">
+    <button class="get-movie-btn">
+        DOWNLOAD NOW
+    </button>
+
+        </a>
+    </div>
+</div>
+<!-- Modals -->  
+    <!-- JJK Main Modal -->
+<div id="jjkMainModal" class="modal">
+    <div class="modal-content">
+        <span onclick="closeJJKMain()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
+
+        <h2 style="color:#1a1a2e; margin-bottom:15px;">
+            Jujutsu Kaisen
+        </h2>
+
+        <div style="display:flex; flex-direction:column; gap:20px; padding:15px;">
+<button class="get-movie-btn" onclick="openJJK(); closeJJKMain();">
+    Season 1
+</button>
+
+<button class="get-movie-btn" onclick="openJJK2(); closeJJKMain();">
+    Season 2
+</button>
+
+<button class="get-movie-btn" onclick="openJJK3(); closeJJKMain();">
+    Season 3
+</button>
+        </div>
+    </div>
+</div>
+<div id="jjkModal" class="modal">  
+    <div class="modal-content">  
+        <span onclick="closeJJK()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>  
+        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Jujutsu Kaisen S01 - Episodes</h2>  
+        <div class="episode-grid">  
+            <a href="https://www.diskwala.com/app/6a01816d7996306c22dffbce" target="_blank" class="episode-btn">Ep 01</a>  
+            <a href="https://www.diskwala.com/app/6a0181907996306c22dffbff" target="_blank" class="episode-btn">Ep 02</a>  
+            <a href="https://www.diskwala.com/app/6a0183ed7996306c22e002ee" target="_blank" class="episode-btn">Ep 03</a>  
+            <a href="https://www.diskwala.com/app/6a0185827996306c22e007d7" target="_blank" class="episode-btn">Ep 04</a>  
+            <a href="https://www.diskwala.com/app/6a0185bf7996306c22e008ac" target="_blank" class="episode-btn">Ep 05</a>  
+            <a href="https://www.diskwala.com/app/6a0185ec7996306c22e009ac" target="_blank" class="episode-btn">Ep 06</a>  
+            <a href="https://www.diskwala.com/app/6a0183c37996306c22e00225" target="_blank" class="episode-btn">Ep 07</a>  
+            <a href="https://www.diskwala.com/app/6a0186ba7996306c22e00bd7" target="_blank" class="episode-btn">Ep 08</a>  
+            <a href="https://www.diskwala.com/app/6a01867d7996306c22e00b3e" target="_blank" class="episode-btn">Ep 09</a>  
+            <a href="https://www.diskwala.com/app/6a0187367996306c22e00d2d" target="_blank" class="episode-btn">Ep 10</a>  
+            <a href="https://www.diskwala.com/app/6a0186f17996306c22e00c75" target="_blank" class="episode-btn">Ep 11</a>  
+            <a href="https://www.diskwala.com/app/6a0187b27996306c22e00e83" target="_blank" class="episode-btn">Ep 12</a>  
+            <a href="https://www.diskwala.com/app/6a0188197996306c22e00fea" target="_blank" class="episode-btn">Ep 13</a>  
+            <a href="https://www.diskwala.com/app/6a0188ac7996306c22e0118e" target="_blank" class="episode-btn">Ep 14</a>  
+            <a href="https://www.diskwala.com/app/6a01893a7996306c22e012f0" target="_blank" class="episode-btn">Ep 15</a>  
+            <a href="https://www.diskwala.com/app/6a0188e87996306c22e0123d" target="_blank" class="episode-btn">Ep 16</a>  
+            <a href="https://www.diskwala.com/app/6a0189377996306c22e012e6" target="_blank" class="episode-btn">Ep 17</a>  
+            <a href="https://www.diskwala.com/app/6a0189fc7996306c22e01553" target="_blank" class="episode-btn">Ep 18</a>  
+            <a href="https://www.diskwala.com/app/6a018a657996306c22e01663" target="_blank" class="episode-btn">Ep 19</a>  
+            <a href="https://www.diskwala.com/app/6a0189a37996306c22e01449" target="_blank" class="episode-btn">Ep 20</a>  
+            <a href="https://www.diskwala.com/app/6a01922c7996306c22e02c21" target="_blank" class="episode-btn">Ep 21</a>  
+            <a href="https://www.diskwala.com/app/6a0192657996306c22e02ccf" target="_blank" class="episode-btn">Ep 22</a>  
+            <a href="https://www.diskwala.com/app/6a0192067996306c22e02bcf" target="_blank" class="episode-btn">Ep 23</a>  
+            <a href="https://www.diskwala.com/app/6a01924f7996306c22e02c85" target="_blank" class="episode-btn">Ep 24</a>  
+        </div>  
+    </div>  
+</div>  
+
+<!-- Jujutsu Kaisen Season 2 Modal -->  
+<div id="jjk2Modal" class="modal">  
+    <div class="modal-content">  
+        <span onclick="closeJJK2()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>  
+        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Jujutsu Kaisen Season 2 - Episodes</h2>  
+        <div class="episode-grid">  
+            <a href="https://www.diskwala.com/app/6a01ac2c7996306c22e0765b" target="_blank" class="episode-btn">Ep 01</a>  
+            <a href="https://www.diskwala.com/app/6a01ac057996306c22e07616" target="_blank" class="episode-btn">Ep 02</a>  
+            <a href="https://www.diskwala.com/app/6a01abda7996306c22e075a0" target="_blank" class="episode-btn">Ep 03</a>  
+            <a href="https://www.diskwala.com/app/6a01abaa7996306c22e0751c" target="_blank" class="episode-btn">Ep 04</a>  
+            <a href="https://www.diskwala.com/app/6a01ab617996306c22e0743d" target="_blank" class="episode-btn">Ep 05</a>  
+            <a href="https://www.diskwala.com/app/6a01acf37996306c22e07803" target="_blank" class="episode-btn">Ep 06</a>  
+            <a href="https://www.diskwala.com/app/6a01ac917996306c22e07756" target="_blank" class="episode-btn">Ep 07</a>  
+            <a href="https://www.diskwala.com/app/6a01acb87996306c22e077be" target="_blank" class="episode-btn">Ep 08</a>  
+            <a href="https://www.diskwala.com/app/6a01ad077996306c22e0783d" target="_blank" class="episode-btn">Ep 09</a>  
+            <a href="https://www.diskwala.com/app/6a01ac637996306c22e076ec" target="_blank" class="episode-btn">Ep 10</a>  
+            <a href="https://www.diskwala.com/app/6a01ae9b7996306c22e07c11" target="_blank" class="episode-btn">Ep 11</a>  
+            <a href="https://www.diskwala.com/app/6a01ae037996306c22e07aa9" target="_blank" class="episode-btn">Ep 12</a>  
+            <a href="https://www.diskwala.com/app/6a01ae1a7996306c22e07ae5" target="_blank" class="episode-btn">Ep 13</a>  
+            <a href="https://www.diskwala.com/app/6a01ae4a7996306c22e07b34" target="_blank" class="episode-btn">Ep 14</a>  
+            <a href="https://www.diskwala.com/app/6a01ae747996306c22e07bb9" target="_blank" class="episode-btn">Ep 15</a>  
+            <a href="https://www.diskwala.com/app/6a01b9d67996306c22e09d36" target="_blank" class="episode-btn">Ep 16</a>  
+            <a href="https://www.diskwala.com/app/6a01bafe7996306c22e0a060" target="_blank" class="episode-btn">Ep 17</a>  
+            <a href="https://www.diskwala.com/app/6a01ba997996306c22e09f49" target="_blank" class="episode-btn">Ep 18</a>  
+            <a href="https://www.diskwala.com/app/6a01ba257996306c22e09e2e" target="_blank" class="episode-btn">Ep 19</a>  
+            <a href="https://www.diskwala.com/app/6a01bb497996306c22e0a14c" target="_blank" class="episode-btn">Ep 20</a>  
+            <a href="https://www.diskwala.com/app/6a01bc2f7996306c22e0a424" target="_blank" class="episode-btn">Ep 21</a>  
+            <a href="https://www.diskwala.com/app/6a01bbba7996306c22e0a2d7" target="_blank" class="episode-btn">Ep 22</a>  
+            <a href="https://www.diskwala.com/app/6a01bc597996306c22e0a462" target="_blank" class="episode-btn">Ep 23</a>  
+        </div>  
+    </div>  
+</div>  <!-- Jujutsu Kaisen Season 3 Modal -->
+<div id="jjk3Modal" class="modal">
+    <div class="modal-content">
+
+        <span onclick="closeJJK3()" 
+        style="color:#aaa; float:right; font-size:24px; cursor:pointer;">
+        &times;
+        </span>
+
+        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">
+            Jujutsu Kaisen Season 3 - Episodes
+        </h2>
+
+        <div class="episode-grid">
+
+            <a href="https://www.diskwala.com/app/6a02d7037996306c22e305f0" target="_blank" class="episode-btn">Ep 01</a>
+
+            <a href="https://www.diskwala.com/app/6a02d56f7996306c22e30233" target="_blank" class="episode-btn">Ep 02</a>
+
+            <a href="https://www.diskwala.com/app/6a02d63d7996306c22e303d8" target="_blank" class="episode-btn">Ep 03</a>
+
+            <a href="https://www.diskwala.com/app/6a02d7b77996306c22e307f6" target="_blank" class="episode-btn">Ep 04</a>
+
+            <a href="https://www.diskwala.com/app/6a02d4a77996306c22e30001" target="_blank" class="episode-btn">Ep 05</a>
+
+            <a href="https://www.diskwala.com/app/6a02d9f17996306c22e30dfe" target="_blank" class="episode-btn">Ep 06</a>
+
+            <a href="https://www.diskwala.com/app/6a02da6b7996306c22e30f36" target="_blank" class="episode-btn">Ep 07</a>
+
+            <a href="https://www.diskwala.com/app/6a02d9a77996306c22e30d4d" target="_blank" class="episode-btn">Ep 08</a>
+
+            <a href="https://www.diskwala.com/app/6a02d9327996306c22e30c2a" target="_blank" class="episode-btn">Ep 09</a>
+
+            <a href="https://www.diskwala.com/app/6a02d8957996306c22e30ab2" target="_blank" class="episode-btn">Ep 10</a>
+
+            <a href="https://www.diskwala.com/app/6a02dbc87996306c22e31259" target="_blank" class="episode-btn">Ep 11</a>
+
+            <a href="https://www.diskwala.com/app/6a02db617996306c22e31156" target="_blank" class="episode-btn">Ep 12</a>
+
+        </div>
+    </div>
+</div>
+
+<!-- Bloodhounds Modal -->  
+<div id="episodeModal" class="modal">  
+    <div class="modal-content">  
+        <span onclick="closeModal()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>  
+        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Bloodhounds - Episodes</h2>  
+        <div class="episode-grid">  
+            <a href="https://www.diskwala.com/app/69fd93f9d96f638117a1a5af" target="_blank" class="episode-btn">Ep 01</a>  
+            <a href="https://www.diskwala.com/app/69fd938ed96f638117a1a4c7" target="_blank" class="episode-btn">Ep 02</a>  
+            <a href="https://www.diskwala.com/app/69fd93bfd96f638117a1a530" target="_blank" class="episode-btn">Ep 03</a>  
+            <a href="https://www.diskwala.com/app/69fd93bfd96f638117a1a530" target="_blank" class="episode-btn">Ep 04</a>  
+            <a href="https://www.diskwala.com/app/69fd93d7d96f638117a1a56f" target="_blank" class="episode-btn">Ep 05</a>  
+            <a href="https://www.diskwala.com/app/69fd9493d96f638117a1a762" target="_blank" class="episode-btn">Ep 06</a>  
+            <a href="https://www.diskwala.com/app/69fd946ad96f638117a1a6fa" target="_blank" class="episode-btn">Ep 07</a>  
+            <a href="https://www.diskwala.com/app/69fd9495d96f638117a1a770" target="_blank" class="episode-btn">Ep 08</a>  
+        </div>  
+    </div>  
+</div>  
+
+<footer>  
+    <p class="anish-name">Made by <span>Anish</span></p>  
+    <div class="sponsor-box">  
+        <p style="font-size: 0.85rem; color: #555; font-weight: bold; margin-bottom: 5px;">Sponsor & Collab</p>  
+        <a href="https://wa.me/919421675352" target="_blank" class="wa-link">  
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="16" alt="WA">  
+            +91 9421675352  
+        </a>  
+    </div>  
+</footer>  
+
+<script>  
+    function toggleMenu() {   
+        document.getElementById("navLinks").classList.toggle("active");   
+    }  function openJJKMain() {
+    document.getElementById("jjkMainModal").style.display = "block";
+}
+
+function closeJJKMain() {
+    document.getElementById("jjkMainModal").style.display = "none";
+}
+
+    function openJJK() {   
+        document.getElementById("jjkModal").style.display = "block";   
+    }  
+    function closeJJK() {   
+        document.getElementById("jjkModal").style.display = "none";   
+    }  
+
+    function openJJK2() {   
         
-        .card img { 
-            width: 100%; 
-            height: 250px; 
-            object-fit: cover; 
-            display: block;
-        }
+       document.getElementById("jjk2Modal").style.display = "block";   
+    }  
+    function closeJJK2() {   
         
-        .info { padding: 10px; text-align: center; flex-grow: 1; }
-        .info h3 { 
-            font-size: 0.95rem; 
-            color: #1a1a2e; 
-            margin-bottom: 12px; 
-            min-height: 45px; 
+        document.getElementById("jjk2Modal").style.display = "none";   
+    }  
+
+    function openEpisodes() {   
+        document.getElementById("episodeModal").style.display = "block"; 
         }
 
-        .get-movie-btn {
-            display: block;
-            width: 90%;
-            margin: 0 auto;
-            background: #ffcc00;
-            color: #1a1a2e;
-            text-align: center;
-            padding: 10px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            border-radius: 6px;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-        }
-        .get-movie-btn:hover { background: #e6b800; }
-        .btn-tutorial { background: #1a1a2e; color: #fff; font-size: 0.75rem; width: 100%; }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0; top: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
-            overflow-y: auto;
-        }
-        .modal-content {
-            background: #fff;
-            margin: 5% auto;
-            padding: 20px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 500px;
-            text-align: center;
-            position: relative;
-        }
-        .episode-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 15px; }
-        .episode-btn { padding: 8px; background: #f1f1f1; color: #1a1a2e; text-decoration: none; border-radius: 6px; border: 1px solid #ddd; font-weight: bold; font-size: 0.8rem; }
-        .episode-btn:hover { background: #ffcc00; }
-
-        footer { 
-            text-align: center; 
-            padding: 40px 0; 
-            border-top: 1px solid #eee; 
-            margin-top: 20px; 
-        }
-        .anish-name {
-            font-size: 1.2rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: #1a1a2e;
-            text-transform: uppercase;
-            position: relative;
-            display: inline-block;
-        }
-        .anish-name span {
-            color: #ffcc00;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        function closeModal() { 
+            document.getElementById("episodeModal").style.display = "none"; 
         }
 
-        .sponsor-box {
-            margin-top: 15px;
-            border-top: 1px dashed #ddd;
-            padding-top: 15px;
+        window.onclick = function(event) {
+            let jjkModal = document.getElementById("jjkModal");
+            let jjkMainModal = document.getElementById("jjkMainModal");
+            let jjk2Modal = document.getElementById("jjk2Modal");
+            let jjk3Modal = document.getElementById("jjk3Modal");
+            let episodeModal = document.getElementById("episodeModal");
+if (event.target == jjkMainModal) {
+    jjkMainModal.style.display = "none";
+}
+            if (event.target == jjkModal) {
+                jjkModal.style.display = "none";
+            }
+
+            if (event.target == jjk2Modal) {
+                jjk2Modal.style.display = "none";
+            }
+
+            if (event.target == episodeModal) {
+                episodeModal.style.display = "none";
+            }
         }
-        .wa-link {
-            text-decoration: none;
-            color: #25D366;
-            font-weight: bold;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
+if (event.target == jjk3Modal) {
+    jjk3Modal.style.display = "none";
+}
+        function filterMovies() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let cards = document.querySelectorAll(".gallery .card");
+
+            cards.forEach(card => {
+                let title = card.querySelector("h3").innerText.toLowerCase();
+
+                if (title.includes(input)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
         }
+    </script>
 
-        @media (min-width: 769px) {
-            .gallery { grid-template-columns: repeat(4, 1fr); }
-            .card img { height: 350px; }
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="container">
-            <div class="nav">
-                <h1>Free Movies Link</h1>
-                <div class="hamburger" onclick="toggleMenu()">☰</div>
-                
-                <nav class="nav-links" id="navLinks">
-                    <a href="#" onclick="toggleMenu()">🏠 Home</a>
-                    <a href="#gallery" onclick="toggleMenu()">🎬 Movies List</a>
-                    <a href="https://chat.whatsapp.com/Hp8KdSUs8aZ8ljMWhQhxuM" target="_blank" class="btn-wa">🟢 WhatsApp Support</a>
-                    <a href="https://www.facebook.com/share/1B4bJmCc6v/" target="_blank" class="btn-fb">🔵 Follow on Facebook</a>
-                    <a href="https://t.me/your_contact" target="_blank">📞 Contact Us</a>
-                    <a href="https://t.me/your_admin" target="_blank" class="facing-issue-btn">⚠️ Facing any issues?</a>
-                </nav>
-            </div>
-        </div>
-    </header>
-
-    <div class="container">
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search movies, series or anime..." onkeyup="filterMovies()">
-        </div>
-
-        <div class="pinned-section" id="how-to-section">
-            <div class="card how-to-card">
-                <img src="https://i.ibb.co/zT312sD0/image.jpg" alt="How to open link">
-                <div class="info">
-                    <h3 style="font-size: 0.8rem; min-height: auto;">How to open link?</h3>
-                    <a href="https://youtu.be/65RE_OY7i84" target="_blank" class="get-movie-btn btn-tutorial">▶️ WATCH VIDEO</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="gallery" id="gallery">
-            <!-- Thamma -->
-            <div class="card">
-                <img src="https://i.ibb.co/JjJ0K2Fb/1000023785.jpg" alt="Thamma">
-                <div class="info">
-                    <h3>Thamma (2026) [Hindi Dubbed]</h3>
-                    <a href="https://www.diskwala.com/app/6a0191547996306c22e02a05" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-                </div>
-            </div>
-
-            <!-- Jujutsu Kaisen Season 1 -->
-            <div class="card">
-                <img src="https://i.ibb.co/QRwW9PM/images-2.jpg" alt="Jujutsu Kaisen">
-                <div class="info">
-                    <h3>Jujutsu Kaisen Season 1 [Hindi Dubbed]</h3>
-                    <button class="get-movie-btn" onclick="openJJK()">GET EPISODES</button>
-                </div>
-            </div>
-
-            <!-- Jujutsu Kaisen Season 2 -->
-            <div class="card">
-                <img src="https://i.ibb.co/QRwW9PM/images-2.jpg" alt="Jujutsu Kaisen Season 2">
-                <div class="info">
-                    <h3>Jujutsu Kaisen Season 2 [Hindi Dubbed]</h3>
-                    <button class="get-movie-btn" onclick="openJJK2()">GET EPISODES</button>
-                </div>
-            </div>
-
-            <!-- Bloodhounds -->
-            <div class="card">
-                <img src="https://i.ibb.co/CKtrR04K/p24811658-b-v8-ac.jpg" alt="Bloodhounds">
-                <div class="info">
-                    <h3>Bloodhounds (S01) Hindi Dubbed [Complete]</h3>
-                    <button class="get-movie-btn" onclick="openEpisodes()">GET EPISODES</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://m.media-amazon.com/images/M/MV5BMjA5MTY2OTYyNV5BMl5BanBnXkFtZTgwNjA2MTI2NjE@._V1_.jpg" alt="Mortal Kombat II">
-                <div class="info">
-                    <h3>Mortal Kombat II (2026) [Hindi-Eng]</h3>
-                    <a href="#" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://i.ibb.co/Q3jSDW3C/a0ddf192b5103e62a0591d540962e94fcb93dd155e2f64b54d5e3a9d7faa32c8.jpg" alt="Bigil">
-                <div class="info">
-                    <h3>Bigil (2026) Dual Audio [Hindi Dubbed]</h3>
-                    <a href="https://www.diskwala.com/app/69f6f34d49748cec6c20b7ac" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modals -->
-    <div id="jjkModal" class="modal">
-        <div class="modal-content">
-            <span onclick="closeJJK()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-            <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Jujutsu Kaisen S01 - Episodes</h2>
-            <div class="episode-grid">
-                <a href="https://www.diskwala.com/app/6a01816d7996306c22dffbce" target="_blank" class="episode-btn">Ep 01</a>
-                <a href="https://www.diskwala.com/app/6a0181907996306c22dffbff" target="_blank" class="episode-btn">Ep 02</a>
-                <a href="https://www.diskwala.com/app/6a0183ed7996306c22e002ee" target="_blank" class="episode-btn">Ep 03</a>
-                <a href="https://www.diskwala.com/app/6a0185827996306c22e007d7" target="_blank" class="episode-btn">Ep 04</a>
-                <a href="https://www.diskwala.com/app/6a0185bf7996306c22e008ac" target="_blank" class="episode-btn">Ep 05</a>
-                <a href="https://www.diskwala.com/app/6a0185ec7996306c22e009ac" target="_blank" class="episode-btn">Ep 06</a>
-                <a href="https://www.diskwala.com/app/6a0183c37996306c22e00225" target="_blank" class="episode-btn">Ep 07</a>
-                <a href="https://www.diskwala.com/app/6a0186ba7996306c22e00bd7" target="_blank" class="episode-btn">Ep 08</a>
-                <a href="https://www.diskwala.com/app/6a01867d7996306c22e00b3e" target="_blank" class="episode-btn">Ep 09</a>
-                <a href="https://www.diskwala.com/app/6a0187367996306c22e00d2d" target="_blank" class="episode-btn">Ep 10</a>
-                <a href="https://www.diskwala.com/app/6a0186f17996306c22e00c75" target="_blank" class="episode-btn">Ep 11</a>
-                <a href="https://www.diskwala.com/app/6a0187b27996306c22e00e83" target="_blank" class="episode-btn">Ep 12</a>
-                <a href="https://www.diskwala.com/app/6a0188197996306c22e00fea" target="_blank" class="episode-btn">Ep 13</a>
-                <a href="https://www.diskwala.com/app/6a0188ac7996306c22e0118e" target="_blank" class="episode-btn">Ep 14</a>
-                <a href="https://www.diskwala.com/app/6a01893a7996306c22e012f0" target="_blank" class="episode-btn">Ep 15</a>
-                <a href="https://www.diskwala.com/app/6a0188e87996306c22e0123d" target="_blank" class="episode-btn">Ep 16</a>
-                <a href="https://www.diskwala.com/app/6a0189377996306c22e012e6" target="_blank" class="episode-btn">Ep 17</a>
-                <a href="https://www.diskwala.com/app/6a0189fc7996306c22e01553" target="_blank" class="episode-btn">Ep 18</a>
-                <a href="https://www.diskwala.com/app/6a018a657996306c22e01663" target="_blank" class="episode-btn">Ep 19</a>
-                <a href="https://www.diskwala.com/app/6a0189a37996306c22e01449" target="_blank" class="episode-btn">Ep 20</a>
-                <a href="https://www.diskwala.com/app/6a01922c7996306c22e02c21" target="_blank" class="episode-btn">Ep 21</a>
-                <a href="https://www.diskwala.com/app/6a0192657996306c22e02ccf" target="_blank" class="episode-btn">Ep 22</a>
-                <a href="https://www.diskwala.com/app/6a0192067996306c22e02bcf" target="_blank" class="episode-btn">Ep 23</a>
-                <a href="https://www.diskwala.com/app/6a01924f7996306c22e02c85" target="_blank" class="episode-btn">Ep 24</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Jujutsu Kaisen Season 2 Modal -->
-    <div id="jjk2Modal" class="modal">
-        <div class="modal-content">
-            <span onclick="closeJJK2()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-            <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Jujutsu Kaisen Season 2 - Episodes</h2>
-            <div class="episode-grid">
-                <a href="https://www.diskwala.com/app/6a01ac2c7996306c22e0765b" target="_blank" class="episode-btn">Ep 01</a>
-                <a href="https://www.diskwala.com/app/6a01ac057996306c22e07616" target="_blank" class="episode-btn">Ep 02</a>
-                <a href="https://www.diskwala.com/app/6a01abda7996306c22e075a0" target="_blank" class="episode-btn">Ep 03</a>
-                <a href="https://www.diskwala.com/app/6a01abaa7996306c22e0751c" target="_blank" class="episode-btn">Ep 04</a>
-                <a href="https://www.diskwala.com/app/6a01ab617996306c22e0743d" target="_blank" class="episode-btn">Ep 05</a>
-                <a href="https://www.diskwala.com/app/6a01acf37996306c22e07803" target="_blank" class="episode-btn">Ep 06</a>
-                <a href="https://www.diskwala.com/app/6a01ac917996306c22e07756" target="_blank" class="episode-btn">Ep 07</a>
-                <a href="https://www.diskwala.com/app/6a01acb87996306c22e077be" target="_blank" class="episode-btn">Ep 08</a>
-                <a href="https://www.diskwala.com/app/6a01ad077996306c22e0783d" target="_blank" class="episode-btn">Ep 09</a>
-                <a href="https://www.diskwala.com/app/6a01ac637996306c22e076ec" target="_blank" class="episode-btn">Ep 10</a>
-                <a href="https://www.diskwala.com/app/6a01ae9b7996306c22e07c11" target="_blank" class="episode-btn">Ep 11</a>
-                <a href="https://www.diskwala.com/app/6a01ae037996306c22e07aa9" target="_blank" class="episode-btn">Ep 12</a>
-                <a href="https://www.diskwala.com/app/6a01ae1a7996306c22e07ae5" target="_blank" class="episode-btn">Ep 13</a>
-                <a href="https://www.diskwala.com/app/6a01ae4a7996306c22e07b34" target="_blank" class="episode-btn">Ep 14</a>
-                <a href="https://www.diskwala.com/app/6a01ae747996306c22e07bb9" target="_blank" class="episode-btn">Ep 15</a>
-                <a href="https://www.diskwala.com/app/6a01b9d67996306c22e09d36" target="_blank" class="episode-btn">Ep 16</a>
-                <a href="https://www.diskwala.com/app/6a01bafe7996306c22e0a060" target="_blank" class="episode-btn">Ep 17</a>
-                <a href="https://www.diskwala.com/app/6a01ba997996306c22e09f49" target="_blank" class="episode-btn">Ep 18</a>
-                <a href="https://www.diskwala.com/app/6a01ba257996306c22e09e2e" target="_blank" class="episode-btn">Ep 19</a>
-                <a href="https://www.diskwala.com/app/6a01bb497996306c22e0a14c" target="_blank" class="episode-btn">Ep 20</a>
-                <a href="https://www.diskwala.com/app/6a01bc2f7996306c22e0a424" target="_blank" class="episode-btn">Ep 21</a>
-                <a href="https://www.diskwala.com/app/6a01bbba7996306c22e0a2d7" target="_blank" class="episode-btn">Ep 22</a>
-                <a href="https://www.diskwala.com/app/6a01bc597996306c22e0a462" target="_blank" class="episode-btn">Ep 23</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bloodhounds Modal -->
-    <div id="episodeModal" class="modal">
-        <div class="modal-content">
-            <span onclick="closeModal()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-            <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Bloodhounds - Episodes</h2>
-            <div class="episode-grid">
-                <a href="https://www.diskwala.com/app/69fd93f9d96f638117a1a5af" target="_blank" class="episode-btn">Ep 01</a>
-                <a href="https://www.diskwala.com/app/69fd938ed96f638117a1a4c7" target="_blank" class="episode-btn">Ep 02</a>
-                <a href="https://www.diskwala.com/app/69fd93bfd96f638117a1a530" target="_blank" class="episode-btn">Ep 03</a>
-                <a href="https://www.diskwala.com/app/69fd93bfd96f638117a1a530" target="_blank" class="episode-btn">Ep 04</a>
-                <a href="https://www.diskwala.com/app/69fd93d7d96f638117a1a56f" target="_blank" class="episode-btn">Ep 05</a>
-                <a href="https://www.diskwala.com/app/69fd9493d96f638117a1a762" target="_blank" class="episode-btn">Ep 06</a>
-                <a href="https://www.diskwala.com/app/69fd946ad96f638117a1a6fa" target="_blank" class="episode-btn">Ep 07</a>
-                <a href="https://www.diskwala.com/app/69fd9495d96f638117a1a770" target="_blank" class="episode-btn">Ep 08</a>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p class="anish-name">Made by <span>Anish</span></p>
-        <div class="sponsor-box">
-            <p style="font-size: 0.85rem; color: #555; font-weight: bold; margin-bottom: 5px;">Sponsor & Collab</p>
-            <a href="https://wa.me/919421675352" target="_blank" class="wa-link">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="16" alt="WA">
-                +91 9421675352
-            </a>
-        </div>
-    </footer>
-
-    <script>
-        function toggleMenu() { 
-            document.getElementById("navLinks").classList.toggle("active"); 
-        }
-
-        function openJJK() { 
-            document.getElementById("jjkModal").style.display = "block"; 
-        }
-        function closeJJK() { 
-            document.getElementById("jjkModal").style.display = "none"; 
-        }
-
-        function openJJK2() { 
-            document.getElementById("jjk2Modal").style.display = "block"; 
-        }
-        function closeJJK2() { 
-            document.getElementById("jjk2Modal").style.display = "none"; 
-        }
-
-        function openEpisodes() { 
-            document.getElementById("episodeMod
+</body>
+</html>
