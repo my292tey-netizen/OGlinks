@@ -5,14 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Movies Link - Best Movies Direct Links</title>
     <style>
-        .card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
-            border-radius: 15px 15px 0 0;
-        }
-        .card a { text-decoration: none; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Arial, sans-serif; background: #ffffff; color: #222; line-height: 1.6; }
         header { background: #ffffff; padding: 15px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-bottom: 3px solid #ffcc00; }
@@ -39,12 +31,13 @@
         .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 15px; }
         
         .card { background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #eee; display: flex; flex-direction: column; height: auto; padding-bottom: 15px; }
-        .card img { width: 100%; height: 250px; object-fit: cover; display: block; }
+        .card img { width: 100%; height: 220px; object-fit: cover; display: block; border-radius: 15px 15px 0 0; }
+        .card a { text-decoration: none; }
         
         .info { padding: 10px; text-align: center; flex-grow: 1; }
         .info h3 { font-size: 0.95rem; color: #1a1a2e; margin-bottom: 12px; min-height: 45px; }
         
-        .get-movie-btn { display: block; width: 90%; margin: 0 auto; background: #ffcc00; color: #1a1a2e; text-align: center; padding: 10px; font-size: 0.85rem; font-weight: bold; border-radius: 6px; text-decoration: none; cursor: pointer; border: none; }
+        .get-movie-btn { display: block; width: 90%; margin: 0 auto; background: #ffcc00; color: #1a1a2e; text-align: center; padding: 10px; font-size: 0.85rem; font-weight: bold; border-radius: 6px; text-decoration: none; cursor: pointer; border: none; font-family: inherit; }
         .get-movie-btn:hover { background: #e6b800; }
         .btn-tutorial { background: #1a1a2e; color: #fff; font-size: 0.75rem; width: 100%; }
         
@@ -52,7 +45,7 @@
         .modal-content { background: #fff; margin: 5% auto; padding: 20px; border-radius: 15px; width: 90%; max-width: 500px; text-align: center; position: relative; }
         
         .episode-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 15px; }
-        .episode-btn { padding: 8px; background: #f1f1f1; color: #1a1a2e; text-decoration: none; border-radius: 6px; border: 1px solid #ddd; font-weight: bold; font-size: 0.8rem; }
+        .episode-btn { padding: 8px; background: #f1f1f1; color: #1a1a2e; text-decoration: none; border-radius: 6px; border: 1px solid #ddd; font-weight: bold; font-size: 0.8rem; cursor: pointer; width: 100%; text-align: center; display: block; font-family: inherit; }
         .episode-btn:hover { background: #ffcc00; }
         
         footer { text-align: center; padding: 40px 0; border-top: 1px solid #eee; margin-top: 20px; }
@@ -92,10 +85,10 @@
 
     <div class="pinned-section" id="how-to-section">
         <div class="card how-to-card">
-            <img src="https://i.ibb.co/zT312sD0/image.jpg" alt="How to open link">
+            <img src="https://i.ibb.co/Z3WPMqh/Screenshot-2026-05-15-13-07-20-69-f9ee0578fe1cc94de7482bd41accb329.jpg" alt="How to use site">
             <div class="info">
-                <h3 style="font-size: 0.8rem; min-height: auto;">How to open link?</h3>
-                <a href="https://youtu.be/65RE_OY7i84" target="_blank" class="get-movie-btn btn-tutorial">▶️ WATCH VIDEO</a>
+                <h3 style="font-size: 0.8rem; min-height: auto;">How to use site?</h3>
+                <a href="https://youtu.be/EZ1NetrfTzM?si=ArtdPFQ4d6W2UwO5" target="_blank" class="get-movie-btn btn-tutorial">▶️ WATCH TUTORIAL</a>
             </div>
         </div>
     </div>
@@ -103,10 +96,34 @@
     <div class="gallery" id="gallery">
         
         <div class="card">
+            <img src="https://i.ibb.co/0pYbDPb6/IMG-20260515-132558.jpg" alt="Squid Game">
+            <div class="info">
+                <h3>Squid Game [All Seasons]</h3>
+                <button class="get-movie-btn" onclick="openSquidGameMain()">GET EPISODES</button>
+            </div>
+        </div>
+
+        <div class="card">
             <img src="https://i.ibb.co/YBm6Hm9P/p0q-M8hhl-MF5-Dux-HBzl2-EZR6-Teh-X.jpg" alt="Mirzapur">
             <div class="info">
-                <h3>Mirzapur</h3>
+                <h3>Mirzapur [All Seasons]</h3>
                 <button class="get-movie-btn" onclick="openMirzapurMain()">GET EPISODES</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://i.ibb.co/QRwW9PM/images-2.jpg" alt="Jujutsu Kaisen">
+            <div class="info">
+                <h3>Jujutsu Kaisen [Hindi Dubbed]</h3>
+                <button class="get-movie-btn" onclick="openJJKMain()">GET EPISODES</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://i.ibb.co/CKtrR04K/p24811658-b-v8-ac.jpg" alt="Bloodhounds">
+            <div class="info">
+                <h3>Bloodhounds (S01) Hindi Dubbed</h3>
+                <button class="get-movie-btn" onclick="openEpisodes()">GET EPISODES</button>
             </div>
         </div>
 
@@ -223,33 +240,17 @@
         </div>
 
         <div class="card">
-            <img src="https://i.ibb.co/QRwW9PM/images-2.jpg" alt="Jujutsu Kaisen">
-            <div class="info">
-                <h3>Jujutsu Kaisen [Hindi Dubbed]</h3>
-                <button class="get-movie-btn" onclick="openJJKMain()">GET EPISODES</button>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/CKtrR04K/p24811658-b-v8-ac.jpg" alt="Bloodhounds">
-            <div class="info">
-                <h3>Bloodhounds (S01) Hindi Dubbed [Complete]</h3>
-                <button class="get-movie-btn" onclick="openEpisodes()">GET EPISODES</button>
-            </div>
-        </div>
-
-        <div class="card">
             <img src="https://m.media-amazon.com/images/M/MV5BMjA5MTY2OTYyNV5BMl5BanBnXkFtZTgwNjA2MTI2NjE@._V1_.jpg" alt="Mortal Kombat II">
             <div class="info">
                 <h3>Mortal Kombat II (2026) [Hindi-Eng]</h3>
-                <a href="#" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
+                <button onclick="alert('Link coming soon!')" class="get-movie-btn">COMING SOON</button>
             </div>
         </div>
 
         <div class="card">
             <img src="https://i.ibb.co/Q3jSDW3C/a0ddf192b5103e62a0591d540962e94fcb93dd155e2f64b54d5e3a9d7faa32c8.jpg" alt="Bigil">
             <div class="info">
-                <h3>Bigil (2026) Dual Audio [Hindi Dubbed]</h3>
+                <h3>Bigil (2026) Dual Audio</h3>
                 <a href="https://www.diskwala.com/app/69f6f34d49748cec6c20b7ac" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
             </div>
         </div>
@@ -297,7 +298,7 @@
         <div class="card">
             <img src="https://i.ibb.co/q3RCHB0W/ladybug-and-cat-noir-awakening.jpg" alt="Ladybug">
             <div class="info">
-                <h3>Miraculous Ladybug Movie [Hindi Dubbed]</h3>
+                <h3>Miraculous Ladybug [Hindi Dubbed]</h3>
                 <a href="https://www.diskwala.com/app/6a0484077996306c22e6de07" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
             </div>
         </div>
@@ -359,6 +360,18 @@
         </div>
     </div>
 </div>
+<div id="squidGameMainModal" class="modal">
+    <div class="modal-content">
+        <span onclick="closeSquidGameMain()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
+        <h2 style="color:#1a1a2e; margin-bottom:15px;">Squid Game</h2>
+        <div style="display:flex; flex-direction:column; gap:20px; padding:15px;">
+            <button class="get-movie-btn" onclick="openSquidGameS1(); closeSquidGameMain();">Season 1</button>
+            <button class="get-movie-btn" onclick="openSquidGameS2(); closeSquidGameMain();">Season 2</button>
+            <button class="get-movie-btn" onclick="openSquidGameS3(); closeSquidGameMain();">Season 3</button>
+        </div>
+    </div>
+</div>
+
 <div id="mirzapurMainModal" class="modal">
     <div class="modal-content">
         <span onclick="closeMirzapurMain()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
@@ -371,10 +384,71 @@
     </div>
 </div>
 
+<div id="jjkMainModal" class="modal">
+    <div class="modal-content">
+        <span onclick="closeJJKMain()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
+        <h2 style="color:#1a1a2e; margin-bottom:15px;">Jujutsu Kaisen</h2>
+        <div style="display:flex; flex-direction:column; gap:20px; padding:15px;">
+            <button class="get-movie-btn" onclick="openJJK(); closeJJKMain();">Season 1</button>
+            <button class="get-movie-btn" onclick="openJJK2(); closeJJKMain();">Season 2</button>
+            <button class="get-movie-btn" onclick="openJJK3(); closeJJKMain();">Season 3</button>
+        </div>
+    </div>
+</div>
+
+<div id="squidGameS1Modal" class="modal">
+    <div class="modal-content">
+        <span onclick="closeSquidGameS1()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
+        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Squid Game Season 1</h2>
+        <div class="episode-grid">
+            <a href="https://www.diskwala.com/app/6a06c7667996306c22ec0f98" target="_blank" class="episode-btn">Ep 01</a>
+            <a href="https://www.diskwala.com/app/6a06c7bd7996306c22ec108c" target="_blank" class="episode-btn">Ep 02</a>
+            <a href="https://www.diskwala.com/app/6a06c6a37996306c22ec0d61" target="_blank" class="episode-btn">Ep 03</a>
+            <a href="https://www.diskwala.com/app/6a06c7117996306c22ec0ee4" target="_blank" class="episode-btn">Ep 04</a>
+            <a href="https://www.diskwala.com/app/6a06c6d67996306c22ec0e2d" target="_blank" class="episode-btn">Ep 05</a>
+            <a href="https://www.diskwala.com/app/6a06c8567996306c22ec11ef" target="_blank" class="episode-btn">Ep 06</a>
+            <a href="https://www.diskwala.com/app/6a06c9a67996306c22ec1565" target="_blank" class="episode-btn">Ep 07</a>
+            <a href="https://www.diskwala.com/app/6a06c8e47996306c22ec1394" target="_blank" class="episode-btn">Ep 08</a>
+            <a href="https://www.diskwala.com/app/6a06c8a67996306c22ec12c4" target="_blank" class="episode-btn">Ep 09</a>
+        </div>
+    </div>
+</div>
+
+<div id="squidGameS2Modal" class="modal">
+    <div class="modal-content">
+        <span onclick="closeSquidGameS2()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
+        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Squid Game Season 2</h2>
+        <div class="episode-grid">
+            <a href="https://www.diskwala.com/app/6a06c9647996306c22ec14ab" target="_blank" class="episode-btn">Ep 01</a>
+            <a href="https://www.diskwala.com/app/6a06cb767996306c22ec19fb" target="_blank" class="episode-btn">Ep 02</a>
+            <a href="https://www.diskwala.com/app/6a06ca3f7996306c22ec16ba" target="_blank" class="episode-btn">Ep 03</a>
+            <a href="https://www.diskwala.com/app/6a06cd5f7996306c22ec1ee7" target="_blank" class="episode-btn">Ep 04</a>
+            <a href="https://www.diskwala.com/app/6a06cb2b7996306c22ec1917" target="_blank" class="episode-btn">Ep 05</a>
+            <a href="https://www.diskwala.com/app/6a06cbe57996306c22ec1b35" target="_blank" class="episode-btn">Ep 06</a>
+            <a href="https://www.diskwala.com/app/6a06ce447996306c22ec21ac" target="_blank" class="episode-btn">Ep 07</a>
+        </div>
+    </div>
+</div>
+
+<div id="squidGameS3Modal" class="modal">
+    <div class="modal-content">
+        <span onclick="closeSquidGameS3()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
+        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Squid Game Season 3</h2>
+        <div class="episode-grid">
+            <a href="https://www.diskwala.com/app/6a06cf017996306c22ec23c9" target="_blank" class="episode-btn">Ep 01</a>
+            <a href="https://www.diskwala.com/app/6a06cded7996306c22ec204c" target="_blank" class="episode-btn">Ep 02</a>
+            <a href="https://www.diskwala.com/app/6a06cf697996306c22ec253d" target="_blank" class="episode-btn">Ep 03</a>
+            <a href="https://www.diskwala.com/app/6a06d3ff7996306c22ec3354" target="_blank" class="episode-btn">Ep 04</a>
+            <a href="https://www.diskwala.com/app/6a06d1517996306c22ec2b91" target="_blank" class="episode-btn">Ep 05</a>
+            <a href="https://www.diskwala.com/app/6a06d0ed7996306c22ec2a73" target="_blank" class="episode-btn">Ep 06</a>
+        </div>
+    </div>
+</div>
+
 <div id="mirzapurS1Modal" class="modal">
     <div class="modal-content">
         <span onclick="closeMirzapurS1()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Mirzapur Season 1 - Episodes</h2>
+        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Mirzapur Season 1</h2>
         <div class="episode-grid">
             <a href="https://www.diskwala.com/app/6a0595757996306c22e93890" target="_blank" class="episode-btn">Ep 01</a>
             <a href="https://www.diskwala.com/app/6a0595947996306c22e938de" target="_blank" class="episode-btn">Ep 02</a>
@@ -392,7 +466,7 @@
 <div id="mirzapurS2Modal" class="modal">
     <div class="modal-content">
         <span onclick="closeMirzapurS2()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Mirzapur Season 2 - Episodes</h2>
+        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Mirzapur Season 2</h2>
         <div class="episode-grid">
             <a href="https://www.diskwala.com/app/6a0598687996306c22e94151" target="_blank" class="episode-btn">Ep 01</a>
             <a href="https://www.diskwala.com/app/6a0598107996306c22e94042" target="_blank" class="episode-btn">Ep 02</a>
@@ -411,7 +485,7 @@
 <div id="mirzapurS3Modal" class="modal">
     <div class="modal-content">
         <span onclick="closeMirzapurS3()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Mirzapur Season 3 - Episodes</h2>
+        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Mirzapur Season 3</h2>
         <div class="episode-grid">
             <a href="https://www.diskwala.com/app/6a059a257996306c22e94697" target="_blank" class="episode-btn">Ep 01</a>
             <a href="https://www.diskwala.com/app/6a059a0a7996306c22e94649" target="_blank" class="episode-btn">Ep 02</a>
@@ -427,22 +501,10 @@
     </div>
 </div>
 
-<div id="jjkMainModal" class="modal">
-    <div class="modal-content">
-        <span onclick="closeJJKMain()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; margin-bottom:15px;">Jujutsu Kaisen</h2>
-        <div style="display:flex; flex-direction:column; gap:20px; padding:15px;">
-            <button class="get-movie-btn" onclick="openJJK(); closeJJKMain();">Season 1</button>
-            <button class="get-movie-btn" onclick="openJJK2(); closeJJKMain();">Season 2</button>
-            <button class="get-movie-btn" onclick="openJJK3(); closeJJKMain();">Season 3</button>
-        </div>
-    </div>
-</div>
-
 <div id="jjkModal" class="modal">
     <div class="modal-content">
         <span onclick="closeJJK()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Jujutsu Kaisen S01 - Episodes</h2>
+        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Jujutsu Kaisen S01</h2>
         <div class="episode-grid">
             <a href="https://www.diskwala.com/app/6a01816d7996306c22dffbce" target="_blank" class="episode-btn">Ep 01</a>
             <a href="https://www.diskwala.com/app/6a0181907996306c22dffbff" target="_blank" class="episode-btn">Ep 02</a>
@@ -475,7 +537,7 @@
 <div id="jjk2Modal" class="modal">
     <div class="modal-content">
         <span onclick="closeJJK2()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Jujutsu Kaisen Season 2 - Episodes</h2>
+        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Jujutsu Kaisen S02</h2>
         <div class="episode-grid">
             <a href="https://www.diskwala.com/app/6a01ac2c7996306c22e0765b" target="_blank" class="episode-btn">Ep 01</a>
             <a href="https://www.diskwala.com/app/6a01ac057996306c22e07616" target="_blank" class="episode-btn">Ep 02</a>
@@ -507,7 +569,7 @@
 <div id="jjk3Modal" class="modal">
     <div class="modal-content">
         <span onclick="closeJJK3()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Jujutsu Kaisen Season 3 - Episodes</h2>
+        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Jujutsu Kaisen S03</h2>
         <div class="episode-grid">
             <a href="https://www.diskwala.com/app/6a02d7037996306c22e305f0" target="_blank" class="episode-btn">Ep 01</a>
             <a href="https://www.diskwala.com/app/6a02d56f7996306c22e30233" target="_blank" class="episode-btn">Ep 02</a>
@@ -554,11 +616,19 @@
 </footer>
 
 <script>
-    function toggleMenu() {
-        document.getElementById("navLinks").classList.toggle("active");
-    }
+    function toggleMenu() { document.getElementById("navLinks").classList.toggle("active"); }
 
-    // Mirzapur Functions
+    // Modal Control Functions - Squid Game
+    function openSquidGameMain() { document.getElementById("squidGameMainModal").style.display = "block"; }
+    function closeSquidGameMain() { document.getElementById("squidGameMainModal").style.display = "none"; }
+    function openSquidGameS1() { document.getElementById("squidGameS1Modal").style.display = "block"; }
+    function closeSquidGameS1() { document.getElementById("squidGameS1Modal").style.display = "none"; }
+    function openSquidGameS2() { document.getElementById("squidGameS2Modal").style.display = "block"; }
+    function closeSquidGameS2() { document.getElementById("squidGameS2Modal").style.display = "none"; }
+    function openSquidGameS3() { document.getElementById("squidGameS3Modal").style.display = "block"; }
+    function closeSquidGameS3() { document.getElementById("squidGameS3Modal").style.display = "none"; }
+
+    // Modal Control Functions - Mirzapur
     function openMirzapurMain() { document.getElementById("mirzapurMainModal").style.display = "block"; }
     function closeMirzapurMain() { document.getElementById("mirzapurMainModal").style.display = "none"; }
     function openMirzapurS1() { document.getElementById("mirzapurS1Modal").style.display = "block"; }
@@ -568,7 +638,7 @@
     function openMirzapurS3() { document.getElementById("mirzapurS3Modal").style.display = "block"; }
     function closeMirzapurS3() { document.getElementById("mirzapurS3Modal").style.display = "none"; }
 
-    // Jujutsu Kaisen Functions
+    // Modal Control Functions - Jujutsu Kaisen
     function openJJKMain() { document.getElementById("jjkMainModal").style.display = "block"; }
     function closeJJKMain() { document.getElementById("jjkMainModal").style.display = "none"; }
     function openJJK() { document.getElementById("jjkModal").style.display = "block"; }
@@ -578,13 +648,15 @@
     function openJJK3() { document.getElementById("jjk3Modal").style.display = "block"; }
     function closeJJK3() { document.getElementById("jjk3Modal").style.display = "none"; }
 
-    // Bloodhounds Functions
     function openEpisodes() { document.getElementById("episodeModal").style.display = "block"; }
     function closeModal() { document.getElementById("episodeModal").style.display = "none"; }
 
-    // Close Modals on outside click
     window.onclick = function(event) {
         let modals = [
+            document.getElementById("squidGameMainModal"),
+            document.getElementById("squidGameS1Modal"),
+            document.getElementById("squidGameS2Modal"),
+            document.getElementById("squidGameS3Modal"),
             document.getElementById("mirzapurMainModal"),
             document.getElementById("mirzapurS1Modal"),
             document.getElementById("mirzapurS2Modal"),
@@ -603,7 +675,6 @@
         });
     }
 
-    // Search filter
     function filterMovies() {
         let input = document.getElementById("searchInput").value.toLowerCase();
         let cards = document.querySelectorAll(".card");
@@ -623,4 +694,3 @@
 </script>
 </body>
 </html>
-
