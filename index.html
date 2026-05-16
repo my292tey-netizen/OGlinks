@@ -11,7 +11,10 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
         .nav { display: flex; justify-content: space-between; align-items: center; }
         h1 { color: #1a1a2e; font-size: 1.8rem; font-weight: 800; }
-        .hamburger { font-size: 28px; cursor: pointer; color: #1a1a2e; z-index: 1001; }
+        
+        .top-actions { display: flex; align-items: center; gap: 18px; z-index: 1002; }
+        .chat-toggle-btn { font-size: 24px; cursor: pointer; color: #1a1a2e; background: none; border: none; padding: 5px; display: flex; align-items: center; }
+        .hamburger { font-size: 28px; cursor: pointer; color: #1a1a2e; }
         
         .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: #ffffff; display: flex; flex-direction: column; padding: 80px 20px 20px 20px; transition: 0.4s ease-in-out; z-index: 1000; box-shadow: -5px 0 15px rgba(0,0,0,0.1); }
         .nav-links.active { right: 0; }
@@ -21,29 +24,58 @@
         .btn-wa { color: #25D366 !important; }
         .facing-issue-btn { margin-top: auto; background: #ff4757; color: #ffffff !important; text-align: center; padding: 12px !important; border-radius: 8px; border-bottom: none !important; }
         
+        /* Advanced Search Bar */
         .search-container { text-align: center; margin: 20px 0; }
-        #searchInput { width: 100%; max-width: 600px; padding: 12px 20px; font-size: 1rem; border: 2px solid #ddd; border-radius: 50px; outline: none; }
+        #searchInput { width: 100%; max-width: 600px; padding: 14px 20px; font-size: 1.05rem; border: 2px solid #ddd; border-radius: 50px; outline: none; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        #searchInput:focus { border-color: #ffcc00; box-shadow: 0 4px 12px rgba(255, 204, 0, 0.2); }
         
-        .pinned-section { margin-bottom: 20px; }
-        .how-to-card { max-width: 320px; margin: 0 auto; border: 2px solid #ffcc00; background: #f9f9f9; border-radius: 15px; overflow: hidden; }
+        .pinned-section { margin-bottom: 20px; transition: 0.3s ease; }
+        .how-to-card { max-width: 320px; margin: 0 auto; border: 2px solid #ffcc00; background: #f9f9f9; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(255,204,0,0.15); }
         .how-to-card img { width: 100%; height: 160px; object-fit: contain; background: #fff; padding: 10px; display: block; }
         
-        .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 15px; }
-        
-        .card { background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #eee; display: flex; flex-direction: column; height: auto; padding-bottom: 15px; }
+        /* Category Filter System CSS */
+        .category-wrapper { margin: 20px 0; overflow-x: auto; white-space: nowrap; padding-bottom: 10px; -webkit-overflow-scrolling: touch; transition: 0.3s ease; }
+        .category-wrapper::-webkit-scrollbar { height: 6px; }
+        .category-wrapper::-webkit-scrollbar-thumb { background: #ddd; border-radius: 10px; }
+        .category-list { display: flex; gap: 10px; justify-content: center; min-width: max-content; }
+        .cat-btn { background: #f1f1f1; border: 1px solid #ddd; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; color: #1a1a2e; transition: 0.3s; }
+        .cat-btn:hover, .cat-btn.active { background: #ffcc00; border-color: #ffcc00; color: #1a1a2e; box-shadow: 0 2px 8px rgba(255,204,0,0.4); }
+
+        /* Dynamic Grid Engine */
+        .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 15px 0; }
+        .card { background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #eee; display: flex; flex-direction: column; height: auto; padding-bottom: 15px; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
         .card img { width: 100%; height: 220px; object-fit: cover; display: block; border-radius: 15px 15px 0 0; }
-        .card a { text-decoration: none; }
         
-        .info { padding: 10px; text-align: center; flex-grow: 1; }
+        /* Trending Badge */
+        .trending-badge { position: absolute; top: 10px; right: 10px; background: #ff4757; color: #fff; font-size: 0.7rem; font-weight: bold; padding: 4px 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10; letter-spacing: 0.5px; }
+
+        .info { padding: 10px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
         .info h3 { font-size: 0.95rem; color: #1a1a2e; margin-bottom: 12px; min-height: 45px; }
         
-        .get-movie-btn { display: block; width: 90%; margin: 0 auto; background: #ffcc00; color: #1a1a2e; text-align: center; padding: 10px; font-size: 0.85rem; font-weight: bold; border-radius: 6px; text-decoration: none; cursor: pointer; border: none; font-family: inherit; }
-        .get-movie-btn:hover { background: #e6b800; }
+        .get-movie-btn { display: block; width: 90%; margin: 0 auto; background: #ffcc00; color: #1a1a2e; text-align: center; padding: 10px; font-size: 0.85rem; font-weight: bold; border-radius: 6px; text-decoration: none; cursor: pointer; border: none; font-family: inherit; transition: 0.2s; }
+        .get-movie-btn:hover { background: #e6b800; transform: scale(1.02); }
         .btn-tutorial { background: #1a1a2e; color: #fff; font-size: 0.75rem; width: 100%; }
+        
+        .load-more-container { text-align: center; margin: 30px 0; }
+        .load-more-btn { background: #1a1a2e; color: #ffffff; padding: 12px 30px; font-size: 1rem; font-weight: bold; border: none; border-radius: 25px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: 0.3s; }
+        .load-more-btn:hover { background: #ffcc00; color: #1a1a2e; }
+
+        /* Chat Overlay */
+        .chat-overlay { position: fixed; top: 0; right: -100%; width: 320px; height: 100vh; background: #ffffff; box-shadow: -5px 0 20px rgba(0,0,0,0.15); z-index: 1005; display: flex; flex-direction: column; transition: 0.4s ease-in-out; }
+        .chat-overlay.active { right: 0; }
+        .chat-header { background: #1a1a2e; color: #ffffff; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #ffcc00; }
+        .chat-header h3 { font-size: 1.1rem; font-weight: bold; }
+        .chat-close { font-size: 24px; cursor: pointer; color: #ffffff; background: none; border: none; }
+        .chat-messages { flex-grow: 1; padding: 15px; overflow-y: auto; background: #f7f9fc; display: flex; flex-direction: column; gap: 10px; }
+        .msg { background: #ffffff; padding: 10px 12px; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); max-width: 85%; width: fit-content; word-break: break-word; }
+        .msg-system { background: #ffeaa7; font-size: 0.8rem; text-align: center; max-width: 100%; margin: 0 auto; color: #d63031; font-weight: bold; border-radius: 5px; }
+        .msg-time { font-size: 0.65rem; color: #888; display: block; text-align: right; margin-top: 4px; }
+        .chat-footer { padding: 12px; background: #ffffff; border-top: 1px solid #eee; display: flex; gap: 8px; align-items: center; }
+        .chat-input { flex-grow: 1; padding: 10px 15px; border: 1px solid #ddd; border-radius: 20px; outline: none; font-size: 0.9rem; font-family: inherit; }
+        .chat-send-btn { background: #ffcc00; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; color: #1a1a2e; transition: 0.2s; }
         
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); overflow-y: auto; }
         .modal-content { background: #fff; margin: 5% auto; padding: 20px; border-radius: 15px; width: 90%; max-width: 500px; text-align: center; position: relative; }
-        
         .episode-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 15px; }
         .episode-btn { padding: 8px; background: #f1f1f1; color: #1a1a2e; text-decoration: none; border-radius: 6px; border: 1px solid #ddd; font-weight: bold; font-size: 0.8rem; cursor: pointer; width: 100%; text-align: center; display: block; font-family: inherit; }
         .episode-btn:hover { background: #ffcc00; }
@@ -51,12 +83,13 @@
         footer { text-align: center; padding: 40px 0; border-top: 1px solid #eee; margin-top: 20px; }
         .anish-name { font-size: 1.2rem; font-weight: 900; letter-spacing: 2px; color: #1a1a2e; text-transform: uppercase; position: relative; display: inline-block; }
         .anish-name span { color: #ffcc00; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
-        .sponsor-box { margin-top: 15px; border-top: 1px dashed #ddd; padding-top: 15px; }
         .wa-link { text-decoration: none; color: #25D366; font-weight: bold; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 5px; }
         
         @media (min-width: 769px) {
             .gallery { grid-template-columns: repeat(4, 1fr); }
             .card img { height: 350px; }
+            .chat-overlay { width: 360px; }
+            .category-list { justify-content: center; }
         }
     </style>
 </head>
@@ -64,11 +97,15 @@
 <header>
     <div class="container">
         <div class="nav">
-            <h1>Free Movies Link</h1>
-            <div class="hamburger" onclick="toggleMenu()">☰</div>
+            <h1>Free Links Gallery</h1>
+            <div class="top-actions">
+                <button class="chat-toggle-btn" onclick="toggleChat()" title="Open Chat Room">💬</button>
+                <div class="hamburger" onclick="toggleMenu()">☰</div>
+            </div>
+            
             <nav class="nav-links" id="navLinks">
                 <a href="#" onclick="toggleMenu()">🏠 Home</a>
-                <a href="#gallery" onclick="toggleMenu()">🎬 Movies List</a>
+                <a href="#gallery" onclick="toggleMenu()">🎬 Links List</a>
                 <a href="https://chat.whatsapp.com/Hp8KdSUs8aZ8ljMWhQhxuM" target="_blank" class="btn-wa">🟢 WhatsApp Support</a>
                 <a href="https://www.facebook.com/share/1B4bJmCc6v/" target="_blank" class="btn-fb">🔵 Follow on Facebook</a>
                 <a href="https://t.me/your_contact" target="_blank">📞 Contact Us</a>
@@ -80,7 +117,7 @@
 
 <div class="container">
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search movies, series or anime..." onkeyup="filterMovies()">
+        <input type="text" id="searchInput" placeholder="Search by name, keywords... (e.g. Mirzapur)" onkeyup="advancedSearchEngine()">
     </div>
 
     <div class="pinned-section" id="how-to-section">
@@ -93,517 +130,47 @@
         </div>
     </div>
 
-    <div class="gallery" id="gallery">
-        
-        <div class="card">
-            <img src="https://i.ibb.co/d92Dygk/images-12.jpg" alt="Mortal Kombat II">
-            <div class="info">
-                <h3>Mortal Kombat II (2026) [Hindi-Eng]</h3>
-                <a href="https://www.diskwala.com/app/6a06d2a07996306c22ec2f62" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/0pYbDPb6/IMG-20260515-132558.jpg" alt="Squid Game">
-            <div class="info">
-                <h3>Squid Game [All Seasons]</h3>
-                <button class="get-movie-btn" onclick="openSquidGameMain()">GET EPISODES</button>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/YBm6Hm9P/p0q-M8hhl-MF5-Dux-HBzl2-EZR6-Teh-X.jpg" alt="Mirzapur">
-            <div class="info">
-                <h3>Mirzapur [All Seasons]</h3>
-                <button class="get-movie-btn" onclick="openMirzapurMain()">GET EPISODES</button>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/QRwW9PM/images-2.jpg" alt="Jujutsu Kaisen">
-            <div class="info">
-                <h3>Jujutsu Kaisen [Hindi Dubbed]</h3>
-                <button class="get-movie-btn" onclick="openJJKMain()">GET EPISODES</button>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/CKtrR04K/p24811658-b-v8-ac.jpg" alt="Bloodhounds">
-            <div class="info">
-                <h3>Bloodhounds (S01) Hindi Dubbed</h3>
-                <button class="get-movie-btn" onclick="openEpisodes()">GET EPISODES</button>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/CspDxNJY/images-3.jpg" alt="Krishnavataram">
-            <div class="info">
-                <h3>Krishnavataram</h3>
-                <a href="https://www.diskwala.com/app/6a05a0c07996306c22e9594d" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/7N4gt4VT/images-4.jpg" alt="Deep Water">
-            <div class="info">
-                <h3>Deep Water</h3>
-                <a href="https://www.diskwala.com/app/6a05a0527996306c22e95801" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/1fj230ST/images-5.jpg" alt="Tere Ishk Mein">
-            <div class="info">
-                <h3>Tere Ishk Mein</h3>
-                <a href="https://www.diskwala.com/app/6a0597177996306c22e93d95" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/hRdFz6sG/images-6.jpg" alt="Lokah Chapter 1">
-            <div class="info">
-                <h3>Lokah Chapter 1</h3>
-                <a href="https://www.diskwala.com/app/6a058a527996306c22e915b7" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/x8Ymf10g/MV5-BNj-Y5-OTg4-NTYt-Zj-Vk-ZS00-YTZm-LWIw-NDEt-M2-Y0-ODQy-Mz-M2-NTJi-Xk-Ey-Xk-Fqc-Gc-V1.jpg" alt="War 2">
-            <div class="info">
-                <h3>War 2</h3>
-                <a href="https://www.diskwala.com/app/6a058ad17996306c22e9171f" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/Dfv6sFCx/images-7.jpg" alt="Jolly LLB 3">
-            <div class="info">
-                <h3>Jolly LLB 3</h3>
-                <a href="https://www.diskwala.com/app/6a058da57996306c22e91ff8" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/LhPqtHV8/images-8.jpg" alt="Jaat">
-            <div class="info">
-                <h3>Jaat</h3>
-                <a href="https://www.diskwala.com/app/6a0591ce7996306c22e92ca5" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/yFW9V0sS/Haq-film-2025.jpg" alt="Haq">
-            <div class="info">
-                <h3>Haq</h3>
-                <a href="https://www.diskwala.com/app/6a0591e77996306c22e92cdc" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/gMdpYM2j/images-9.jpg" alt="Dude">
-            <div class="info">
-                <h3>Dude</h3>
-                <a href="https://www.diskwala.com/app/6a05938c7996306c22e9327b" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/RT4Tz1KD/images-10.jpg" alt="Chhorii 2">
-            <div class="info">
-                <h3>Chhorii 2</h3>
-                <a href="https://www.diskwala.com/app/6a05944d7996306c22e934d3" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/ch4vvdrM/Official-Poster-of-Vash-Level-2.jpg" alt="Vash level 2">
-            <div class="info">
-                <h3>Vash level 2</h3>
-                <a href="https://www.diskwala.com/app/6a0594e37996306c22e93671" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/PG51Vcwh/bhool-chuk-maaf.jpg" alt="Bhool Chuk Maaf">
-            <div class="info">
-                <h3>Bhool Chuk Maaf</h3>
-                <a href="https://www.diskwala.com/app/6a0585947996306c22e9066a" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/DPKsyGSW/images-11.jpg" alt="Vash">
-            <div class="info">
-                <h3>Vash</h3>
-                <a href="https://www.diskwala.com/app/6a0586927996306c22e90a26" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/JjJ0K2Fb/1000023785.jpg" alt="Thamma">
-            <div class="info">
-                <h3>Thamma (2026) [Hindi Dubbed]</h3>
-                <a href="https://www.diskwala.com/app/6a0191547996306c22e02a05" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/Q3jSDW3C/a0ddf192b5103e62a0591d540962e94fcb93dd155e2f64b54d5e3a9d7faa32c8.jpg" alt="Bigil">
-            <div class="info">
-                <h3>Bigil (2026) Dual Audio</h3>
-                <a href="https://www.diskwala.com/app/69f6f34d49748cec6c20b7ac" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/4ZHFsXB8/mqdefault.jpg" alt="Jana Nayagan">
-            <div class="info">
-                <h3>Jana Nayagan [Hindi Dubbed]</h3>
-                <a href="https://www.diskwala.com/app/69ff436fd96f638117a5a071" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/SZv9TQK/Liger.webp" alt="Liger">
-            <div class="info">
-                <h3>Liger [Hindi Dubbed]</h3>
-                <a href="https://www.diskwala.com/app/6a01c1f57996306c22e0b3a6" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/j9M52Nvm/80667a21179842c3592700d782df4831339c32cdff79e9b7a7ce5087fc6431b1.png" alt="Charly 777">
-            <div class="info">
-                <h3>Charly 777 [Hindi Dubbed]</h3>
-                <a href="https://www.diskwala.com/app/69fdaeead96f638117a1eeff" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/vxqbrbt0/MV5-BYjdh-Nm-E4-MTIt-Yj-Zl-Yi00-Mj-Q2-LTli-OGMt-N2-Vi-Mz-U0-M2-M3-ODMy-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg" alt="Border 2">
-            <div class="info">
-                <h3>Border 2 [Hindi]</h3>
-                <a href="https://www.diskwala.com/app/69fc56fdd96f6381179ea8a2" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/zWDM56md/MV5-BNTU1-Zjk4-MTYt-Mjc2-YS00-Nj-I5-LWJk-OWEt-Mj-Jl-OGQ0-ZTVj-Nm-Fj-Xk-Ey-Xk-Fqc-Gc-V1.jpg" alt="Dhurandhar 2">
-            <div class="info">
-                <h3>Dhurandhar 2 [Hindi Dubbed]</h3>
-                <a href="https://www.diskwala.com/app/69fc9a56d96f6381179f6b79" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/q3RCHB0W/ladybug-and-cat-noir-awakening.jpg" alt="Ladybug">
-            <div class="info">
-                <h3>Miraculous Ladybug [Hindi Dubbed]</h3>
-                <a href="https://www.diskwala.com/app/6a0484077996306c22e6de07" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/j9PHBFbT/Leo-2023-Indian-film.jpg" alt="Leo">
-            <div class="info">
-                <h3>Leo [Hindi Dubbed]</h3>
-                <a href="https://www.diskwala.com/app/6a0466967996306c22e69908" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/xt4G4qPM/MV5-BZThm-NDg1-Nj-Ut-NWJh-MC00-Yj-A3-LWJi-Mj-It-Nm-M4-ZDQ5-ZGZi-N2-Y2-Xk-Ey-Xk-Fqc-Gc-V1-QL75-UY281-CR18-0-1.jpg" alt="Animal">
-            <div class="info">
-                <h3>Animal [Hindi Dubbed]</h3>
-                <a href="https://www.diskwala.com/app/6a045eba7996306c22e68597" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/F41YyGKZ/MV5-BMTk2-Zm-Fh-Yjct-YWZi-Yy00-N2-Ix-LWEz-MWIt-ZGRi-MDY4-ZDQw-ZWFl-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg" alt="Saiyaraa">
-            <div class="info">
-                <h3>Saiyaraa [Hindi Dubbed]</h3>
-                <a href="https://www.diskwala.com/app/6a0450937996306c22e65f6f" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/qMwnBrYq/AAAABSHp-Pk-Dfq-o-ZUwqi-Fl-Qn-JHFXw-DRRFn6-GVtcj2-A2u-Rf-Tk0r-Lxp-Y6-Qqdhe-LAEj0j-Hja-GTBHys-ERs-YAw-Vc.jpg" alt="War Machine">
-            <div class="info">
-                <h3>War Machine [Hindi Dubbed]</h3>
-                <a href="https://www.diskwala.com/app/6a0444b67996306c22e6411e" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/Gf5FdhKf/MV5-BZWYz-NDcx-Nj-Qt-NDZj-NS00-M2-U3-LTlk-OTIt-NDc4-Nzhk-Mj-Yx-Nz-Fk-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg" alt="Attack">
-            <div class="info">
-                <h3>Attack [Hindi Dubbed]</h3>
-                <a href="https://www.diskwala.com/app/6a0443ae7996306c22e63e61" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/7tRXJB0x/MV5-BMj-Qy-MTY1-NTc1-NV5-BMl5-Ban-Bn-Xk-Ft-ZTgw-ODUz-MDIy-NTE-V1.jpg" alt="Gabbar Is Back">
-            <div class="info">
-                <h3>Gabbar Is Back [Hindi Dubbed]</h3>
-                <a href="https://www.diskwala.com/app/6a04247f7996306c22e5ebf1" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/C5VJmNBS/250px-Dhurandhar-poster.jpg" alt="Dhurandhar 1">
-            <div class="info">
-                <h3>Dhurandhar 1 [Hindi Dubbed]</h3>
-                <a href="https://www.diskwala.com/app/6a0443197996306c22e63ce1" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>
-            </div>
+    <div class="category-wrapper" id="categoryWrapper">
+        <div class="category-list" id="categoryList">
+            <button class="cat-btn active" onclick="filterByCategory('All')">All</button>
+            <button class="cat-btn" onclick="filterByCategory('Trending')">🔥 Trending</button>
+            <button class="cat-btn" onclick="filterByCategory('Web Series')">Web Series</button>
+            <button class="cat-btn" onclick="filterByCategory('Anime')">Anime</button>
+            <button class="cat-btn" onclick="filterByCategory('Action')">Action</button>
+            <button class="cat-btn" onclick="filterByCategory('Horror')">Horror</button>
+            <button class="cat-btn" onclick="filterByCategory('Movies')">Movies</button>
         </div>
     </div>
-</div>
-<div id="squidGameMainModal" class="modal">
-    <div class="modal-content">
-        <span onclick="closeSquidGameMain()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; margin-bottom:15px;">Squid Game</h2>
-        <div style="display:flex; flex-direction:column; gap:20px; padding:15px;">
-            <button class="get-movie-btn" onclick="openSquidGameS1(); closeSquidGameMain();">Season 1</button>
-            <button class="get-movie-btn" onclick="openSquidGameS2(); closeSquidGameMain();">Season 2</button>
-            <button class="get-movie-btn" onclick="openSquidGameS3(); closeSquidGameMain();">Season 3</button>
-        </div>
+
+    <div class="gallery" id="gallery"></div>
+
+    <div class="load-more-container" id="loadMoreContainer">
+        <button class="load-more-btn" onclick="loadNextPage()">Load More Items ➔</button>
     </div>
 </div>
 
-<div id="mirzapurMainModal" class="modal">
-    <div class="modal-content">
-        <span onclick="closeMirzapurMain()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; margin-bottom:15px;">Mirzapur</h2>
-        <div style="display:flex; flex-direction:column; gap:20px; padding:15px;">
-            <button class="get-movie-btn" onclick="openMirzapurS1(); closeMirzapurMain();">Season 1</button>
-            <button class="get-movie-btn" onclick="openMirzapurS2(); closeMirzapurMain();">Season 2</button>
-            <button class="get-movie-btn" onclick="openMirzapurS3(); closeMirzapurMain();">Season 3</button>
-        </div>
+<div class="chat-overlay" id="chatOverlay">
+    <div class="chat-header">
+        <h3>💬 Discussion Chat</h3>
+        <button class="chat-close" onclick="toggleChat()">&times;</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+        <div class="msg msg-system">⚠️ Rules: Links sharing is strictly blocked in this chatroom!</div>
+        <div class="msg">Hello everyone! Welcome to the website. <span class="msg-time">12:40 PM</span></div>
+    </div>
+    <div class="chat-footer">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Write a message..." onkeypress="handleChatKey(event)">
+        <button class="chat-send-btn" onclick="sendChatMessage()">➔</button>
     </div>
 </div>
 
-<div id="jjkMainModal" class="modal">
-    <div class="modal-content">
-        <span onclick="closeJJKMain()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; margin-bottom:15px;">Jujutsu Kaisen</h2>
-        <div style="display:flex; flex-direction:column; gap:20px; padding:15px;">
-            <button class="get-movie-btn" onclick="openJJK(); closeJJKMain();">Season 1</button>
-            <button class="get-movie-btn" onclick="openJJK2(); closeJJKMain();">Season 2</button>
-            <button class="get-movie-btn" onclick="openJJK3(); closeJJKMain();">Season 3</button>
-        </div>
-    </div>
-</div>
-
-<div id="squidGameS1Modal" class="modal">
-    <div class="modal-content">
-        <span onclick="closeSquidGameS1()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Squid Game Season 1</h2>
-        <div class="episode-grid">
-            <a href="https://www.diskwala.com/app/6a06c7667996306c22ec0f98" target="_blank" class="episode-btn">Ep 01</a>
-            <a href="https://www.diskwala.com/app/6a06c7bd7996306c22ec108c" target="_blank" class="episode-btn">Ep 02</a>
-            <a href="https://www.diskwala.com/app/6a06c6a37996306c22ec0d61" target="_blank" class="episode-btn">Ep 03</a>
-            <a href="https://www.diskwala.com/app/6a06c7117996306c22ec0ee4" target="_blank" class="episode-btn">Ep 04</a>
-            <a href="https://www.diskwala.com/app/6a06c6d67996306c22ec0e2d" target="_blank" class="episode-btn">Ep 05</a>
-            <a href="https://www.diskwala.com/app/6a06c8567996306c22ec11ef" target="_blank" class="episode-btn">Ep 06</a>
-            <a href="https://www.diskwala.com/app/6a06c9a67996306c22ec1565" target="_blank" class="episode-btn">Ep 07</a>
-            <a href="https://www.diskwala.com/app/6a06c8e47996306c22ec1394" target="_blank" class="episode-btn">Ep 08</a>
-            <a href="https://www.diskwala.com/app/6a06c8a67996306c22ec12c4" target="_blank" class="episode-btn">Ep 09</a>
-        </div>
-    </div>
-</div>
-
-<div id="squidGameS2Modal" class="modal">
-    <div class="modal-content">
-        <span onclick="closeSquidGameS2()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Squid Game Season 2</h2>
-        <div class="episode-grid">
-            <a href="https://www.diskwala.com/app/6a06c9647996306c22ec14ab" target="_blank" class="episode-btn">Ep 01</a>
-            <a href="https://www.diskwala.com/app/6a06cb767996306c22ec19fb" target="_blank" class="episode-btn">Ep 02</a>
-            <a href="https://www.diskwala.com/app/6a06ca3f7996306c22ec16ba" target="_blank" class="episode-btn">Ep 03</a>
-            <a href="https://www.diskwala.com/app/6a06cd5f7996306c22ec1ee7" target="_blank" class="episode-btn">Ep 04</a>
-            <a href="https://www.diskwala.com/app/6a06cb2b7996306c22ec1917" target="_blank" class="episode-btn">Ep 05</a>
-            <a href="https://www.diskwala.com/app/6a06cbe57996306c22ec1b35" target="_blank" class="episode-btn">Ep 06</a>
-            <a href="https://www.diskwala.com/app/6a06ce447996306c22ec21ac" target="_blank" class="episode-btn">Ep 07</a>
-        </div>
-    </div>
-</div>
-
-<div id="squidGameS3Modal" class="modal">
-    <div class="modal-content">
-        <span onclick="closeSquidGameS3()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Squid Game Season 3</h2>
-        <div class="episode-grid">
-            <a href="https://www.diskwala.com/app/6a06cf017996306c22ec23c9" target="_blank" class="episode-btn">Ep 01</a>
-            <a href="https://www.diskwala.com/app/6a06cded7996306c22ec204c" target="_blank" class="episode-btn">Ep 02</a>
-            <a href="https://www.diskwala.com/app/6a06cf697996306c22ec253d" target="_blank" class="episode-btn">Ep 03</a>
-            <a href="https://www.diskwala.com/app/6a06d3ff7996306c22ec3354" target="_blank" class="episode-btn">Ep 04</a>
-            <a href="https://www.diskwala.com/app/6a06d1517996306c22ec2b91" target="_blank" class="episode-btn">Ep 05</a>
-            <a href="https://www.diskwala.com/app/6a06d0ed7996306c22ec2a73" target="_blank" class="episode-btn">Ep 06</a>
-        </div>
-    </div>
-</div>
-
-<div id="mirzapurS1Modal" class="modal">
-    <div class="modal-content">
-        <span onclick="closeMirzapurS1()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Mirzapur Season 1</h2>
-        <div class="episode-grid">
-            <a href="https://www.diskwala.com/app/6a0595757996306c22e93890" target="_blank" class="episode-btn">Ep 01</a>
-            <a href="https://www.diskwala.com/app/6a0595947996306c22e938de" target="_blank" class="episode-btn">Ep 02</a>
-            <a href="https://www.diskwala.com/app/6a0597087996306c22e93d59" target="_blank" class="episode-btn">Ep 03</a>
-            <a href="https://www.diskwala.com/app/6a0596ed7996306c22e93d1c" target="_blank" class="episode-btn">Ep 04</a>
-            <a href="https://www.diskwala.com/app/6a0597867996306c22e93ede" target="_blank" class="episode-btn">Ep 05</a>
-            <a href="https://www.diskwala.com/app/6a05975b7996306c22e93e3a" target="_blank" class="episode-btn">Ep 06</a>
-            <a href="https://www.diskwala.com/app/6a0597d87996306c22e93fd7" target="_blank" class="episode-btn">Ep 07</a>
-            <a href="https://www.diskwala.com/app/6a0597c97996306c22e93fae" target="_blank" class="episode-btn">Ep 08</a>
-            <a href="https://www.diskwala.com/app/6a05979f7996306c22e93f29" target="_blank" class="episode-btn">Ep 09</a>
-        </div>
-    </div>
-</div>
-
-<div id="mirzapurS2Modal" class="modal">
-    <div class="modal-content">
-        <span onclick="closeMirzapurS2()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Mirzapur Season 2</h2>
-        <div class="episode-grid">
-            <a href="https://www.diskwala.com/app/6a0598687996306c22e94151" target="_blank" class="episode-btn">Ep 01</a>
-            <a href="https://www.diskwala.com/app/6a0598107996306c22e94042" target="_blank" class="episode-btn">Ep 02</a>
-            <a href="https://www.diskwala.com/app/6a0597fb7996306c22e94018" target="_blank" class="episode-btn">Ep 03</a>
-            <a href="https://www.diskwala.com/app/6a05984b7996306c22e94102" target="_blank" class="episode-btn">Ep 04</a>
-            <a href="https://www.diskwala.com/app/6a0598297996306c22e9409a" target="_blank" class="episode-btn">Ep 05</a>
-            <a href="https://www.diskwala.com/app/6a05989f7996306c22e94227" target="_blank" class="episode-btn">Ep 06</a>
-            <a href="https://www.diskwala.com/app/6a0598ba7996306c22e9425a" target="_blank" class="episode-btn">Ep 07</a>
-            <a href="https://www.diskwala.com/app/6a0599007996306c22e94333" target="_blank" class="episode-btn">Ep 08</a>
-            <a href="https://www.diskwala.com/app/6a0599157996306c22e9438d" target="_blank" class="episode-btn">Ep 09</a>
-            <a href="https://www.diskwala.com/app/6a0598e27996306c22e942d4" target="_blank" class="episode-btn">Ep 10</a>
-        </div>
-    </div>
-</div>
-
-<div id="mirzapurS3Modal" class="modal">
-    <div class="modal-content">
-        <span onclick="closeMirzapurS3()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Mirzapur Season 3</h2>
-        <div class="episode-grid">
-            <a href="https://www.diskwala.com/app/6a059a257996306c22e94697" target="_blank" class="episode-btn">Ep 01</a>
-            <a href="https://www.diskwala.com/app/6a059a0a7996306c22e94649" target="_blank" class="episode-btn">Ep 02</a>
-            <a href="https://www.diskwala.com/app/6a059a207996306c22e9467d" target="_blank" class="episode-btn">Ep 03</a>
-            <a href="https://www.diskwala.com/app/6a059a0a7996306c22e9464d" target="_blank" class="episode-btn">Ep 04</a>
-            <a href="https://www.diskwala.com/app/6a059a2f7996306c22e946b4" target="_blank" class="episode-btn">Ep 05</a>
-            <a href="https://www.diskwala.com/app/6a059a9b7996306c22e9481e" target="_blank" class="episode-btn">Ep 06</a>
-            <a href="https://www.diskwala.com/app/6a059a937996306c22e94802" target="_blank" class="episode-btn">Ep 07</a>
-            <a href="https://www.diskwala.com/app/6a059a7d7996306c22e947b9" target="_blank" class="episode-btn">Ep 08</a>
-            <a href="https://www.diskwala.com/app/6a059a7e7996306c22e947c2" target="_blank" class="episode-btn">Ep 09</a>
-            <a href="https://www.diskwala.com/app/6a059a877996306c22e947e4" target="_blank" class="episode-btn">Ep 10</a>
-        </div>
-    </div>
-</div>
-
-<div id="jjkModal" class="modal">
-    <div class="modal-content">
-        <span onclick="closeJJK()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Jujutsu Kaisen S01</h2>
-        <div class="episode-grid">
-            <a href="https://www.diskwala.com/app/6a01816d7996306c22dffbce" target="_blank" class="episode-btn">Ep 01</a>
-            <a href="https://www.diskwala.com/app/6a0181907996306c22dffbff" target="_blank" class="episode-btn">Ep 02</a>
-            <a href="https://www.diskwala.com/app/6a0183ed7996306c22e002ee" target="_blank" class="episode-btn">Ep 03</a>
-            <a href="https://www.diskwala.com/app/6a0185827996306c22e007d7" target="_blank" class="episode-btn">Ep 04</a>
-            <a href="https://www.diskwala.com/app/6a0185bf7996306c22e008ac" target="_blank" class="episode-btn">Ep 05</a>
-            <a href="https://www.diskwala.com/app/6a0185ec7996306c22e009ac" target="_blank" class="episode-btn">Ep 06</a>
-            <a href="https://www.diskwala.com/app/6a0183c37996306c22e00225" target="_blank" class="episode-btn">Ep 07</a>
-            <a href="https://www.diskwala.com/app/6a0186ba7996306c22e00bd7" target="_blank" class="episode-btn">Ep 08</a>
-            <a href="https://www.diskwala.com/app/6a01867d7996306c22e00b3e" target="_blank" class="episode-btn">Ep 09</a>
-            <a href="https://www.diskwala.com/app/6a0187367996306c22e00d2d" target="_blank" class="episode-btn">Ep 10</a>
-            <a href="https://www.diskwala.com/app/6a0186f17996306c22e0c75" target="_blank" class="episode-btn">Ep 11</a>
-            <a href="https://www.diskwala.com/app/6a0187b27996306c22e00e83" target="_blank" class="episode-btn">Ep 12</a>
-            <a href="https://www.diskwala.com/app/6a0188197996306c22e00fea" target="_blank" class="episode-btn">Ep 13</a>
-            <a href="https://www.diskwala.com/app/6a0188ac7996306c22e0118e" target="_blank" class="episode-btn">Ep 14</a>
-            <a href="https://www.diskwala.com/app/6a01893a7996306c22e012f0" target="_blank" class="episode-btn">Ep 15</a>
-            <a href="https://www.diskwala.com/app/6a0188e87996306c22e0123d" target="_blank" class="episode-btn">Ep 16</a>
-            <a href="https://www.diskwala.com/app/6a0189377996306c22e012e6" target="_blank" class="episode-btn">Ep 17</a>
-            <a href="https://www.diskwala.com/app/6a0189fc7996306c22e01553" target="_blank" class="episode-btn">Ep 18</a>
-            <a href="https://www.diskwala.com/app/6a018a657996306c22e01663" target="_blank" class="episode-btn">Ep 19</a>
-            <a href="https://www.diskwala.com/app/6a0189a37996306c22e01449" target="_blank" class="episode-btn">Ep 20</a>
-            <a href="https://www.diskwala.com/app/6a01922c7996306c22e02c21" target="_blank" class="episode-btn">Ep 21</a>
-            <a href="https://www.diskwala.com/app/6a0192657996306c22e02ccf" target="_blank" class="episode-btn">Ep 22</a>
-            <a href="https://www.diskwala.com/app/6a0192067996306c22e02bcf" target="_blank" class="episode-btn">Ep 23</a>
-            <a href="https://www.diskwala.com/app/6a01924f7996306c22e02c85" target="_blank" class="episode-btn">Ep 24</a>
-        </div>
-    </div>
-</div>
-
-<div id="jjk2Modal" class="modal">
-    <div class="modal-content">
-        <span onclick="closeJJK2()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Jujutsu Kaisen S02</h2>
-        <div class="episode-grid">
-            <a href="https://www.diskwala.com/app/6a01ac2c7996306c22e0765b" target="_blank" class="episode-btn">Ep 01</a>
-            <a href="https://www.diskwala.com/app/6a01ac057996306c22e07616" target="_blank" class="episode-btn">Ep 02</a>
-            <a href="https://www.diskwala.com/app/6a01abda7996306c22e075a0" target="_blank" class="episode-btn">Ep 03</a>
-            <a href="https://www.diskwala.com/app/6a01abaa7996306c22e0751c" target="_blank" class="episode-btn">Ep 04</a>
-            <a href="https://www.diskwala.com/app/6a01ab617996306c22e0743d" target="_blank" class="episode-btn">Ep 05</a>
-            <a href="https://www.diskwala.com/app/6a01acf37996306c22e07803" target="_blank" class="episode-btn">Ep 06</a>
-            <a href="https://www.diskwala.com/app/6a01ac917996306c22e07756" target="_blank" class="episode-btn">Ep 07</a>
-            <a href="https://www.diskwala.com/app/6a01acb87996306c22e077be" target="_blank" class="episode-btn">Ep 08</a>
-            <a href="https://www.diskwala.com/app/6a01ad077996306c22e0783d" target="_blank" class="episode-btn">Ep 09</a>
-            <a href="https://www.diskwala.com/app/6a01ac637996306c22e076ec" target="_blank" class="episode-btn">Ep 10</a>
-            <a href="https://www.diskwala.com/app/6a01ae9b7996306c22e07c11" target="_blank" class="episode-btn">Ep 11</a>
-            <a href="https://www.diskwala.com/app/6a01ae037996306c22e07aa9" target="_blank" class="episode-btn">Ep 12</a>
-            <a href="https://www.diskwala.com/app/6a01ae1a7996306c22e07ae5" target="_blank" class="episode-btn">Ep 13</a>
-            <a href="https://www.diskwala.com/app/6a01ae4a7996306c22e07b34" target="_blank" class="episode-btn">Ep 14</a>
-            <a href="https://www.diskwala.com/app/6a01ae747996306c22e07bb9" target="_blank" class="episode-btn">Ep 15</a>
-            <a href="https://www.diskwala.com/app/6a01b9d67996306c22e09d36" target="_blank" class="episode-btn">Ep 16</a>
-            <a href="https://www.diskwala.com/app/6a01bafe7996306c22e0a060" target="_blank" class="episode-btn">Ep 17</a>
-            <a href="https://www.diskwala.com/app/6a01ba997996306c22e09f49" target="_blank" class="episode-btn">Ep 18</a>
-            <a href="https://www.diskwala.com/app/6a01ba257996306c22e09e2e" target="_blank" class="episode-btn">Ep 19</a>
-            <a href="https://www.diskwala.com/app/6a01bb497996306c22e0a14c" target="_blank" class="episode-btn">Ep 20</a>
-            <a href="https://www.diskwala.com/app/6a01bc2f7996306c22e0a424" target="_blank" class="episode-btn">Ep 21</a>
-            <a href="https://www.diskwala.com/app/6a01bbba7996306c22e0a2d7" target="_blank" class="episode-btn">Ep 22</a>
-            <a href="https://www.diskwala.com/app/6a01bc597996306c22e0a462" target="_blank" class="episode-btn">Ep 23</a>
-        </div>
-    </div>
-</div>
-
-<div id="jjk3Modal" class="modal">
-    <div class="modal-content">
-        <span onclick="closeJJK3()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Jujutsu Kaisen S03</h2>
-        <div class="episode-grid">
-            <a href="https://www.diskwala.com/app/6a02d7037996306c22e305f0" target="_blank" class="episode-btn">Ep 01</a>
-            <a href="https://www.diskwala.com/app/6a02d56f7996306c22e30233" target="_blank" class="episode-btn">Ep 02</a>
-            <a href="https://www.diskwala.com/app/6a02d63d7996306c22e303d8" target="_blank" class="episode-btn">Ep 03</a>
-            <a href="https://www.diskwala.com/app/6a02d7b77996306c22e307f6" target="_blank" class="episode-btn">Ep 04</a>
-            <a href="https://www.diskwala.com/app/6a02d4a77996306c22e30001" target="_blank" class="episode-btn">Ep 05</a>
-            <a href="https://www.diskwala.com/app/6a02d9f17996306c22e30dfe" target="_blank" class="episode-btn">Ep 06</a>
-            <a href="https://www.diskwala.com/app/6a02da6b7996306c22e30f36" target="_blank" class="episode-btn">Ep 07</a>
-            <a href="https://www.diskwala.com/app/6a02d9a77996306c22e30d4d" target="_blank" class="episode-btn">Ep 08</a>
-            <a href="https://www.diskwala.com/app/6a02d9327996306c22e30c2a" target="_blank" class="episode-btn">Ep 09</a>
-            <a href="https://www.diskwala.com/app/6a02d8957996306c22e30ab2" target="_blank" class="episode-btn">Ep 10</a>
-            <a href="https://www.diskwala.com/app/6a02dbc87996306c22e31259" target="_blank" class="episode-btn">Ep 11</a>
-            <a href="https://www.diskwala.com/app/6a02db617996306c22e31156" target="_blank" class="episode-btn">Ep 12</a>
-        </div>
-    </div>
-</div>
-
-<div id="episodeModal" class="modal">
+<div id="dynamicModal" class="modal">
     <div class="modal-content">
         <span onclick="closeModal()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 style="color:#1a1a2e; font-size:1.1rem; margin-bottom:10px;">Bloodhounds - Episodes</h2>
-        <div class="episode-grid">
-            <a href="https://www.diskwala.com/app/69fd93f9d96f638117a1a5af" target="_blank" class="episode-btn">Ep 01</a>
-            <a href="https://www.diskwala.com/app/69fd938ed96f638117a1a4c7" target="_blank" class="episode-btn">Ep 02</a>
-            <a href="https://www.diskwala.com/app/69fd93bfd96f638117a1a530" target="_blank" class="episode-btn">Ep 03</a>
-            <a href="https://www.diskwala.com/app/69fd93bfd96f638117a1a530" target="_blank" class="episode-btn">Ep 04</a>
-            <a href="https://www.diskwala.com/app/69fd93d7d96f638117a1a56f" target="_blank" class="episode-btn">Ep 05</a>
-            <a href="https://www.diskwala.com/app/69fd9493d96f638117a1a762" target="_blank" class="episode-btn">Ep 06</a>
-            <a href="https://www.diskwala.com/app/69fd946ad96f638117a1a6fa" target="_blank" class="episode-btn">Ep 07</a>
-            <a href="https://www.diskwala.com/app/69fd9495d96f638117a1a770" target="_blank" class="episode-btn">Ep 08</a>
-        </div>
+        <h2 id="modalTitle" style="color:#1a1a2e; margin-bottom:15px;"></h2>
+        <div id="modalBody"></div>
     </div>
 </div>
-
 <footer>
     <p class="anish-name">Made by <span>Anish</span></p>
     <div class="sponsor-box">
@@ -616,81 +183,248 @@
 </footer>
 
 <script>
-    function toggleMenu() { document.getElementById("navLinks").classList.toggle("active"); }
+    const catalogData = [
+        { type: "series", title: "Jujutsu Kaisen [Hindi Dubbed]", img: "https://i.ibb.co/QRwW9PM/images-2.jpg", category: "Anime", trending: true, date: "2026-05-15", keywords: "gojo sukuna itadori yuji fushiguro ryomen jjk anime magic sorcerer", seasons: { "Season 1": ["https://www.diskwala.com/app/6a01816d7996306c22dffbce","https://www.diskwala.com/app/6a0181907996306c22dffbff","https://www.diskwala.com/app/6a0183ed7996306c22e002ee","https://www.diskwala.com/app/6a0185827996306c22e007d7","https://www.diskwala.com/app/6a0185bf7996306c22e008ac","https://www.diskwala.com/app/6a0185ec7996306c22e009ac","https://www.diskwala.com/app/6a0183c37996306c22e00225","https://www.diskwala.com/app/6a0186ba7996306c22e00bd7","https://www.diskwala.com/app/6a01867d7996306c22e00b3e","https://www.diskwala.com/app/6a0187367996306c22e00d2d","https://www.diskwala.com/app/6a0186f17996306c22e00c75","https://www.diskwala.com/app/6a0187b27996306c22e00e83","https://www.diskwala.com/app/6a0188197996306c22e00fea","https://www.diskwala.com/app/6a0188ac7996306c22e0118e","https://www.diskwala.com/app/6a01893a7996306c22e012f0","https://www.diskwala.com/app/6a0188e87996306c22e0123d","https://www.diskwala.com/app/6a0189377996306c22e012e6","https://www.diskwala.com/app/6a0189fc7996306c22e01553","https://www.diskwala.com/app/6a018a657996306c22e01663","https://www.diskwala.com/app/6a0189a37996306c22e01449","https://www.diskwala.com/app/6a01922c7996306c22e02c21","https://www.diskwala.com/app/6a0192657996306c22e02ccf","https://www.diskwala.com/app/6a0192067996306c22e02bcf","https://www.diskwala.com/app/6a01924f7996306c22e02c85"], "Season 2": ["https://www.diskwala.com/app/6a01ac2c7996306c22e0765b","https://www.diskwala.com/app/6a01ac057996306c22e07616","https://www.diskwala.com/app/6a01abda7996306c22e075a0","https://www.diskwala.com/app/6a01abaa7996306c22e0751c","https://www.diskwala.com/app/6a01ab617996306c22e0743d","https://www.diskwala.com/app/6a01acf37996306c22e07803","https://www.diskwala.com/app/6a01ac917996306c22e07756","https://www.diskwala.com/app/6a01acb87996306c22e077be","https://www.diskwala.com/app/6a01ad077996306c22e0783d","https://www.diskwala.com/app/6a01ac637996306c22e076ec","https://www.diskwala.com/app/6a01ae9b7996306c22e07c11","https://www.diskwala.com/app/6a01ae037996306c22e07aa9","https://www.diskwala.com/app/6a01ae1a7996306c22e07ae5","https://www.diskwala.com/app/6a01ae4a7996306c22e07b34","https://www.diskwala.com/app/6a01ae747996306c22e07bb9","https://www.diskwala.com/app/6a01b9d67996306c22e09d36","https://www.diskwala.com/app/6a01bafe7996306c22e0a060","https://www.diskwala.com/app/6a01ba997996306c22e09f49","https://www.diskwala.com/app/6a01ba257996306c22e09e2e","https://www.diskwala.com/app/6a01bb497996306c22e0a14c","https://www.diskwala.com/app/6a01bc2f7996306c22e0a424","https://www.diskwala.com/app/6a01bbba7996306c22e0a2d7","https://www.diskwala.com/app/6a01bc597996306c22e0a462"], "Season 3": ["https://www.diskwala.com/app/6a02d7037996306c22e305f0","https://www.diskwala.com/app/6a02d56f7996306c22e30233","https://www.diskwala.com/app/6a02d63d7996306c22e303d8","https://www.diskwala.com/app/6a02d7b77996306c22e307f6","https://www.diskwala.com/app/6a02d4a77996306c22e30001","https://www.diskwala.com/app/6a02d9f17996306c22e30dfe","https://www.diskwala.com/app/6a02da6b7996306c22e30f36","https://www.diskwala.com/app/6a02d9a77996306c22e30d4d","https://www.diskwala.com/app/6a02d9327996306c22e30c2a","https://www.diskwala.com/app/6a02d8957996306c22e30ab2","https://www.diskwala.com/app/6a02dbc87996306c22e31259","https://www.diskwala.com/app/6a02db617996306c22e31156"] } },
+        { type: "series", title: "Mirzapur [All Seasons]", img: "https://i.ibb.co/YBm6Hm9P/p0q-M8hhl-MF5-Dux-HBzl2-EZR6-Teh-X.jpg", category: "Web Series", trending: true, date: "2026-05-14", keywords: "kaleen bhaiya munna guddu pandit ali fazal pankaj tripathi gangster up crime", seasons: { "Season 1": ["https://www.diskwala.com/app/6a0595757996306c22e93890","https://www.diskwala.com/app/6a0595947996306c22e938de","https://www.diskwala.com/app/6a0597087996306c22e93d59","https://www.diskwala.com/app/6a0596ed7996306c22e93d1c","https://www.diskwala.com/app/6a0597867996306c22e93ede","https://www.diskwala.com/app/6a05975b7996306c22e93e3a","https://www.diskwala.com/app/6a0597d87996306c22e93fd7","https://www.diskwala.com/app/6a0597c97996306c22e93fae","https://www.diskwala.com/app/6a05979f7996306c22e93f29"], "Season 2": ["https://www.diskwala.com/app/6a0598687996306c22e94151","https://www.diskwala.com/app/6a0598107996306c22e94042","https://www.diskwala.com/app/6a0597fb7996306c22e94018","https://www.diskwala.com/app/6a05984b7996306c22e94102","https://www.diskwala.com/app/6a0598297996306c22e9409a","https://www.diskwala.com/app/6a05989f7996306c22e94227","https://www.diskwala.com/app/6a0598ba7996306c22e9425a","https://www.diskwala.com/app/6a0599007996306c22e94333","https://www.diskwala.com/app/6a0599157996306c22e9438d","https://www.diskwala.com/app/6a0598e27996306c22e942d4"], "Season 3": ["https://www.diskwala.com/app/6a059a257996306c22e94697","https://www.diskwala.com/app/6a059a0a7996306c22e94649","https://www.diskwala.com/app/6a059a207996306c22e9467d","https://www.diskwala.com/app/6a059a0a7996306c22e9464d","https://www.diskwala.com/app/6a059a2f7996306c22e946b4","https://www.diskwala.com/app/6a059a9b7996306c22e9481e","https://www.diskwala.com/app/6a059a937996306c22e94802","https://www.diskwala.com/app/6a059a7d7996306c22e947b9","https://www.diskwala.com/app/6a059a7e7996306c22e947c2","https://www.diskwala.com/app/6a059a877996306c22e947e4"] } },
+        { type: "series", title: "Squid Game [All Seasons]", img: "https://i.ibb.co/0pYbDPb6/IMG-20260515-132558.jpg", category: "Web Series", trending: true, date: "2026-05-13", keywords: "red light green light netflix korean survival death game", seasons: { "Season 1": ["https://www.diskwala.com/app/6a06c7667996306c22ec0f98","https://www.diskwala.com/app/6a06c7bd7996306c22ec108c","https://www.diskwala.com/app/6a06c6a37996306c22ec0d61","https://www.diskwala.com/app/6a06c7117996306c22ec0ee4","https://www.diskwala.com/app/6a06c6d67996306c22ec0e2d","https://www.diskwala.com/app/6a06c8567996306c22ec11ef","https://www.diskwala.com/app/6a06c9a67996306c22ec1565","https://www.diskwala.com/app/6a06c8e47996306c22ec1394","https://www.diskwala.com/app/6a06c8a67996306c22ec12c4"], "Season 2": ["https://www.diskwala.com/app/6a06c9647996306c22ec14ab","https://www.diskwala.com/app/6a06cb767996306c22ec19fb","https://www.diskwala.com/app/6a06ca3f7996306c22ec16ba","https://www.diskwala.com/app/6a06cd5f7996306c22ec1ee7","https://www.diskwala.com/app/6a06cb2b7996306c22ec1917","https://www.diskwala.com/app/6a06cbe57996306c22ec1b35","https://www.diskwala.com/app/6a06ce447996306c22ec21ac"], "Season 3": ["https://www.diskwala.com/app/6a06cf017996306c22ec23c9","https://www.diskwala.com/app/6a06cded7996306c22ec204c","https://www.diskwala.com/app/6a06cf697996306c22ec253d","https://www.diskwala.com/app/6a06d3ff7996306c22ec3354","https://www.diskwala.com/app/6a06d1517996306c22ec2b91","https://www.diskwala.com/app/6a06d0ed7996306c22ec2a73"] } },
+        { type: "series", title: "Bloodhounds (S01) Hindi Dubbed", img: "https://i.ibb.co/CKtrR04K/p24811658-b-v8-ac.jpg", category: "Action", trending: false, date: "2026-05-12", keywords: "boxer fighting korean action", seasons: { "Episodes": ["https://www.diskwala.com/app/69fd93f9d96f638117a1a5af","https://www.diskwala.com/app/69fd938ed96f638117a1a4c7","https://www.diskwala.com/app/69fd93bfd96f638117a1a530","https://www.diskwala.com/app/69fd93bfd96f638117a1a530","https://www.diskwala.com/app/69fd93d7d96f638117a1a56f","https://www.diskwala.com/app/69fd9493d96f638117a1a762","https://www.diskwala.com/app/69fd946ad96f638117a1a6fa","https://www.diskwala.com/app/69fd9495d96f638117a1a770"] } },
+        { type: "movie", title: "Mortal Kombat II (2026)", img: "https://i.ibb.co/d92Dygk/images-12.jpg", category: "Action", trending: true, date: "2026-05-16", keywords: "fighting game sub zero scorpion fatality blood action", link: "https://www.diskwala.com/app/6a06d2a07996306c22ec2f62" },
+        { type: "movie", title: "Krishnavataram", img: "https://i.ibb.co/CspDxNJY/images-3.jpg", category: "Movies", trending: false, keywords: "south indian dub mythology", link: "https://www.diskwala.com/app/6a05a0c07996306c22e9594d" },
+        { type: "movie", title: "Deep Water", img: "https://i.ibb.co/7N4gt4VT/images-4.jpg", category: "Movies", trending: false, keywords: "thriller suspense english", link: "https://www.diskwala.com/app/6a05a0527996306c22e95801" },
+        { type: "movie", title: "Tere Ishk Mein", img: "https://i.ibb.co/1fj230ST/images-5.jpg", category: "Movies", trending: false, keywords: "bollywood romance love", link: "https://www.diskwala.com/app/6a0597177996306c22e93d95" },
+        { type: "movie", title: "Lokah Chapter 1", img: "https://i.ibb.co/hRdFz6sG/images-6.jpg", category: "Action", trending: false, keywords: "new south action fantasy", link: "https://www.diskwala.com/app/6a058a527996306c22e915b7" },
+        { type: "movie", title: "War 2", img: "https://i.ibb.co/x8Ymf10g/MV5-BNj-Y5-OTg4-NTYt-Zj-Vk-ZS00-YTZm-LWIw-NDEt-M2-Y0-ODQy-Mz-M2-NTJi-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Action", trending: true, keywords: "hrithik roshan jr ntr yrf spy universe bollywood", link: "https://www.diskwala.com/app/6a058ad17996306c22e9171f" },
+        { type: "movie", title: "Jolly LLB 3", img: "https://i.ibb.co/Dfv6sFCx/images-7.jpg", category: "Movies", trending: true, keywords: "akshay kumar arshad warsi comedy court drama", link: "https://www.diskwala.com/app/6a058da57996306c22e91ff8" },
+        { type: "movie", title: "Jaat", img: "https://i.ibb.co/LhPqtHV8/images-8.jpg", category: "Action", trending: false, keywords: "sunny deol action mass", link: "https://www.diskwala.com/app/6a0591ce7996306c22e92ca5" },
+        { type: "movie", title: "Haq", img: "https://i.ibb.co/yFW9V0sS/Haq-film-2025.jpg", category: "Movies", trending: false, keywords: "drama emotional true story", link: "https://www.diskwala.com/app/6a0591e77996306c22e92cdc" },
+        { type: "movie", title: "Dude", img: "https://i.ibb.co/gMdpYM2j/images-9.jpg", category: "Movies", trending: false, keywords: "comedy adventure fun", link: "https://www.diskwala.com/app/6a05938c7996306c22e9327b" },
+        { type: "movie", title: "Chhorii 2", img: "https://i.ibb.co/RT4Tz1KD/images-10.jpg", category: "Horror", trending: false, keywords: "nushrratt bharuccha scary ghost ghost bollywood", link: "https://www.diskwala.com/app/6a05944d7996306c22e934d3" },
+        { type: "movie", title: "Vash level 2", img: "https://i.ibb.co/ch4vvdrM/Official-Poster-of-Vash-Level-2.jpg", category: "Horror", trending: false, keywords: "gujarati shaitaan scary thriller", link: "https://www.diskwala.com/app/6a0594e37996306c22e93671" },
+        { type: "movie", title: "Bhool Chuk Maaf", img: "https://i.ibb.co/PG51Vcwh/bhool-chuk-maaf.jpg", category: "Movies", trending: false, keywords: "kartik aaryan comedy bollywood", link: "https://www.diskwala.com/app/6a0585947996306c22e9066a" },
+        { type: "movie", title: "Vash", img: "https://i.ibb.co/DPKsyGSW/images-11.jpg", category: "Horror", trending: false, keywords: "gujarati shaitaan black magic horror", link: "https://www.diskwala.com/app/6a0586927996306c22e90a26" },
+        { type: "movie", title: "Thamma (2026)", img: "https://i.ibb.co/JjJ0K2Fb/1000023785.jpg", category: "Movies", trending: false, keywords: "south hindi dubbed", link: "https://www.diskwala.com/app/6a0191547996306c22e02a05" },
+        { type: "movie", title: "Bigil (2026)", img: "https://i.ibb.co/Q3jSDW3C/a0ddf192b5103e62a0591d540962e94fcb93dd155e2f64b54d5e3a9d7faa32c8.jpg", category: "Action", trending: false, keywords: "vijay thalapathy football mass sports", link: "https://www.diskwala.com/app/69f6f34d49748cec6c20b7ac" },
+        { type: "movie", title: "Jana Nayagan", img: "https://i.ibb.co/4ZHFsXB8/mqdefault.jpg", category: "Action", trending: false, keywords: "south hindi dub politics", link: "https://www.diskwala.com/app/69ff436fd96f638117a5a071" },
+        { type: "movie", title: "Liger", img: "https://i.ibb.co/SZv9TQK/Liger.webp", category: "Action", trending: false, keywords: "vijay devarakonda ananya panday boxing fighting", link: "https://www.diskwala.com/app/6a01c1f57996306c22e0b3a6" },
+        { type: "movie", title: "Charly 777", img: "https://i.ibb.co/j9M52Nvm/80667a21179842c3592700d782df4831339c32cdff79e9b7a7ce5087fc6431b1.png", category: "Movies", trending: false, keywords: "dog emotional rakshit shetty pet", link: "https://www.diskwala.com/app/69fdaeead96f638117a1eeff" },
+        { type: "movie", title: "Border 2", img: "https://i.ibb.co/vxqbrbt0/MV5-BYjdh-Nm-E4-MTIt-Yj-Zl-Yi00-Mj-Q2-LTli-OGMt-N2-Vi-Mz-U0-M2-M3-ODMy-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Action", trending: true, keywords: "sunny deol army war pakistan india military", link: "https://www.diskwala.com/app/69fc56fdd96f6381179ea8a2" },
+        { type: "movie", title: "Dhurandhar 2", img: "https://i.ibb.co/zWDM56md/MV5-BNTU1-Zjk4-MTYt-Mjc2-YS00-Nj-I5-LWJk-OWEt-Mj-Jl-OGQ0-ZTVj-Nm-Fj-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Movies", trending: false, keywords: "south dub part 2 action", link: "https://www.diskwala.com/app/69fc9a56d96f6381179f6b79" },
+        { type: "movie", title: "Miraculous Ladybug", img: "https://i.ibb.co/q3RCHB0W/ladybug-and-cat-noir-awakening.jpg", category: "Anime", trending: false, keywords: "animation cartoon kids superhero paris cat noir", link: "https://www.diskwala.com/app/6a0484077996306c22e6de07" },
+        { type: "movie", title: "Leo", img: "https://i.ibb.co/j9PHBFbT/Leo-2023-Indian-film.jpg", category: "Action", trending: false, keywords: "vijay thalapathy lokesh lcu mass gangster", link: "https://www.diskwala.com/app/6a0466967996306c22e69908" },
+        { type: "movie", title: "Animal", img: "https://i.ibb.co/xt4G4qPM/MV5-BZThm-NDg1-Nj-Ut-NWJh-MC00-Yj-A3-LWJi-Mj-It-Nm-M4-ZDQ5-ZGZi-N2-Y2-Xk-Ey-Xk-Fqc-Gc-V1-QL75-UY281-CR18-0-1.jpg", category: "Action", trending: true, keywords: "ranbir kapoor sandeep reddy vanga violent blood mafia", link: "https://www.diskwala.com/app/6a045eba7996306c22e68597" },
+        { type: "movie", title: "Saiyaraa", img: "https://i.ibb.co/F41YyGKZ/MV5-BMTk2-Zm-Fh-Yjct-YWZi-Yy00-N2-Ix-LWEz-MWIt-ZGRi-MDY4-ZDQw-ZWFl-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Movies", trending: false, keywords: "romance drama hindi dub", link: "https://www.diskwala.com/app/6a0450937996306c22e65f6f" },
+        { type: "movie", title: "War Machine", img: "https://i.ibb.co/qMwnBrYq/AAAABSHp-Pk-Dfq-o-ZUwqi-Fl-Qn-JHFXw-DRRFn6-GVtcj2-A2u-Rf-Tk0r-Lxp-Y6-Qqdhe-LAEj0j-Hja-GTBHys-ERs-YAw-Vc.jpg", category: "Action", trending: false, keywords: "hollywood brad pitt military action", link: "https://www.diskwala.com/app/6a0444b67996306c22e6411e" },
+        { type: "movie", title: "Attack", img: "https://i.ibb.co/Gf5FdhKf/MV5-BZWYz-NDcx-Nj-Qt-NDZj-NS00-M2-U3-LTlk-OTIt-NDc4-Nzhk-Mj-Yx-Nz-Fk-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Action", trending: false, keywords: "john abraham sci fi soldier robot", link: "https://www.diskwala.com/app/6a0443ae7996306c22e63e61" },
+        { type: "movie", title: "Gabbar Is Back", img: "https://i.ibb.co/7tRXJB0x/MV5-BMj-Qy-MTY1-NTc1-NV5-BMl5-Ban-Bn-Xk-Ft-ZTgw-ODUz-MDIy-NTE-V1.jpg", category: "Action", trending: false, keywords: "akshay kumar corruption police action", link: "https://www.diskwala.com/app/6a04247f7996306c22e5ebf1" },
+        { type: "movie", title: "Dhurandhar 1", img: "https://i.ibb.co/C5VJmNBS/250px-Dhurandhar-poster.jpg", category: "Movies", trending: false, keywords: "south hindi dub action part 1", link: "https://www.diskwala.com/app/6a0443197996306c22e63ce1" }
+    ];
 
-    // Modal Control Functions - Squid Game
-    function openSquidGameMain() { document.getElementById("squidGameMainModal").style.display = "block"; }
-    function closeSquidGameMain() { document.getElementById("squidGameMainModal").style.display = "none"; }
-    function openSquidGameS1() { document.getElementById("squidGameS1Modal").style.display = "block"; }
-    function closeSquidGameS1() { document.getElementById("squidGameS1Modal").style.display = "none"; }
-    function openSquidGameS2() { document.getElementById("squidGameS2Modal").style.display = "block"; }
-    function closeSquidGameS2() { document.getElementById("squidGameS2Modal").style.display = "none"; }
-    function openSquidGameS3() { document.getElementById("squidGameS3Modal").style.display = "block"; }
-    function closeSquidGameS3() { document.getElementById("squidGameS3Modal").style.display = "none"; }
+    let currentPage = 1;
+    const itemsPerPage = 24; 
+    let activeCategory = "All";
+    let filteredData = [];
 
-    // Modal Control Functions - Mirzapur
-    function openMirzapurMain() { document.getElementById("mirzapurMainModal").style.display = "block"; }
-    function closeMirzapurMain() { document.getElementById("mirzapurMainModal").style.display = "none"; }
-    function openMirzapurS1() { document.getElementById("mirzapurS1Modal").style.display = "block"; }
-    function closeMirzapurS1() { document.getElementById("mirzapurS1Modal").style.display = "none"; }
-    function openMirzapurS2() { document.getElementById("mirzapurS2Modal").style.display = "block"; }
-    function closeMirzapurS2() { document.getElementById("mirzapurS2Modal").style.display = "none"; }
-    function openMirzapurS3() { document.getElementById("mirzapurS3Modal").style.display = "block"; }
-    function closeMirzapurS3() { document.getElementById("mirzapurS3Modal").style.display = "none"; }
-
-    // Modal Control Functions - Jujutsu Kaisen
-    function openJJKMain() { document.getElementById("jjkMainModal").style.display = "block"; }
-    function closeJJKMain() { document.getElementById("jjkMainModal").style.display = "none"; }
-    function openJJK() { document.getElementById("jjkModal").style.display = "block"; }
-    function closeJJK() { document.getElementById("jjkModal").style.display = "none"; }
-    function openJJK2() { document.getElementById("jjk2Modal").style.display = "block"; }
-    function closeJJK2() { document.getElementById("jjk2Modal").style.display = "none"; }
-    function openJJK3() { document.getElementById("jjk3Modal").style.display = "block"; }
-    function closeJJK3() { document.getElementById("jjk3Modal").style.display = "none"; }
-
-    function openEpisodes() { document.getElementById("episodeModal").style.display = "block"; }
-    function closeModal() { document.getElementById("episodeModal").style.display = "none"; }
-
-    window.onclick = function(event) {
-        let modals = [
-            document.getElementById("squidGameMainModal"),
-            document.getElementById("squidGameS1Modal"),
-            document.getElementById("squidGameS2Modal"),
-            document.getElementById("squidGameS3Modal"),
-            document.getElementById("mirzapurMainModal"),
-            document.getElementById("mirzapurS1Modal"),
-            document.getElementById("mirzapurS2Modal"),
-            document.getElementById("mirzapurS3Modal"),
-            document.getElementById("jjkMainModal"),
-            document.getElementById("jjkModal"),
-            document.getElementById("jjk2Modal"),
-            document.getElementById("jjk3Modal"),
-            document.getElementById("episodeModal")
-        ];
-        
-        modals.forEach(modal => {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
+    function autoSortEngine() {
+        catalogData.sort((a, b) => {
+            if (a.trending === b.trending) return 0;
+            return a.trending ? -1 : 1; 
         });
+        filteredData = [...catalogData];
     }
 
-    function filterMovies() {
-        let input = document.getElementById("searchInput").value.toLowerCase();
-        let cards = document.querySelectorAll(".card");
+    function toggleMenu() { document.getElementById("navLinks").classList.toggle("active"); }
+    function toggleChat() { document.getElementById("chatOverlay").classList.toggle("active"); }
 
-        cards.forEach(card => {
-            let title = card.querySelector("h3");
-            if (title) {
-                let text = title.innerText.toLowerCase();
-                if (text.includes(input)) {
-                    card.style.display = "flex";
+    function sendChatMessage() {
+        const input = document.getElementById("chatInput");
+        const messageText = input.value.trim();
+        if (!messageText) return;
+        const linkPattern = /(https?:\/\/[^\s]+|www\.[^\s]+|[a-zA-Z0-9-]+\.[a-zA-Z]{2,})/gi;
+        if (linkPattern.test(messageText)) {
+            alert("⚠️ Warning: Sharing links or URLs is strictly blocked in this chatroom!");
+            input.value = ""; return;
+        }
+        const msgArea = document.getElementById("chatMessages");
+        const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const newMsg = document.createElement("div");
+        newMsg.className = "msg";
+        newMsg.innerHTML = `${messageText} <span class="msg-time">${currentTime}</span>`;
+        msgArea.appendChild(newMsg);
+        input.value = "";
+        msgArea.scrollTop = msgArea.scrollHeight;
+    }
+    function handleChatKey(event) { if (event.key === "Enter") { sendChatMessage(); } }
+
+    function filterByCategory(cat) {
+        activeCategory = cat;
+        const buttons = document.querySelectorAll(".cat-btn");
+        buttons.forEach(btn => btn.classList.remove("active"));
+        event.target.classList.add("active");
+        
+        document.getElementById("searchInput").value = ""; 
+        applyFilters();
+    }
+
+    function getLevenshteinDistance(a, b) {
+        const matrix = [];
+        for (let i = 0; i <= b.length; i++) { matrix[i] = [i]; }
+        for (let j = 0; j <= a.length; j++) { matrix[0][j] = j; }
+        for (let i = 1; i <= b.length; i++) {
+            for (let j = 1; j <= a.length; j++) {
+                if (b.charAt(i - 1) == a.charAt(j - 1)) {
+                    matrix[i][j] = matrix[i - 1][j - 1];
                 } else {
-                    card.style.display = "none";
+                    matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1));
                 }
             }
-        });
+        }
+        return matrix[b.length][a.length];
     }
+
+    function advancedSearchEngine() {
+        applyFilters();
+    }
+
+    // 🚀 NEW LOGIC: SEARCH KARNE PAR TUTORIAL CARD AUR CATEGORY GAYAB HOGI
+    function applyFilters() {
+        let input = document.getElementById("searchInput").value.toLowerCase().trim();
+        
+        // Gayab karne wale elements select karo
+        const howToSection = document.getElementById("how-to-section");
+        const categoryWrapper = document.getElementById("categoryWrapper");
+
+        // Logic: Agar box mein text hai, toh hide kardo, warna dikhao
+        if (input.length > 0) {
+            if (howToSection) howToSection.style.display = "none";
+            if (categoryWrapper) categoryWrapper.style.display = "none";
+        } else {
+            if (howToSection) howToSection.style.display = "block";
+            if (categoryWrapper) categoryWrapper.style.display = "block";
+        }
+        
+        filteredData = catalogData.filter(item => {
+            if (activeCategory !== "All" && input.length === 0) {
+                if (activeCategory === "Trending" && !item.trending) return false;
+                if (activeCategory !== "Trending" && item.category !== activeCategory) return false;
+            }
+
+            if (!input) return true;
+
+            let titleMatch = item.title.toLowerCase().includes(input);
+            let keywordMatch = item.keywords && item.keywords.toLowerCase().includes(input);
+            
+            if (titleMatch || keywordMatch) return true;
+
+            const inputWords = input.split(' ');
+            const titleWords = item.title.toLowerCase().split(' ');
+            
+            for(let iw of inputWords) {
+                if(iw.length < 4) continue; 
+                for(let tw of titleWords) {
+                    if(getLevenshteinDistance(iw, tw) <= 2) return true;
+                }
+            }
+            return false;
+        });
+        
+        renderGallery(true);
+    }
+
+    function renderGallery(reset = false) {
+        const container = document.getElementById("gallery");
+        if (reset) {
+            container.innerHTML = "";
+            currentPage = 1;
+        }
+
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const pageItems = filteredData.slice(start, end);
+
+        pageItems.forEach((item) => {
+            const originalIndex = catalogData.findIndex(c => c.title === item.title);
+            const card = document.createElement("div");
+            card.className = "card";
+            
+            let btnHTML = item.type === "movie" 
+                ? `<a href="${item.link}" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>`
+                : `<button class="get-movie-btn" onclick="openSeriesModal(${originalIndex})">GET EPISODES</button>`;
+            
+            let trendingTag = item.trending ? `<span class="trending-badge">🔥 Trending</span>` : "";
+
+            card.innerHTML = `
+                ${trendingTag}
+                <img src="${item.img}" alt="${item.title}" loading="lazy">
+                <div class="info">
+                    <h3>${item.title}</h3>
+                    ${btnHTML}
+                </div>
+            `;
+            container.appendChild(card);
+        });
+
+        const loadMoreContainer = document.getElementById("loadMoreContainer");
+        if (end >= filteredData.length) {
+            loadMoreContainer.style.display = "none";
+        } else {
+            loadMoreContainer.style.display = "block";
+        }
+    }
+
+    function loadNextPage() {
+        currentPage++;
+        renderGallery();
+    }
+
+    function openSeriesModal(index) {
+        const item = catalogData[index];
+        const modal = document.getElementById("dynamicModal");
+        document.getElementById("modalTitle").innerText = item.title;
+        const body = document.getElementById("modalBody");
+        body.innerHTML = "";
+        const keys = Object.keys(item.seasons);
+        if (keys.length === 1 && keys[0] === "Episodes") {
+            const grid = document.createElement("div");
+            grid.className = "episode-grid";
+            item.seasons["Episodes"].forEach((link, epIdx) => {
+                grid.innerHTML += `<a href="${link}" target="_blank" class="episode-btn">Ep ${String(epIdx + 1).padStart(2, '0')}</a>`;
+            });
+            body.appendChild(grid);
+        } else {
+            const flexBox = document.createElement("div");
+            flexBox.style.display = "flex"; flexBox.style.flexDirection = "column"; flexBox.style.gap = "15px";
+            keys.forEach(seasonName => {
+                const btn = document.createElement("button");
+                btn.className = "get-movie-btn"; btn.innerText = seasonName;
+                btn.onclick = () => openEpisodesModal(item.title, seasonName, item.seasons[seasonName]);
+                flexBox.appendChild(btn);
+            });
+            body.appendChild(flexBox);
+        }
+        modal.style.display = "block";
+    }
+
+    function openEpisodesModal(title, seasonName, epsArray) {
+        document.getElementById("modalTitle").innerText = `${title} - ${seasonName}`;
+        const body = document.getElementById("modalBody"); body.innerHTML = "";
+        const grid = document.createElement("div"); grid.className = "episode-grid";
+        epsArray.forEach((link, epIdx) => {
+            grid.innerHTML += `<a href="${link}" target="_blank" class="episode-btn">Ep ${String(epIdx + 1).padStart(2, '0')}</a>`;
+        });
+        body.appendChild(grid);
+    }
+
+    function closeModal() { document.getElementById("dynamicModal").style.display = "none"; }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById("dynamicModal");
+        if (event.target == modal) { modal.style.display = "none"; }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        autoSortEngine(); 
+        renderGallery(true);
+    });
 </script>
 </body>
 </html>
