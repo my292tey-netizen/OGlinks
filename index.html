@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Movies Link - Best Movies Direct Links</title>
+    <title>Free Links Gallery - Best Movies Direct Links</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Arial, sans-serif; background: #ffffff; color: #222; line-height: 1.6; }
@@ -52,6 +52,7 @@
         .info { padding: 10px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
         .info h3 { font-size: 0.95rem; color: #1a1a2e; margin-bottom: 12px; min-height: 45px; }
         
+        /* Original Solid Yellow Button */
         .get-movie-btn { display: block; width: 90%; margin: 0 auto; background: #ffcc00; color: #1a1a2e; text-align: center; padding: 10px; font-size: 0.85rem; font-weight: bold; border-radius: 6px; text-decoration: none; cursor: pointer; border: none; font-family: inherit; transition: 0.2s; }
         .get-movie-btn:hover { background: #e6b800; transform: scale(1.02); }
         .btn-tutorial { background: #1a1a2e; color: #fff; font-size: 0.75rem; width: 100%; }
@@ -77,8 +78,10 @@
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); overflow-y: auto; }
         .modal-content { background: #fff; margin: 5% auto; padding: 20px; border-radius: 15px; width: 90%; max-width: 500px; text-align: center; position: relative; }
         .episode-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 15px; }
-        .episode-btn { padding: 8px; background: #f1f1f1; color: #1a1a2e; text-decoration: none; border-radius: 6px; border: 1px solid #ddd; font-weight: bold; font-size: 0.8rem; cursor: pointer; width: 100%; text-align: center; display: block; font-family: inherit; }
-        .episode-btn:hover { background: #ffcc00; }
+        
+        /* Original Solid Episode Button */
+        .episode-btn { padding: 8px; background: #f1f1f1; color: #1a1a2e; text-decoration: none; border-radius: 6px; border: 1px solid #ddd; font-weight: bold; font-size: 0.8rem; cursor: pointer; width: 100%; text-align: center; display: block; font-family: inherit; transition: 0.2s; }
+        .episode-btn:hover { background: #ffcc00; border-color: #ffcc00; }
         
         footer { text-align: center; padding: 40px 0; border-top: 1px solid #eee; margin-top: 20px; }
         .anish-name { font-size: 1.2rem; font-weight: 900; letter-spacing: 2px; color: #1a1a2e; text-transform: uppercase; position: relative; display: inline-block; }
@@ -98,6 +101,7 @@
     <div class="container">
         <div class="nav">
             <h1>Free Links Gallery</h1>
+            
             <div class="top-actions">
                 <button class="chat-toggle-btn" onclick="toggleChat()" title="Open Chat Room">💬</button>
                 <div class="hamburger" onclick="toggleMenu()">☰</div>
@@ -171,6 +175,7 @@
         <div id="modalBody"></div>
     </div>
 </div>
+
 <footer>
     <p class="anish-name">Made by <span>Anish</span></p>
     <div class="sponsor-box">
@@ -181,14 +186,19 @@
         </a>
     </div>
 </footer>
-
 <script>
+    // 20,000+ Items Ready Data Structure (Isme aap kitni bhi movies add kar sakte hain)
     const catalogData = [
+        { type: "movie", title: "Jawan", img: "https://i.ibb.co/FkwKTRrF/Jawan-Poster-427d3d40-b0f7-11f0-9c89-990595781563.jpg", category: "Action", trending: true, date: "2026-05-16", keywords: "shah rukh khan srk atlee bollywood action mass", link: "https://www.diskwala.com/app/6a084d537996306c22efc265" },
+        { type: "movie", title: "The Dark Knight", img: "https://i.ibb.co/fdm3HF5b/MV5-BMTMx-NTMw-ODM0-NF5-BMl5-Ban-Bn-Xk-Ft-ZTcw-ODAy-MTk2-Mw-V1.jpg", category: "Action", trending: false, date: "2026-05-16", keywords: "batman joker christian bale christopher nolan dc superhero english hollywood", link: "https://www.diskwala.com/app/6a084b937996306c22efbd9e" },
+        { type: "movie", title: "Laapataa Ladies", img: "https://i.ibb.co/99tsbVPG/MV5-BY2-Vh-MGZk-MTQt-Yj-U4-MC00-MWM5-LWI1-Nzct-ZDQw-YTNk-Zj-Nh-NGY1-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Movies", trending: true, date: "2026-05-16", keywords: "kiran rao amir khan comedy drama village hindi phool", link: "https://www.diskwala.com/app/6a084aab7996306c22efbb57" },
+        { type: "movie", title: "Tikdam", img: "https://i.ibb.co/MywTcqRM/MV5-BYm-Uw-Yj-Ex-ZDMt-Mjc2-OC00-Zm-Fm-LTky-N2-Et-Zj-Q3-N2-Nm-N2-Ni-MGE4-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Movies", trending: false, date: "2026-05-16", keywords: "family drama emotional hindi", link: "https://www.diskwala.com/app/6a0847f67996306c22efb431" },
+        { type: "movie", title: "Animal [Hindi Dubbed]", img: "https://i.ibb.co/q308MPjB/MV5-BZThm-NDg1-Nj-Ut-NWJh-MC00-Yj-A3-LWJi-Mj-It-Nm-M4-ZDQ5-ZGZi-N2-Y2-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Action", trending: true, date: "2026-05-15", keywords: "ranbir kapoor sandeep reddy vanga violent blood mafia", link: "https://www.diskwala.com/app/6a0846107996306c22efaf0e" },
         { type: "series", title: "Jujutsu Kaisen [Hindi Dubbed]", img: "https://i.ibb.co/QRwW9PM/images-2.jpg", category: "Anime", trending: true, date: "2026-05-15", keywords: "gojo sukuna itadori yuji fushiguro ryomen jjk anime magic sorcerer", seasons: { "Season 1": ["https://www.diskwala.com/app/6a01816d7996306c22dffbce","https://www.diskwala.com/app/6a0181907996306c22dffbff","https://www.diskwala.com/app/6a0183ed7996306c22e002ee","https://www.diskwala.com/app/6a0185827996306c22e007d7","https://www.diskwala.com/app/6a0185bf7996306c22e008ac","https://www.diskwala.com/app/6a0185ec7996306c22e009ac","https://www.diskwala.com/app/6a0183c37996306c22e00225","https://www.diskwala.com/app/6a0186ba7996306c22e00bd7","https://www.diskwala.com/app/6a01867d7996306c22e00b3e","https://www.diskwala.com/app/6a0187367996306c22e00d2d","https://www.diskwala.com/app/6a0186f17996306c22e00c75","https://www.diskwala.com/app/6a0187b27996306c22e00e83","https://www.diskwala.com/app/6a0188197996306c22e00fea","https://www.diskwala.com/app/6a0188ac7996306c22e0118e","https://www.diskwala.com/app/6a01893a7996306c22e012f0","https://www.diskwala.com/app/6a0188e87996306c22e0123d","https://www.diskwala.com/app/6a0189377996306c22e012e6","https://www.diskwala.com/app/6a0189fc7996306c22e01553","https://www.diskwala.com/app/6a018a657996306c22e01663","https://www.diskwala.com/app/6a0189a37996306c22e01449","https://www.diskwala.com/app/6a01922c7996306c22e02c21","https://www.diskwala.com/app/6a0192657996306c22e02ccf","https://www.diskwala.com/app/6a0192067996306c22e02bcf","https://www.diskwala.com/app/6a01924f7996306c22e02c85"], "Season 2": ["https://www.diskwala.com/app/6a01ac2c7996306c22e0765b","https://www.diskwala.com/app/6a01ac057996306c22e07616","https://www.diskwala.com/app/6a01abda7996306c22e075a0","https://www.diskwala.com/app/6a01abaa7996306c22e0751c","https://www.diskwala.com/app/6a01ab617996306c22e0743d","https://www.diskwala.com/app/6a01acf37996306c22e07803","https://www.diskwala.com/app/6a01ac917996306c22e07756","https://www.diskwala.com/app/6a01acb87996306c22e077be","https://www.diskwala.com/app/6a01ad077996306c22e0783d","https://www.diskwala.com/app/6a01ac637996306c22e076ec","https://www.diskwala.com/app/6a01ae9b7996306c22e07c11","https://www.diskwala.com/app/6a01ae037996306c22e07aa9","https://www.diskwala.com/app/6a01ae1a7996306c22e07ae5","https://www.diskwala.com/app/6a01ae4a7996306c22e07b34","https://www.diskwala.com/app/6a01ae747996306c22e07bb9","https://www.diskwala.com/app/6a01b9d67996306c22e09d36","https://www.diskwala.com/app/6a01bafe7996306c22e0a060","https://www.diskwala.com/app/6a01ba997996306c22e09f49","https://www.diskwala.com/app/6a01ba257996306c22e09e2e","https://www.diskwala.com/app/6a01bb497996306c22e0a14c","https://www.diskwala.com/app/6a01bc2f7996306c22e0a424","https://www.diskwala.com/app/6a01bbba7996306c22e0a2d7","https://www.diskwala.com/app/6a01bc597996306c22e0a462"], "Season 3": ["https://www.diskwala.com/app/6a02d7037996306c22e305f0","https://www.diskwala.com/app/6a02d56f7996306c22e30233","https://www.diskwala.com/app/6a02d63d7996306c22e303d8","https://www.diskwala.com/app/6a02d7b77996306c22e307f6","https://www.diskwala.com/app/6a02d4a77996306c22e30001","https://www.diskwala.com/app/6a02d9f17996306c22e30dfe","https://www.diskwala.com/app/6a02da6b7996306c22e30f36","https://www.diskwala.com/app/6a02d9a77996306c22e30d4d","https://www.diskwala.com/app/6a02d9327996306c22e30c2a","https://www.diskwala.com/app/6a02d8957996306c22e30ab2","https://www.diskwala.com/app/6a02dbc87996306c22e31259","https://www.diskwala.com/app/6a02db617996306c22e31156"] } },
         { type: "series", title: "Mirzapur [All Seasons]", img: "https://i.ibb.co/YBm6Hm9P/p0q-M8hhl-MF5-Dux-HBzl2-EZR6-Teh-X.jpg", category: "Web Series", trending: true, date: "2026-05-14", keywords: "kaleen bhaiya munna guddu pandit ali fazal pankaj tripathi gangster up crime", seasons: { "Season 1": ["https://www.diskwala.com/app/6a0595757996306c22e93890","https://www.diskwala.com/app/6a0595947996306c22e938de","https://www.diskwala.com/app/6a0597087996306c22e93d59","https://www.diskwala.com/app/6a0596ed7996306c22e93d1c","https://www.diskwala.com/app/6a0597867996306c22e93ede","https://www.diskwala.com/app/6a05975b7996306c22e93e3a","https://www.diskwala.com/app/6a0597d87996306c22e93fd7","https://www.diskwala.com/app/6a0597c97996306c22e93fae","https://www.diskwala.com/app/6a05979f7996306c22e93f29"], "Season 2": ["https://www.diskwala.com/app/6a0598687996306c22e94151","https://www.diskwala.com/app/6a0598107996306c22e94042","https://www.diskwala.com/app/6a0597fb7996306c22e94018","https://www.diskwala.com/app/6a05984b7996306c22e94102","https://www.diskwala.com/app/6a0598297996306c22e9409a","https://www.diskwala.com/app/6a05989f7996306c22e94227","https://www.diskwala.com/app/6a0598ba7996306c22e9425a","https://www.diskwala.com/app/6a0599007996306c22e94333","https://www.diskwala.com/app/6a0599157996306c22e9438d","https://www.diskwala.com/app/6a0598e27996306c22e942d4"], "Season 3": ["https://www.diskwala.com/app/6a059a257996306c22e94697","https://www.diskwala.com/app/6a059a0a7996306c22e94649","https://www.diskwala.com/app/6a059a207996306c22e9467d","https://www.diskwala.com/app/6a059a0a7996306c22e9464d","https://www.diskwala.com/app/6a059a2f7996306c22e946b4","https://www.diskwala.com/app/6a059a9b7996306c22e9481e","https://www.diskwala.com/app/6a059a937996306c22e94802","https://www.diskwala.com/app/6a059a7d7996306c22e947b9","https://www.diskwala.com/app/6a059a7e7996306c22e947c2","https://www.diskwala.com/app/6a059a877996306c22e947e4"] } },
         { type: "series", title: "Squid Game [All Seasons]", img: "https://i.ibb.co/0pYbDPb6/IMG-20260515-132558.jpg", category: "Web Series", trending: true, date: "2026-05-13", keywords: "red light green light netflix korean survival death game", seasons: { "Season 1": ["https://www.diskwala.com/app/6a06c7667996306c22ec0f98","https://www.diskwala.com/app/6a06c7bd7996306c22ec108c","https://www.diskwala.com/app/6a06c6a37996306c22ec0d61","https://www.diskwala.com/app/6a06c7117996306c22ec0ee4","https://www.diskwala.com/app/6a06c6d67996306c22ec0e2d","https://www.diskwala.com/app/6a06c8567996306c22ec11ef","https://www.diskwala.com/app/6a06c9a67996306c22ec1565","https://www.diskwala.com/app/6a06c8e47996306c22ec1394","https://www.diskwala.com/app/6a06c8a67996306c22ec12c4"], "Season 2": ["https://www.diskwala.com/app/6a06c9647996306c22ec14ab","https://www.diskwala.com/app/6a06cb767996306c22ec19fb","https://www.diskwala.com/app/6a06ca3f7996306c22ec16ba","https://www.diskwala.com/app/6a06cd5f7996306c22ec1ee7","https://www.diskwala.com/app/6a06cb2b7996306c22ec1917","https://www.diskwala.com/app/6a06cbe57996306c22ec1b35","https://www.diskwala.com/app/6a06ce447996306c22ec21ac"], "Season 3": ["https://www.diskwala.com/app/6a06cf017996306c22ec23c9","https://www.diskwala.com/app/6a06cded7996306c22ec204c","https://www.diskwala.com/app/6a06cf697996306c22ec253d","https://www.diskwala.com/app/6a06d3ff7996306c22ec3354","https://www.diskwala.com/app/6a06d1517996306c22ec2b91","https://www.diskwala.com/app/6a06d0ed7996306c22ec2a73"] } },
         { type: "series", title: "Bloodhounds (S01) Hindi Dubbed", img: "https://i.ibb.co/CKtrR04K/p24811658-b-v8-ac.jpg", category: "Action", trending: false, date: "2026-05-12", keywords: "boxer fighting korean action", seasons: { "Episodes": ["https://www.diskwala.com/app/69fd93f9d96f638117a1a5af","https://www.diskwala.com/app/69fd938ed96f638117a1a4c7","https://www.diskwala.com/app/69fd93bfd96f638117a1a530","https://www.diskwala.com/app/69fd93bfd96f638117a1a530","https://www.diskwala.com/app/69fd93d7d96f638117a1a56f","https://www.diskwala.com/app/69fd9493d96f638117a1a762","https://www.diskwala.com/app/69fd946ad96f638117a1a6fa","https://www.diskwala.com/app/69fd9495d96f638117a1a770"] } },
-        { type: "movie", title: "Mortal Kombat II (2026)", img: "https://i.ibb.co/d92Dygk/images-12.jpg", category: "Action", trending: true, date: "2026-05-16", keywords: "fighting game sub zero scorpion fatality blood action", link: "https://www.diskwala.com/app/6a06d2a07996306c22ec2f62" },
+        { type: "movie", title: "Mortal Kombat II (2026)", img: "https://i.ibb.co/d92Dygk/images-12.jpg", category: "Action", trending: false, date: "2026-05-16", keywords: "fighting game sub zero scorpion fatality blood action", link: "https://www.diskwala.com/app/6a06d2a07996306c22ec2f62" },
         { type: "movie", title: "Krishnavataram", img: "https://i.ibb.co/CspDxNJY/images-3.jpg", category: "Movies", trending: false, keywords: "south indian dub mythology", link: "https://www.diskwala.com/app/6a05a0c07996306c22e9594d" },
         { type: "movie", title: "Deep Water", img: "https://i.ibb.co/7N4gt4VT/images-4.jpg", category: "Movies", trending: false, keywords: "thriller suspense english", link: "https://www.diskwala.com/app/6a05a0527996306c22e95801" },
         { type: "movie", title: "Tere Ishk Mein", img: "https://i.ibb.co/1fj230ST/images-5.jpg", category: "Movies", trending: false, keywords: "bollywood romance love", link: "https://www.diskwala.com/app/6a0597177996306c22e93d95" },
@@ -211,19 +221,20 @@
         { type: "movie", title: "Dhurandhar 2", img: "https://i.ibb.co/zWDM56md/MV5-BNTU1-Zjk4-MTYt-Mjc2-YS00-Nj-I5-LWJk-OWEt-Mj-Jl-OGQ0-ZTVj-Nm-Fj-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Movies", trending: false, keywords: "south dub part 2 action", link: "https://www.diskwala.com/app/69fc9a56d96f6381179f6b79" },
         { type: "movie", title: "Miraculous Ladybug", img: "https://i.ibb.co/q3RCHB0W/ladybug-and-cat-noir-awakening.jpg", category: "Anime", trending: false, keywords: "animation cartoon kids superhero paris cat noir", link: "https://www.diskwala.com/app/6a0484077996306c22e6de07" },
         { type: "movie", title: "Leo", img: "https://i.ibb.co/j9PHBFbT/Leo-2023-Indian-film.jpg", category: "Action", trending: false, keywords: "vijay thalapathy lokesh lcu mass gangster", link: "https://www.diskwala.com/app/6a0466967996306c22e69908" },
-        { type: "movie", title: "Animal", img: "https://i.ibb.co/xt4G4qPM/MV5-BZThm-NDg1-Nj-Ut-NWJh-MC00-Yj-A3-LWJi-Mj-It-Nm-M4-ZDQ5-ZGZi-N2-Y2-Xk-Ey-Xk-Fqc-Gc-V1-QL75-UY281-CR18-0-1.jpg", category: "Action", trending: true, keywords: "ranbir kapoor sandeep reddy vanga violent blood mafia", link: "https://www.diskwala.com/app/6a045eba7996306c22e68597" },
         { type: "movie", title: "Saiyaraa", img: "https://i.ibb.co/F41YyGKZ/MV5-BMTk2-Zm-Fh-Yjct-YWZi-Yy00-N2-Ix-LWEz-MWIt-ZGRi-MDY4-ZDQw-ZWFl-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Movies", trending: false, keywords: "romance drama hindi dub", link: "https://www.diskwala.com/app/6a0450937996306c22e65f6f" },
         { type: "movie", title: "War Machine", img: "https://i.ibb.co/qMwnBrYq/AAAABSHp-Pk-Dfq-o-ZUwqi-Fl-Qn-JHFXw-DRRFn6-GVtcj2-A2u-Rf-Tk0r-Lxp-Y6-Qqdhe-LAEj0j-Hja-GTBHys-ERs-YAw-Vc.jpg", category: "Action", trending: false, keywords: "hollywood brad pitt military action", link: "https://www.diskwala.com/app/6a0444b67996306c22e6411e" },
         { type: "movie", title: "Attack", img: "https://i.ibb.co/Gf5FdhKf/MV5-BZWYz-NDcx-Nj-Qt-NDZj-NS00-M2-U3-LTlk-OTIt-NDc4-Nzhk-Mj-Yx-Nz-Fk-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Action", trending: false, keywords: "john abraham sci fi soldier robot", link: "https://www.diskwala.com/app/6a0443ae7996306c22e63e61" },
         { type: "movie", title: "Gabbar Is Back", img: "https://i.ibb.co/7tRXJB0x/MV5-BMj-Qy-MTY1-NTc1-NV5-BMl5-Ban-Bn-Xk-Ft-ZTgw-ODUz-MDIy-NTE-V1.jpg", category: "Action", trending: false, keywords: "akshay kumar corruption police action", link: "https://www.diskwala.com/app/6a04247f7996306c22e5ebf1" },
         { type: "movie", title: "Dhurandhar 1", img: "https://i.ibb.co/C5VJmNBS/250px-Dhurandhar-poster.jpg", category: "Movies", trending: false, keywords: "south hindi dub action part 1", link: "https://www.diskwala.com/app/6a0443197996306c22e63ce1" }
     ];
-
+</script>
+<script>
     let currentPage = 1;
     const itemsPerPage = 24; 
     let activeCategory = "All";
     let filteredData = [];
 
+    // Pre-Sort Array: Trending sabse upar dikhega
     function autoSortEngine() {
         catalogData.sort((a, b) => {
             if (a.trending === b.trending) return 0;
@@ -235,15 +246,19 @@
     function toggleMenu() { document.getElementById("navLinks").classList.toggle("active"); }
     function toggleChat() { document.getElementById("chatOverlay").classList.toggle("active"); }
 
+    // Chat with strict anti-link system
     function sendChatMessage() {
         const input = document.getElementById("chatInput");
         const messageText = input.value.trim();
         if (!messageText) return;
+        
+        // Link blocker regex
         const linkPattern = /(https?:\/\/[^\s]+|www\.[^\s]+|[a-zA-Z0-9-]+\.[a-zA-Z]{2,})/gi;
         if (linkPattern.test(messageText)) {
             alert("⚠️ Warning: Sharing links or URLs is strictly blocked in this chatroom!");
             input.value = ""; return;
         }
+        
         const msgArea = document.getElementById("chatMessages");
         const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         const newMsg = document.createElement("div");
@@ -253,6 +268,7 @@
         input.value = "";
         msgArea.scrollTop = msgArea.scrollHeight;
     }
+    
     function handleChatKey(event) { if (event.key === "Enter") { sendChatMessage(); } }
 
     function filterByCategory(cat) {
@@ -265,6 +281,7 @@
         applyFilters();
     }
 
+    // Levenshtein Distance for Spelling mistake logic
     function getLevenshteinDistance(a, b) {
         const matrix = [];
         for (let i = 0; i <= b.length; i++) { matrix[i] = [i]; }
@@ -285,15 +302,13 @@
         applyFilters();
     }
 
-    // 🚀 NEW LOGIC: SEARCH KARNE PAR TUTORIAL CARD AUR CATEGORY GAYAB HOGI
     function applyFilters() {
         let input = document.getElementById("searchInput").value.toLowerCase().trim();
         
-        // Gayab karne wale elements select karo
         const howToSection = document.getElementById("how-to-section");
         const categoryWrapper = document.getElementById("categoryWrapper");
 
-        // Logic: Agar box mein text hai, toh hide kardo, warna dikhao
+        // Hide cards when searching
         if (input.length > 0) {
             if (howToSection) howToSection.style.display = "none";
             if (categoryWrapper) categoryWrapper.style.display = "none";
@@ -376,12 +391,14 @@
         renderGallery();
     }
 
+    // Modal Dynamics System
     function openSeriesModal(index) {
         const item = catalogData[index];
         const modal = document.getElementById("dynamicModal");
         document.getElementById("modalTitle").innerText = item.title;
         const body = document.getElementById("modalBody");
         body.innerHTML = "";
+        
         const keys = Object.keys(item.seasons);
         if (keys.length === 1 && keys[0] === "Episodes") {
             const grid = document.createElement("div");
@@ -421,6 +438,7 @@
         if (event.target == modal) { modal.style.display = "none"; }
     }
 
+    // Initialize Site
     document.addEventListener("DOMContentLoaded", () => {
         autoSortEngine(); 
         renderGallery(true);
