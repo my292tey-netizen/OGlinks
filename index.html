@@ -3,143 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Links Gallery - Latest Updates</title>
+    <title>Premium Movies & Series App</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,0..1,0" rel="stylesheet" />
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #ffffff; color: #222; line-height: 1.6; }
-        header { background: #ffffff; padding: 15px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-bottom: 3px solid #ffcc00; }
+        /* 🛑 ANTI-BLUE SQUARE & HIGHLIGHT FIX 🛑 */
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent !important;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+            outline: none !important;
+            font-family: 'Outfit', sans-serif;
+        }
+        a, button, .btn-ep, .btn-season, .nav-item {
+            -webkit-touch-callout: none; user-select: none; text-decoration: none;
+        }
+
+        body { 
+            background: #f4f4f9; color: #222; padding-bottom: 95px; 
+        }
+        
         .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
-        .nav { display: flex; justify-content: space-between; align-items: center; }
-        h1 { color: #1a1a2e; font-size: 1.8rem; font-weight: 800; }
-        
-        .top-actions { display: flex; align-items: center; gap: 18px; z-index: 1002; }
-        .chat-toggle-btn { font-size: 24px; cursor: pointer; color: #1a1a2e; background: none; border: none; padding: 5px; display: flex; align-items: center; }
-        .hamburger { font-size: 28px; cursor: pointer; color: #1a1a2e; }
-        
-        .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: #ffffff; display: flex; flex-direction: column; padding: 80px 20px 20px 20px; transition: 0.4s ease-in-out; z-index: 1000; box-shadow: -5px 0 15px rgba(0,0,0,0.1); }
-        .nav-links.active { right: 0; }
-        .nav-links a { text-decoration: none; color: #1a1a2e; font-weight: 600; font-size: 1.1rem; padding: 15px 0; border-bottom: 1px solid #f1f1f1; display: block; }
-        
-        .btn-fb { color: #1877F2 !important; }
-        .btn-wa { color: #25D366 !important; }
-        .facing-issue-btn { margin-top: auto; background: #ff4757; color: #ffffff !important; text-align: center; padding: 12px !important; border-radius: 8px; border-bottom: none !important; }
-        
-        /* Advanced Search Bar */
-        .search-container { text-align: center; margin: 20px 0; }
-        #searchInput { width: 100%; max-width: 600px; padding: 14px 20px; font-size: 1.05rem; border: 2px solid #ddd; border-radius: 50px; outline: none; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        #searchInput:focus { border-color: #ffcc00; box-shadow: 0 4px 12px rgba(255, 204, 0, 0.2); }
-        
-        .pinned-section { margin-bottom: 20px; transition: 0.3s ease; }
-        .how-to-card { max-width: 320px; margin: 0 auto; border: 2px solid #ffcc00; background: #f9f9f9; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(255,204,0,0.15); }
-        .how-to-card img { width: 100%; height: 160px; object-fit: contain; background: #fff; padding: 10px; display: block; }
-        
+
+        /* 🔍 Professional Minimal Top Header (Search + GET APP with New Logo) */
+        .top-header { 
+            background: #ffffff; padding: 15px; position: sticky; top: 0; z-index: 100; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; align-items: center; gap: 12px; 
+        }
+        .search-input { 
+            flex-grow: 1; padding: 12px 20px; font-size: 1rem; border: none; 
+            background: #f1f1f1; border-radius: 25px; color: #1a1a2e; 
+        }
+        .download-app-btn { 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+            background: #1a1a2e; color: #ffcc00; border: none; border-radius: 12px; 
+            padding: 6px 12px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 8px rgba(0,0,0,0.15); 
+            min-width: 65px;
+        }
+        .download-app-btn:active { transform: scale(0.95); }
+        .app-logo-img { 
+            width: 26px; height: 26px; border-radius: 6px; margin-bottom: 2px; 
+            object-fit: cover; border: 1px solid #ffcc00;
+        }
+        .download-app-btn small { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.5px; }
+
+        /* Full Screen Banner Slider */
+        .slider-section { width: 100%; margin-top: 10px; }
+        .slider-container { width: 100%; max-width: 900px; margin: 0 auto; overflow: hidden; position: relative; }
+        .slider-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
+        .slider-track::-webkit-scrollbar { display: none; }
+        .slider-link { min-width: 100%; display: block; scroll-snap-align: center; padding: 0 10px; }
+        .slider-img { width: 100%; height: 220px; object-fit: contain; background-color: #000000; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: transform 0.2s ease; display: block; }
+        .slider-img:active { transform: scale(0.99); }
+
         /* Category Filter System CSS */
-        .category-wrapper { margin: 20px 0; overflow-x: auto; white-space: nowrap; padding-bottom: 10px; -webkit-overflow-scrolling: touch; transition: 0.3s ease; }
-        .category-wrapper::-webkit-scrollbar { height: 6px; }
-        .category-wrapper::-webkit-scrollbar-thumb { background: #ddd; border-radius: 10px; }
-        .category-list { display: flex; gap: 10px; justify-content: center; min-width: max-content; }
-        .cat-btn { background: #f1f1f1; border: 1px solid #ddd; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; color: #1a1a2e; transition: 0.3s; }
-        .cat-btn:hover, .cat-btn.active { background: #ffcc00; border-color: #ffcc00; color: #1a1a2e; box-shadow: 0 2px 8px rgba(255,204,0,0.4); }
+        .category-wrapper { margin: 15px 0; overflow-x: auto; white-space: nowrap; padding-bottom: 10px; -webkit-overflow-scrolling: touch; }
+        .category-wrapper::-webkit-scrollbar { display: none; }
+        .category-list { display: flex; gap: 10px; min-width: max-content; }
+        .cat-btn { background: #ffffff; border: 1px solid #ddd; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-weight: 600; color: #4a5568; transition: 0.3s; }
+        .cat-btn:hover, .cat-btn.active { background: #ffcc00; border-color: #ffcc00; color: #1a1a2e; box-shadow: 0 4px 10px rgba(255,204,0,0.3); }
 
         /* Dynamic Grid Engine */
-        .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 15px 0; }
-        .card { background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #eee; display: flex; flex-direction: column; height: auto; padding-bottom: 15px; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .card img { width: 100%; height: 220px; object-fit: cover; display: block; border-radius: 15px 15px 0 0; }
-
-        .info { padding: 10px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .info h3 { font-size: 0.95rem; color: #1a1a2e; margin-bottom: 12px; min-height: 45px; }
+        .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 5px 0 20px 0; }
+        .card { background: #ffffff; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 15px rgba(0,0,0,0.06); transition: transform 0.2s; cursor: pointer; }
+        .card:active { transform: scale(0.97); }
+        .card img { width: 100%; height: 240px; object-fit: cover; display: block; }
+        .info { padding: 12px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
+        .info h3 { font-size: 0.95rem; color: #1a1a2e; font-weight: 700; line-height: 1.3; }
         
-        .get-movie-btn { display: block; width: 90%; margin: 0 auto; background: #ffcc00; color: #1a1a2e; text-align: center; padding: 10px; font-size: 0.85rem; font-weight: bold; border-radius: 6px; text-decoration: none; cursor: pointer; border: none; font-family: inherit; transition: 0.2s; }
-        .get-movie-btn:hover { background: #e6b800; transform: scale(1.02); }
-        .btn-tutorial { background: #1a1a2e; color: #fff; font-size: 0.75rem; width: 100%; }
-        
-        .load-more-container { text-align: center; margin: 30px 0; }
+        .load-more-container { text-align: center; margin: 20px 0 30px 0; }
         .load-more-btn { background: #1a1a2e; color: #ffffff; padding: 12px 30px; font-size: 1rem; font-weight: bold; border: none; border-radius: 25px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: 0.3s; }
-        .load-more-btn:hover { background: #ffcc00; color: #1a1a2e; }
+        .load-more-btn:active { transform: scale(0.95); }
 
-        /* Not Found / Spam Animations */
-        .not-found-container { grid-column: 1 / -1; text-align: center; padding: 50px 20px; background: #f9f9f9; border-radius: 15px; border: 2px dashed #ffcc00; transition: 0.3s; }
-        .radar-spinner { font-size: 50px; display: inline-block; margin-bottom: 15px; animation: spin-radar 2s linear infinite; }
-        @keyframes spin-radar { 100% { transform: rotate(360deg); } }
+        /* Not Found Animations */
+        .not-found-container { grid-column: 1 / -1; text-align: center; padding: 40px 20px; background: #ffffff; border-radius: 15px; border: 2px dashed #ffcc00; }
         .not-found-title { color: #ff4757; font-size: 1.5rem; margin-bottom: 10px; }
-        .not-found-text { font-size: 1.1rem; color: #1a1a2e; font-weight: 600; }
         .coming-soon-text { color: #25D366; font-weight: bold; font-size: 1.3rem; display: block; margin-top: 5px; animation: pulse-green 1.5s infinite; }
         @keyframes pulse-green { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
 
-        /* Chat Overlay */
-        .chat-overlay { position: fixed; top: 0; right: -100%; width: 320px; height: 100vh; background: #ffffff; box-shadow: -5px 0 20px rgba(0,0,0,0.15); z-index: 1005; display: flex; flex-direction: column; transition: 0.4s ease-in-out; }
-        .chat-overlay.active { right: 0; }
-        .chat-header { background: #1a1a2e; color: #ffffff; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #ffcc00; }
-        .chat-header h3 { font-size: 1.1rem; font-weight: bold; }
-        .chat-close { font-size: 24px; cursor: pointer; color: #ffffff; background: none; border: none; }
+        /* 📱 PREMIUM BOTTOM NAVIGATION BAR 📱 */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid rgba(0, 0, 0, 0.05); display: flex; justify-content: space-around; padding: 10px 0 15px 0; z-index: 1000; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: #757575; width: 25%; cursor: pointer; }
+        .icon-wrapper { padding: 4px 18px; border-radius: 20px; margin-bottom: 4px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; justify-content: center; }
+        .material-symbols-rounded { font-size: 26px; transition: 0.3s ease; font-variation-settings: 'FILL' 0; }
+        .nav-text { font-size: 0.75rem; font-weight: 600; transition: color 0.3s ease; }
+        .nav-item.active { color: #1a1a2e; }
+        .nav-item.active .icon-wrapper { background-color: #ffcc00; transform: scale(1.05); }
+        .nav-item.active .material-symbols-rounded { color: #1a1a2e; font-variation-settings: 'FILL' 1; }
+        .nav-item.active .nav-text { color: #1a1a2e; font-weight: 700; }
+        .nav-item:active .icon-wrapper { transform: scale(0.9); }
+
+        /* 💬 SLIDING PANELS SYSTEM (Chat, History, Favourites) */
+        .side-panel { position: fixed; top: 0; right: -100%; width: 100%; max-width: 450px; height: 100vh; background: #f8f9fa; box-shadow: -5px 0 25px rgba(0,0,0,0.15); z-index: 1005; display: flex; flex-direction: column; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .side-panel.active { right: 0; }
+        .panel-header { background: #1a1a2e; color: #ffffff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #ffcc00; }
+        .panel-header h3 { font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
+        .panel-close { font-size: 28px; cursor: pointer; color: #ffffff; background: none; border: none; transition: 0.2s; }
+        .panel-close:active { transform: scale(0.8); color: #ffcc00; }
+        
+        .panel-content { flex-grow: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+        .list-card { background: #ffffff; border-radius: 12px; padding: 10px; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eaeaea; }
+        .list-img { width: 80px; height: 60px; border-radius: 8px; object-fit: cover; background: #000; }
+        .list-info { flex-grow: 1; }
+        .list-info h4 { font-size: 1rem; color: #1a1a2e; margin-bottom: 4px; }
+        .list-info p { font-size: 0.8rem; color: #757575; font-weight: 600; }
+        .panel-action-btn { background: #f1f1f1; border: none; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: 0.2s; color: #1a1a2e; }
+        .panel-action-btn:active { transform: scale(0.9); background: #ffcc00; }
+        .empty-text { text-align: center; color: #888; margin-top: 20px; font-weight: 600; }
+
+        /* Chat Specific CSS */
         .chat-messages { flex-grow: 1; padding: 15px; overflow-y: auto; background: #f7f9fc; display: flex; flex-direction: column; gap: 10px; }
-        .msg { background: #ffffff; padding: 10px 12px; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); max-width: 85%; width: fit-content; word-break: break-word; }
-        .msg-system { background: #ffeaa7; font-size: 0.8rem; text-align: center; max-width: 100%; margin: 0 auto; color: #d63031; font-weight: bold; border-radius: 5px; }
+        .msg { background: #ffffff; padding: 10px 12px; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); max-width: 85%; width: fit-content; word-break: break-word; font-size: 0.9rem;}
+        .msg-system { background: #ffeaa7; text-align: center; max-width: 100%; margin: 0 auto; color: #d63031; font-weight: bold; border-radius: 5px; padding: 10px; }
         .msg-time { font-size: 0.65rem; color: #888; display: block; text-align: right; margin-top: 4px; }
         .chat-footer { padding: 12px; background: #ffffff; border-top: 1px solid #eee; display: flex; gap: 8px; align-items: center; }
-        .chat-input { flex-grow: 1; padding: 10px 15px; border: 1px solid #ddd; border-radius: 20px; outline: none; font-size: 0.9rem; font-family: inherit; }
-        .chat-send-btn { background: #ffcc00; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; color: #1a1a2e; transition: 0.2s; }
+        .chat-input { flex-grow: 1; padding: 12px 15px; border: 1px solid #ddd; border-radius: 20px; outline: none; font-size: 0.9rem; background: #f9f9f9;}
+        .chat-send-btn { background: #ffcc00; border: none; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #1a1a2e; }
+
+        /* -------------------------------------
+           🎬 ULTIMATE EPISODE UI MODAL
+           ------------------------------------- */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); justify-content: center; align-items: center; padding: 20px; }
+        .modern-container { background: #ffffff; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); border-radius: 25px; padding: 35px 20px 25px 20px; width: 100%; max-width: 450px; position: relative; opacity: 0; transform: translateY(20px); animation: fadeInUpModal 0.4s ease-out forwards; max-height: 90vh; overflow-y: auto; }
+        @keyframes fadeInUpModal { to { opacity: 1; transform: translateY(0); } }
         
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); overflow-y: auto; }
-        .modal-content { background: #fff; margin: 5% auto; padding: 20px; border-radius: 15px; width: 90%; max-width: 500px; text-align: center; position: relative; }
-        .episode-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 15px; }
+        .modal-close-btn { position: absolute; top: 15px; right: 20px; font-size: 28px; color: #aaa; cursor: pointer; background: none; border: none; }
         
-        .episode-btn { padding: 8px; background: #f1f1f1; color: #1a1a2e; text-decoration: none; border-radius: 6px; border: 1px solid #ddd; font-weight: bold; font-size: 0.8rem; cursor: pointer; width: 100%; text-align: center; display: block; font-family: inherit; transition: 0.2s; }
-        .episode-btn:hover { background: #ffcc00; border-color: #ffcc00; }
+        /* ❤️ EXTREMELY SOLID RED HEART ❤️ */
+        .modal-fav-btn { position: absolute; top: 15px; left: 20px; color: #b0b0b0; cursor: pointer; background: none; border: none; transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .modal-fav-btn .material-symbols-rounded { font-size: 32px; font-variation-settings: 'FILL' 0; transition: 0.2s; }
+        .modal-fav-btn.liked { color: #ff0000 !important; transform: scale(1.15); }
+        .modal-fav-btn.liked .material-symbols-rounded { font-variation-settings: 'FILL' 1 !important; }
+        .modal-fav-btn:active { transform: scale(0.8); }
+
+        .modal-title { text-align: center; color: #1a1a2e; margin-bottom: 25px; font-weight: 700; font-size: 1.4rem; padding: 0 35px; line-height: 1.2; }
         
-        footer { text-align: center; padding: 40px 0; border-top: 1px solid #eee; margin-top: 20px; }
-        .anish-name { font-size: 1.2rem; font-weight: 900; letter-spacing: 2px; color: #1a1a2e; text-transform: uppercase; position: relative; display: inline-block; }
-        .anish-name span { color: #ffcc00; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
-        .wa-link { text-decoration: none; color: #25D366; font-weight: bold; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .season-tabs { display: flex; gap: 10px; margin-bottom: 25px; justify-content: center; flex-wrap: wrap; }
+        .btn-season { background: #f4f6f9; border: 1px solid #e1e5eb; color: #4a5568; padding: 8px 16px; font-weight: 600; border-radius: 10px; cursor: pointer; transition: 0.3s; font-size: 0.9rem; }
+        .btn-season.active { background: #ffcc00; color: #1a1a2e; border-color: #ffcc00; }
         
+        .episode-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 25px; }
+        .btn-ep { display: flex; justify-content: center; align-items: center; aspect-ratio: 1; background: #ffffff; border: 2px solid #edf2f7; color: #2d3748; font-weight: 600; border-radius: 10px; transition: 0.25s; opacity: 0; transform: translateY(15px); animation: fadeInUp 0.4s forwards; }
+        .btn-ep:hover { background: #ffcc00; border-color: #ffcc00; color: #1a1a2e; transform: translateY(-4px) scale(1.05); }
+        .btn-ep.selected { background: #ffcc00 !important; border-color: #ffcc00 !important; color: #1a1a2e !important; animation: epClickPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        
+        .btn-action { display: none; justify-content: center; align-items: center; gap: 10px; width: 100%; padding: 15px; background: #ffcc00; color: #1a1a2e; font-weight: 700; border-radius: 12px; transition: 0.3s; box-shadow: 0 8px 20px rgba(255, 193, 7, 0.3); font-size: 1.05rem; }
+        .btn-action:active { transform: scale(0.97); }
+        .btn-action svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+        .movie-content { text-align: center; margin-bottom: 25px; color: #4a5568; font-size: 1rem; font-weight: 600; }
+
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        @keyframes epClickPop { 0% { transform: scale(0.9); } 50% { transform: scale(1.15); box-shadow: 0 0 15px rgba(255, 193, 7, 0.6); } 100% { transform: scale(1); box-shadow: 0 4px 10px rgba(255, 193, 7, 0.3); } }
+
         @media (min-width: 769px) {
             .gallery { grid-template-columns: repeat(4, 1fr); }
             .card img { height: 350px; }
-            .chat-overlay { width: 360px; }
-            .category-list { justify-content: center; }
+            .slider-img { height: 380px; }
+            .episode-grid { grid-template-columns: repeat(6, 1fr); }
         }
     </style>
 </head>
 <body>
-<header>
-    <div class="container">
-        <div class="nav">
-            <h1>Free Links Gallery</h1>
-            
-            <div class="top-actions">
-                <button class="chat-toggle-btn" onclick="toggleChat()" title="Open Chat Room">💬</button>
-                <div class="hamburger" onclick="toggleMenu()">☰</div>
-            </div>
-            
-            <nav class="nav-links" id="navLinks">
-                <a href="#" onclick="toggleMenu()">🏠 Home</a>
-                <a href="#gallery" onclick="toggleMenu()">🎬 Links List</a>
-                <a href="https://chat.whatsapp.com/Hp8KdSUs8aZ8ljMWhQhxuM" target="_blank" class="btn-wa">🟢 WhatsApp Support</a>
-                <a href="https://www.facebook.com/share/1B4bJmCc6v/" target="_blank" class="btn-fb">🔵 Follow on Facebook</a>
-                <a href="https://t.me/your_contact" target="_blank">📞 Contact Us</a>
-                <a href="https://t.me/your_admin" target="_blank" class="facing-issue-btn">⚠️ Facing any issues?</a>
-            </nav>
-        </div>
-    </div>
-</header>
+
+<div class="top-header">
+    <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search movies, series..." onkeyup="advancedSearchEngine()">
+    
+    <a href="https://www.mediafire.com/file/1ochux34wjlxc97/freemovies.apk/file" target="_blank" class="download-app-btn">
+        <img src="https://i.ibb.co/35wbmNdV/app-logo-png.jpg" alt="App Logo" class="app-logo-img">
+        <small>GET APP</small>
+    </a>
+</div>
 
 <div class="container">
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search by name, keywords... (e.g. Mirzapur)" onkeyup="advancedSearchEngine()">
-    </div>
-
-    <div class="pinned-section" id="how-to-section">
-        <div class="card how-to-card">
-            <img src="https://i.ibb.co/Z3WPMqh/Screenshot-2026-05-15-13-07-20-69-f9ee0578fe1cc94de7482bd41accb329.jpg" alt="How to use site">
-            <div class="info">
-                <h3 style="font-size: 0.8rem; min-height: auto;">How to use site?</h3>
-                <a href="https://youtu.be/EZ1NetrfTzM?si=ArtdPFQ4d6W2UwO5" target="_blank" class="get-movie-btn btn-tutorial">▶️ WATCH TUTORIAL</a>
+    <div class="slider-section" id="sliderSection">
+        <div class="slider-container">
+            <div class="slider-track" id="featuredSlider">
+                <div class="slider-link"><img src="https://i.ibb.co/VcHzfQyF/Berlin-And-The-Lady-With-An-Ermine-Ending-Explained-What-Happened-In-The-Final-Heist-Of-This-Money-H.webp" class="slider-img"></div>
+                <div class="slider-link"><img src="https://i.ibb.co/h17ykPvg/Karuppu-cover-3e431ab0-13cb-11f1-8c32-a5338e06444d.jpg" class="slider-img"></div>
+                <div class="slider-link"><img src="https://i.ibb.co/Jw7WqVJj/maxresdefault.jpg" class="slider-img"></div>
+                <div class="slider-link"><img src="https://i.ibb.co/mVQt3b76/images-14.jpg" class="slider-img"></div>
+                <div class="slider-link"><img src="https://i.ibb.co/JjtH3GpT/images.webp" class="slider-img"></div>
             </div>
         </div>
     </div>
 
     <div class="category-wrapper" id="categoryWrapper">
-        <div class="category-list" id="categoryList">
+        <div class="category-list">
             <button class="cat-btn active" onclick="filterByCategory('All')">All</button>
             <button class="cat-btn" onclick="filterByCategory('Latest')">🆕 Latest</button>
             <button class="cat-btn" onclick="filterByCategory('Web Series')">Web Series</button>
@@ -157,44 +208,79 @@
     </div>
 </div>
 
-<div class="chat-overlay" id="chatOverlay">
-    <div class="chat-header">
-        <h3>💬 Discussion Chat</h3>
-        <button class="chat-close" onclick="toggleChat()">&times;</button>
+<div id="dynamicModal" class="modal">
+    <div class="modern-container">
+        <button class="modal-fav-btn" id="favToggleBtn" onclick="toggleFavourite()">
+            <span class="material-symbols-rounded">favorite</span>
+        </button>
+        <button class="modal-close-btn" onclick="closeModal()">&times;</button>
+        <h2 id="modalTitle" class="modal-title"></h2>
+        <div id="modalBody"></div>
+        <a href="#" id="modalActionBtn" target="_blank" class="btn-action">
+            <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Watch / Download
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        </a>
+    </div>
+</div>
+
+<div class="side-panel" id="chatOverlay">
+    <div class="panel-header">
+        <h3><span class="material-symbols-rounded">forum</span> Discussion Chat</h3>
+        <button class="panel-close" onclick="closePanels()">&times;</button>
     </div>
     <div class="chat-messages" id="chatMessages">
         <div class="msg msg-system">⚠️ Rules: Links sharing is strictly blocked in this chatroom!</div>
-        <div class="msg">Hello everyone! Welcome to the website. <span class="msg-time">12:40 PM</span></div>
+        <div class="msg">Welcome to our community! Feel free to ask for links.<span class="msg-time">12:40 PM</span></div>
     </div>
     <div class="chat-footer">
         <input type="text" class="chat-input" id="chatInput" placeholder="Write a message..." onkeypress="handleChatKey(event)">
-        <button class="chat-send-btn" onclick="sendChatMessage()">➔</button>
+        <button class="chat-send-btn" onclick="sendChatMessage()">
+            <span class="material-symbols-rounded">send</span>
+        </button>
     </div>
 </div>
 
-<div id="dynamicModal" class="modal">
-    <div class="modal-content">
-        <span onclick="closeModal()" style="color:#aaa; float:right; font-size:24px; cursor:pointer;">&times;</span>
-        <h2 id="modalTitle" style="color:#1a1a2e; margin-bottom:15px;"></h2>
-        <div id="modalBody"></div>
+<div class="side-panel" id="favOverlay">
+    <div class="panel-header">
+        <h3><span class="material-symbols-rounded">favorite</span> My Favourites</h3>
+        <button class="panel-close" onclick="closePanels()">&times;</button>
     </div>
+    <div class="panel-content" id="favContentArea"></div>
 </div>
 
-<footer>
-    <p class="anish-name">Made by <span>Anish</span></p>
-    <div class="sponsor-box">
-        <p style="font-size: 0.85rem; color: #555; font-weight: bold; margin-bottom: 5px;">Sponsor & Collab</p>
-        <a href="https://wa.me/919421675352" target="_blank" class="wa-link">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="16" alt="WA">
-            +91 9421675352
-        </a>
+<div class="side-panel" id="historyOverlay">
+    <div class="panel-header">
+        <h3><span class="material-symbols-rounded">history</span> Watch History</h3>
+        <button class="panel-close" onclick="closePanels()">&times;</button>
     </div>
-</footer>
+    <div class="panel-content" id="historyContentArea"></div>
+</div>
+
+<nav class="bottom-nav">
+    <a href="#" class="nav-item active" onclick="navAction('home', this)">
+        <div class="icon-wrapper"><span class="material-symbols-rounded">home</span></div>
+        <span class="nav-text">Home</span>
+    </a>
+    <a href="#" class="nav-item" onclick="navAction('chat', this)">
+        <div class="icon-wrapper"><span class="material-symbols-rounded">chat_bubble</span></div>
+        <span class="nav-text">Chat</span>
+    </a>
+    <a href="#" class="nav-item" onclick="navAction('favourite', this)">
+        <div class="icon-wrapper"><span class="material-symbols-rounded">favorite</span></div>
+        <span class="nav-text">Favourite</span>
+    </a>
+    <a href="#" class="nav-item" onclick="navAction('history', this)">
+        <div class="icon-wrapper"><span class="material-symbols-rounded">history</span></div>
+        <span class="nav-text">History</span>
+    </a>
+</nav>
 <script>
-    // 20,000+ Items Ready Data Structure
+    // 20,000+ Items Ready Data Structure (Zero Data Loss)
     const catalogData = [
         // 📌 PINNED AT TOP (Inki date sabse latest set ki gayi hai taaki ye top par rahein)
         { 
+            id: "pinned_berlin",
             type: "series", 
             title: "Berlin and the Lady with an Ermine [Hindi]", 
             img: "https://i.ibb.co/PZVxz70T/MV5-BODAw-OGFi-ZDIt-NGZk-Ny00-Zjdk-LThk-Mjkt-ZGY4-ZDE3-MDMy-ZWRh-Xk-Ey-Xk-Fqc-Gc-V1.jpg", 
@@ -215,8 +301,9 @@
                 ] 
             } 
         },
-        { type: "movie", title: "Karuppu", img: "https://i.ibb.co/ZzZGwztP/MV5-BZThh-MDA0-Mjct-Yzdm-YS00-Ym-Mx-LWE0-Nm-Ut-MDFi-ZTIz-MTA5-MWNi-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Action", trending: true, date: "2026-05-24", keywords: "south action mass", link: "https://www.diskwala.com/app/6a0ac6637996306c22f5c07b" },
+        { id: "pinned_karuppu", type: "movie", title: "Karuppu", img: "https://i.ibb.co/ZzZGwztP/MV5-BZThh-MDA0-Mjct-Yzdm-YS00-Ym-Mx-LWE0-Nm-Ut-MDFi-ZTIz-MTA5-MWNi-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Action", trending: true, date: "2026-05-24", keywords: "south action mass", link: "https://www.diskwala.com/app/6a0ac6637996306c22f5c07b" },
         { 
+            id: "pinned_aot",
             type: "series", 
             title: "Attack On Titan [All Seasons]", 
             img: "https://i.ibb.co/Kxm6rSFp/Attack-on-Titan.webp", 
@@ -232,6 +319,7 @@
             } 
         },
         { 
+            id: "pinned_jjk",
             type: "series", 
             title: "Jujutsu Kaisen [Hindi Dubbed]", 
             img: "https://i.ibb.co/QRwW9PM/images-2.jpg", 
@@ -246,8 +334,9 @@
             } 
         },
 
-        // 🆕 NEW LATEST ITEMS
+        // 🆕 LATEST ITEMS DATABASE
         { 
+            id: "item_bloodhounds",
             type: "series", 
             title: "Bloodhounds [All Seasons] Hindi Dubbed", 
             img: "https://i.ibb.co/CKtrR04K/p24811658-b-v8-ac.jpg", 
@@ -264,83 +353,340 @@
                 ] 
             } 
         },
-        { type: "movie", title: "Kalki 2898 AD", img: "https://i.ibb.co/nsxqpm4w/MV5-BMTM3-ZGUw-YTEt-ZTI5-NS00-Zm-My-LTk2-Ym-Qt-MWU4-Yjlh-ZTI3-Nj-Rj-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Action", trending: true, date: "2026-05-19", keywords: "prabhas sci-fi action pan india amitabh", link: "https://www.diskwala.com/app/6a0acad47996306c22f5ce67" },
-        { type: "movie", title: "Munjya", img: "https://via.placeholder.com/300x450.png?text=Munjya+Movie", category: "Horror", trending: true, date: "2026-05-19", keywords: "horror comedy bollywood abhay verma", link: "https://www.diskwala.com/app/6a0ac94f7996306c22f5c93f" },
-        { type: "movie", title: "The Goat Life", img: "https://i.ibb.co/pc4D6gz/403619-the-goat-life-0-230-0-345-crop.jpg", category: "Movies", trending: true, date: "2026-05-19", keywords: "drama survival true story prithviraj", link: "https://www.diskwala.com/app/6a0accf37996306c22f5d4d4" },
-        { type: "movie", title: "Your heart Will be broken", img: "https://i.ibb.co/spYC5Ft6/MV5-BMWVm-Yj-Vk-Mz-Yt-Yj-Y4-YS00-NGYx-LWE2-Zm-Mt-MDQ3-OTM1-ZWVl-Nj-U0-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Movies", trending: true, date: "2026-05-19", keywords: "drama romance heartbreak", link: "https://www.diskwala.com/app/6a0ad4c37996306c22f5ee54" },
-        { type: "movie", title: "Jetlee", img: "https://i.ibb.co/FLG2hLnz/MV5-BMjdk-MWE2-MTYt-ZDZm-NC00-MTEz-LWI1-MTIt-NWEx-ODQ4-Mz-Bi-ZWMz-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Action", trending: true, date: "2026-05-19", keywords: "action martial arts", link: "https://www.diskwala.com/app/6a0ad4847996306c22f5ed84" },
-        { type: "movie", title: "Main Actor Nahin hoon", img: "https://i.ibb.co/39RvGFhs/250px-Main-Actor-Nahin-Hoon.jpg", category: "Movies", trending: true, date: "2026-05-19", keywords: "drama comedy bollywood", link: "https://www.diskwala.com/app/6a0ad43c7996306c22f5ecce" },
-        { type: "movie", title: "Gaayapadda Simham", img: "https://i.ibb.co/pvJ36vbP/MV5-BYTdl-Mj-I2-Nm-It-Nz-Bl-YS00-Mm-Vk-LWEz-Yj-It-ZWQ2-M2-Q4-NTI4-Nj-I0-Xk-Ey-Xk-Fqc-Gc-V1-QL75-UY281-CR11-0.jpg", category: "Action", trending: true, date: "2026-05-19", keywords: "south indian action dub", link: "https://www.diskwala.com/app/6a0ad12e7996306c22f5e237" },
-        { type: "movie", title: "Ek Din", img: "https://i.ibb.co/pBxXShSZ/MV5-BYz-Vh-Nm-Vh-Yz-Ut-Yjhh-Yy00-ZGY0-LTlm-MTQt-Nj-A2-ZDk2-OGFi-Nzll-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Movies", trending: true, date: "2026-05-19", keywords: "thriller drama hindi", link: "https://www.diskwala.com/app/6a0ad2547996306c22f5e5ed" },
-        { type: "movie", title: "Ginny Wedss Sunny 2", img: "https://i.ibb.co/gZxhYDqn/ginny-wedss-sunny-2-starring-avinash-tiwary-to-release-on-april-24.jpg", category: "Movies", trending: true, date: "2026-05-19", keywords: "comedy romance sequel bollywood", link: "https://www.diskwala.com/app/6a0ad3217996306c22f5e8fe" },
-        { type: "movie", title: "Michael", img: "https://i.ibb.co/d4HZPVGp/Michael-official-poster.jpg", category: "Action", trending: true, date: "2026-05-19", keywords: "action thriller south dub", link: "https://www.diskwala.com/app/6a0ad3d07996306c22f5eb58" },
+        { id: "item_kalki", type: "movie", title: "Kalki 2898 AD", img: "https://i.ibb.co/nsxqpm4w/MV5-BMTM3-ZGUw-YTEt-ZTI5-NS00-Zm-My-LTk2-Ym-Qt-MWU4-Yjlh-ZTI3-Nj-Rj-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Action", trending: true, date: "2026-05-19", keywords: "prabhas sci-fi action pan india amitabh", link: "https://www.diskwala.com/app/6a0acad47996306c22f5ce67" },
+        { id: "item_munjya", type: "movie", title: "Munjya", img: "https://via.placeholder.com/300x450.png?text=Munjya+Movie", category: "Horror", trending: true, date: "2026-05-19", keywords: "horror comedy bollywood abhay verma", link: "https://www.diskwala.com/app/6a0ac94f7996306c22f5c93f" },
+        { id: "item_goatlife", type: "movie", title: "The Goat Life", img: "https://i.ibb.co/pc4D6gz/403619-the-goat-life-0-230-0-345-crop.jpg", category: "Movies", trending: true, date: "2026-05-19", keywords: "drama survival true story prithviraj", link: "https://www.diskwala.com/app/6a0accf37996306c22f5d4d4" },
+        { id: "item_heartbroken", type: "movie", title: "Your heart Will be broken", img: "https://i.ibb.co/spYC5Ft6/MV5-BMWVm-Yj-Vk-Mz-Yt-Yj-Y4-YS00-NGYx-LWE2-Zm-Mt-MDQ3-OTM1-ZWVl-Nj-U0-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Movies", trending: true, date: "2026-05-19", keywords: "drama romance heartbreak", link: "https://www.diskwala.com/app/6a0ad4c37996306c22f5ee54" },
+        { id: "item_jetlee", type: "movie", title: "Jetlee", img: "https://i.ibb.co/FLG2hLnz/MV5-BMjdk-MWE2-MTYt-ZDZm-NC00-MTEz-LWI1-MTIt-NWEx-ODQ4-Mz-Bi-ZWMz-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Action", trending: true, date: "2026-05-19", keywords: "action martial arts", link: "https://www.diskwala.com/app/6a0ad4847996306c22f5ed84" },
+        { id: "item_mainactor", type: "movie", title: "Main Actor Nahin hoon", img: "https://i.ibb.co/39RvGFhs/250px-Main-Actor-Nahin-Hoon.jpg", category: "Movies", trending: true, date: "2026-05-19", keywords: "drama comedy bollywood", link: "https://www.diskwala.com/app/6a0ad43c7996306c22f5ecce" },
+        { id: "item_simham", type: "movie", title: "Gaayapadda Simham", img: "https://i.ibb.co/pvJ36vbP/MV5-BYTdl-Mj-I2-Nm-It-Nz-Bl-YS00-Mm-Vk-LWEz-Yj-It-ZWQ2-M2-Q4-NTI4-Nj-I0-Xk-Ey-Xk-Fqc-Gc-V1-QL75-UY281-CR11-0.jpg", category: "Action", trending: true, date: "2026-05-19", keywords: "south indian action dub", link: "https://www.diskwala.com/app/6a0ad12e7996306c22f5e237" },
+        { id: "item_ekdin", type: "movie", title: "Ek Din", img: "https://i.ibb.co/pBxXShSZ/MV5-BYz-Vh-Nm-Vh-Yz-Ut-Yjhh-Yy00-ZGY0-LTlm-MTQt-Nj-A2-ZDk2-OGFi-Nzll-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Movies", trending: true, date: "2026-05-19", keywords: "thriller drama hindi", link: "https://www.diskwala.com/app/6a0ad2547996306c22f5e5ed" },
+        { id: "item_ginny2", type: "movie", title: "Ginny Wedss Sunny 2", img: "https://i.ibb.co/gZxhYDqn/ginny-wedss-sunny-2-starring-avinash-tiwary-to-release-on-april-24.jpg", category: "Movies", trending: true, date: "2026-05-19", keywords: "comedy romance sequel bollywood", link: "https://www.diskwala.com/app/6a0ad3217996306c22f5e8fe" },
+        { id: "item_michael", type: "movie", title: "Michael", img: "https://i.ibb.co/d4HZPVGp/Michael-official-poster.jpg", category: "Action", trending: true, date: "2026-05-19", keywords: "action thriller south dub", link: "https://www.diskwala.com/app/6a0ad3d07996306c22f5eb58" },
         
-        // 🎬 ALL PREVIOUS ITEMS
-        { type: "movie", title: "Kantara : A legend Chapter 1", img: "https://i.ibb.co/KzfT2JH4/MV5-BNDU2-ZTYx-YTMt-Mjhl-ZC00-Zj-Ew-LThh-NDUt-Mzdl-NWM4-ZDcy-YTM1-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Action", trending: true, date: "2026-05-17", keywords: "kantara rishab shetty south pan india legend", link: "https://www.diskwala.com/app/6a096e567996306c22f27553" },
-        { type: "movie", title: "Kuttey", img: "https://i.ibb.co/FbTPZQFs/MV5-BYWM2-ZDUx-OTQt-N2-Iy-Mi00-Mm-Vj-LWFl-NDEt-Nz-Jh-MDhh-Yz-Qz-ZWY4-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Action", trending: true, date: "2026-05-17", keywords: "kuttey arjun kapoor tabu bollywood thriller", link: "https://www.diskwala.com/app/6a096db67996306c22f2737b" },
-        { type: "movie", title: "Salaar", img: "https://i.ibb.co/rG3cFbZJ/MV5-BNTU0-Zj-Yx-OWIt-OWVi-MC00-YWVl-LWJl-MGUt-Zjc1-YWU0-NTlh-Y2-Zh-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Action", trending: true, date: "2026-05-17", keywords: "salaar prabhas prashanth neel action mass", link: "https://www.diskwala.com/app/6a096ca07996306c22f27035" },
-        { type: "movie", title: "KGF", img: "https://i.ibb.co/7JwksDwD/MV5-BM2-M0-Ym-Ix-Nz-It-OWI4-My00-Mm-Qz-LWE0-NGYt-ZTM3-Njll-Nj-Iw-Zjc5-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX10", category: "Action", trending: true, date: "2026-05-17", keywords: "kgf rocky bhai yash prashanth neel action", link: "https://www.diskwala.com/app/6a096eee7996306c22f27749" },
-        { type: "movie", title: "KGF 2", img: "https://i.ibb.co/8LW2ykgg/dbe30e1e25813a698e0da679a5968c380bd2d1b4e6966394d4c964c6b3301896.jpg", category: "Action", trending: true, date: "2026-05-17", keywords: "kgf 2 rocky bhai yash sanjay dutt action mass", link: "https://www.diskwala.com/app/6a096f7c7996306c22f278f7" },
-        { type: "movie", title: "Border 2", img: "https://i.ibb.co/vxqbrbt0/MV5-BYjdh-Nm-E4-MTIt-Yj-Zl-Yi00-Mj-Q2-LTli-OGMt-N2-Vi-Mz-U0-M2-M3-ODMy-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Action", trending: true, date: "2026-05-16", keywords: "sunny deol army war pakistan india military", link: "https://www.diskwala.com/app/69fc56fdd96f6381179ea8a2" },
-        { type: "movie", title: "Jawan", img: "https://i.ibb.co/FkwKTRrF/Jawan-Poster-427d3d40-b0f7-11f0-9c89-990595781563.jpg", category: "Action", trending: true, date: "2026-05-16", keywords: "shah rukh khan srk atlee bollywood action mass", link: "https://www.diskwala.com/app/6a084d537996306c22efc265" },
-        { type: "movie", title: "Laapataa Ladies", img: "https://i.ibb.co/99tsbVPG/MV5-BY2-Vh-MGZk-MTQt-Yj-U4-MC00-MWM5-LWI1-Nzct-ZDQw-YTNk-Zj-Nh-NGY1-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Movies", trending: true, date: "2026-05-16", keywords: "kiran rao amir khan comedy drama village hindi phool", link: "https://www.diskwala.com/app/6a084aab7996306c22efbb57" },
-        { type: "movie", title: "War 2", img: "https://i.ibb.co/x8Ymf10g/MV5-BNj-Y5-OTg4-NTYt-Zj-Vk-ZS00-YTZm-LWIw-NDEt-M2-Y0-ODQy-Mz-M2-NTJi-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Action", trending: true, date: "2026-05-16", keywords: "hrithik roshan jr ntr yrf spy universe bollywood", link: "https://www.diskwala.com/app/6a058ad17996306c22e9171f" },
-        { type: "movie", title: "Jolly LLB 3", img: "https://i.ibb.co/Dfv6sFCx/images-7.jpg", category: "Movies", trending: true, date: "2026-05-16", keywords: "akshay kumar arshad warsi comedy court drama", link: "https://www.diskwala.com/app/6a058da57996306c22e91ff8" },
-        { type: "movie", title: "Animal [Hindi Dubbed]", img: "https://i.ibb.co/q308MPjB/MV5-BZThm-NDg1-Nj-Ut-NWJh-MC00-Yj-A3-LWJi-Mj-It-Nm-M4-ZDQ5-ZGZi-N2-Y2-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Action", trending: true, date: "2026-05-15", keywords: "ranbir kapoor sandeep reddy vanga violent blood mafia", link: "https://www.diskwala.com/app/6a0846107996306c22efaf0e" },
-        { type: "series", title: "Mirzapur [All Seasons]", img: "https://i.ibb.co/YBm6Hm9P/p0q-M8hhl-MF5-Dux-HBzl2-EZR6-Teh-X.jpg", category: "Web Series", trending: true, date: "2026-05-14", keywords: "kaleen bhaiya munna guddu pandit ali fazal pankaj tripathi gangster up crime", seasons: { "Season 1": ["https://www.diskwala.com/app/6a0595757996306c22e93890","https://www.diskwala.com/app/6a0595947996306c22e938de","https://www.diskwala.com/app/6a0597087996306c22e93d59","https://www.diskwala.com/app/6a0596ed7996306c22e93d1c","https://www.diskwala.com/app/6a0597867996306c22e93ede","https://www.diskwala.com/app/6a05975b7996306c22e93e3a","https://www.diskwala.com/app/6a0597d87996306c22e93fd7","https://www.diskwala.com/app/6a0597c97996306c22e93fae","https://www.diskwala.com/app/6a05979f7996306c22e93f29"], "Season 2": ["https://www.diskwala.com/app/6a0598687996306c22e94151","https://www.diskwala.com/app/6a0598107996306c22e94042","https://www.diskwala.com/app/6a0597fb7996306c22e94018","https://www.diskwala.com/app/6a05984b7996306c22e94102","https://www.diskwala.com/app/6a0598297996306c22e9409a","https://www.diskwala.com/app/6a05989f7996306c22e94227","https://www.diskwala.com/app/6a0598ba7996306c22e9425a","https://www.diskwala.com/app/6a0599007996306c22e94333","https://www.diskwala.com/app/6a0599157996306c22e9438d","https://www.diskwala.com/app/6a0598e27996306c22e942d4"], "Season 3": ["https://www.diskwala.com/app/6a059a257996306c22e94697","https://www.diskwala.com/app/6a059a0a7996306c22e94649","https://www.diskwala.com/app/6a059a207996306c22e9467d","https://www.diskwala.com/app/6a059a0a7996306c22e9464d","https://www.diskwala.com/app/6a059a2f7996306c22e946b4","https://www.diskwala.com/app/6a059a9b7996306c22e9481e","https://www.diskwala.com/app/6a059a937996306c22e94802","https://www.diskwala.com/app/6a059a7d7996306c22e947b9","https://www.diskwala.com/app/6a059a7e7996306c22e947c2","https://www.diskwala.com/app/6a059a877996306c22e947e4"] } },
-        { type: "series", title: "Squid Game [All Seasons]", img: "https://i.ibb.co/0pYbDPb6/IMG-20260515-132558.jpg", category: "Web Series", trending: true, date: "2026-05-13", keywords: "red light green light netflix korean survival death game", seasons: { "Season 1": ["https://www.diskwala.com/app/6a06c7667996306c22ec0f98","https://www.diskwala.com/app/6a06c7bd7996306c22ec108c","https://www.diskwala.com/app/6a06c6a37996306c22ec0d61","https://www.diskwala.com/app/6a06c7117996306c22ec0ee4","https://www.diskwala.com/app/6a06c6d67996306c22ec0e2d","https://www.diskwala.com/app/6a06c8567996306c22ec11ef","https://www.diskwala.com/app/6a06c9a67996306c22ec1565","https://www.diskwala.com/app/6a06c8e47996306c22ec1394","https://www.diskwala.com/app/6a06c8a67996306c22ec12c4"], "Season 2": ["https://www.diskwala.com/app/6a06c9647996306c22ec14ab","https://www.diskwala.com/app/6a06cb767996306c22ec19fb","https://www.diskwala.com/app/6a06ca3f7996306c22ec16ba","https://www.diskwala.com/app/6a06cd5f7996306c22ec1ee7","https://www.diskwala.com/app/6a06cb2b7996306c22ec1917","https://www.diskwala.com/app/6a06cbe57996306c22ec1b35","https://www.diskwala.com/app/6a06ce447996306c22ec21ac"], "Season 3": ["https://www.diskwala.com/app/6a06cf017996306c22ec23c9","https://www.diskwala.com/app/6a06cded7996306c22ec204c","https://www.diskwala.com/app/6a06cf697996306c22ec253d","https://www.diskwala.com/app/6a06d3ff7996306c22ec3354","https://www.diskwala.com/app/6a06d1517996306c22ec2b91","https://www.diskwala.com/app/6a06d0ed7996306c22ec2a73"] } },
-        { type: "movie", title: "The Dark Knight", img: "https://i.ibb.co/fdm3HF5b/MV5-BMTMx-NTMw-ODM0-NF5-BMl5-Ban-Bn-Xk-Ft-ZTcw-ODAy-MTk2-Mw-V1.jpg", category: "Action", trending: false, date: "2026-05-01", keywords: "batman joker christian bale christopher nolan dc superhero english hollywood", link: "https://www.diskwala.com/app/6a084b937996306c22efbd9e" },
-        { type: "movie", title: "Tikdam", img: "https://i.ibb.co/MywTcqRM/MV5-BYm-Uw-Yj-Ex-ZDMt-Mjc2-OC00-Zm-Fm-LTky-N2-Et-Zj-Q3-N2-Nm-N2-Ni-MGE4-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Movies", trending: false, date: "2026-05-02", keywords: "family drama emotional hindi", link: "https://www.diskwala.com/app/6a0847f67996306c22efb431" },
-        { type: "movie", title: "Mortal Kombat II (2026)", img: "https://i.ibb.co/d92Dygk/images-12.jpg", category: "Action", trending: false, date: "2026-05-11", keywords: "fighting game sub zero scorpion fatality blood action", link: "https://www.diskwala.com/app/6a06d2a07996306c22ec2f62" },
-        { type: "movie", title: "Krishnavataram", img: "https://i.ibb.co/CspDxNJY/images-3.jpg", category: "Movies", trending: false, date: "2026-05-10", keywords: "south indian dub mythology", link: "https://www.diskwala.com/app/6a05a0c07996306c22e9594d" },
-        { type: "movie", title: "Deep Water", img: "https://i.ibb.co/7N4gt4VT/images-4.jpg", category: "Movies", trending: false, date: "2026-05-09", keywords: "thriller suspense english", link: "https://www.diskwala.com/app/6a05a0527996306c22e95801" },
-        { type: "movie", title: "Tere Ishk Mein", img: "https://i.ibb.co/1fj230ST/images-5.jpg", category: "Movies", trending: false, date: "2026-05-08", keywords: "bollywood romance love", link: "https://www.diskwala.com/app/6a0597177996306c22e93d95" },
-        { type: "movie", title: "Lokah Chapter 1", img: "https://i.ibb.co/hRdFz6sG/images-6.jpg", category: "Action", trending: false, date: "2026-05-07", keywords: "new south action fantasy", link: "https://www.diskwala.com/app/6a058a527996306c22e915b7" },
-        { type: "movie", title: "Jaat", img: "https://i.ibb.co/LhPqtHV8/images-8.jpg", category: "Action", trending: false, date: "2026-05-06", keywords: "sunny deol action mass", link: "https://www.diskwala.com/app/6a0591ce7996306c22e92ca5" },
-        { type: "movie", title: "Haq", img: "https://i.ibb.co/yFW9V0sS/Haq-film-2025.jpg", category: "Movies", trending: false, date: "2026-05-05", keywords: "drama emotional true story", link: "https://www.diskwala.com/app/6a0591e77996306c22e92cdc" },
-        { type: "movie", title: "Dude", img: "https://i.ibb.co/gMdpYM2j/images-9.jpg", category: "Movies", trending: false, date: "2026-05-04", keywords: "comedy adventure fun", link: "https://www.diskwala.com/app/6a05938c7996306c22e9327b" },
-        { type: "movie", title: "Chhorii 2", img: "https://i.ibb.co/RT4Tz1KD/images-10.jpg", category: "Horror", trending: false, date: "2026-05-03", keywords: "nushrratt bharuccha scary ghost ghost bollywood", link: "https://www.diskwala.com/app/6a05944d7996306c22e934d3" },
-        { type: "movie", title: "Vash level 2", img: "https://i.ibb.co/ch4vvdrM/Official-Poster-of-Vash-Level-2.jpg", category: "Horror", trending: false, date: "2026-05-02", keywords: "gujarati shaitaan scary thriller", link: "https://www.diskwala.com/app/6a0594e37996306c22e93671" },
-        { type: "movie", title: "Bhool Chuk Maaf", img: "https://i.ibb.co/PG51Vcwh/bhool-chuk-maaf.jpg", category: "Movies", trending: false, date: "2026-04-30", keywords: "kartik aaryan comedy bollywood", link: "https://www.diskwala.com/app/6a0585947996306c22e9066a" },
-        { type: "movie", title: "Vash", img: "https://i.ibb.co/DPKsyGSW/images-11.jpg", category: "Horror", trending: false, date: "2026-04-29", keywords: "gujarati shaitaan black magic horror", link: "https://www.diskwala.com/app/6a0586927996306c22e90a26" },
-        { type: "movie", title: "Thamma (2026)", img: "https://i.ibb.co/JjJ0K2Fb/1000023785.jpg", category: "Movies", trending: false, date: "2026-04-28", keywords: "south hindi dubbed", link: "https://www.diskwala.com/app/6a0191547996306c22e02a05" },
-        { type: "movie", title: "Bigil (2026)", img: "https://i.ibb.co/Q3jSDW3C/a0ddf192b5103e62a0591d540962e94fcb93dd155e2f64b54d5e3a9d7faa32c8.jpg", category: "Action", trending: false, date: "2026-04-27", keywords: "vijay thalapathy football mass sports", link: "https://www.diskwala.com/app/69f6f34d49748cec6c20b7ac" },
-        { type: "movie", title: "Jana Nayagan", img: "https://i.ibb.co/4ZHFsXB8/mqdefault.jpg", category: "Action", trending: false, date: "2026-04-26", keywords: "south hindi dub politics", link: "https://www.diskwala.com/app/69ff436fd96f638117a5a071" },
-        { type: "movie", title: "Liger", img: "https://i.ibb.co/SZv9TQK/Liger.webp", category: "Action", trending: false, date: "2026-04-25", keywords: "vijay devarakonda ananya panday boxing fighting", link: "https://www.diskwala.com/app/6a01c1f57996306c22e0b3a6" },
-        { type: "movie", title: "Charly 777", img: "https://i.ibb.co/j9M52Nvm/80667a21179842c3592700d782df4831339c32cdff79e9b7a7ce5087fc6431b1.png", category: "Movies", trending: false, date: "2026-04-24", keywords: "dog emotional rakshit shetty pet", link: "https://www.diskwala.com/app/69fdaeead96f638117a1eeff" },
-        { type: "movie", title: "Dhurandhar 2", img: "https://i.ibb.co/zWDM56md/MV5-BNTU1-Zjk4-MTYt-Mjc2-YS00-Nj-I5-LWJk-OWEt-Mj-Jl-OGQ0-ZTVj-Nm-Fj-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Movies", trending: false, date: "2026-04-23", keywords: "south dub part 2 action", link: "https://www.diskwala.com/app/69fc9a56d96f6381179f6b79" },
-        { type: "movie", title: "Miraculous Ladybug", img: "https://i.ibb.co/q3RCHB0W/ladybug-and-cat-noir-awakening.jpg", category: "Anime", trending: false, date: "2026-04-22", keywords: "animation cartoon kids superhero paris cat noir", link: "https://www.diskwala.com/app/6a0484077996306c22e6de07" },
-        { type: "movie", title: "Leo", img: "https://i.ibb.co/j9PHBFbT/Leo-2023-Indian-film.jpg", category: "Action", trending: false, date: "2026-04-21", keywords: "vijay thalapathy lokesh lcu mass gangster", link: "https://www.diskwala.com/app/6a0466967996306c22e69908" },
-        { type: "movie", title: "Saiyaraa", img: "https://i.ibb.co/F41YyGKZ/MV5-BMTk2-Zm-Fh-Yjct-YWZi-Yy00-N2-Ix-LWEz-MWIt-ZGRi-MDY4-ZDQw-ZWFl-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Movies", trending: false, date: "2026-04-20", keywords: "romance drama hindi dub", link: "https://www.diskwala.com/app/6a0450937996306c22e65f6f" },
-        { type: "movie", title: "War Machine", img: "https://i.ibb.co/qMwnBrYq/AAAABSHp-Pk-Dfq-o-ZUwqi-Fl-Qn-JHFXw-DRRFn6-GVtcj2-A2u-Rf-Tk0r-Lxp-Y6-Qqdhe-LAEj0j-Hja-GTBHys-ERs-YAw-Vc.jpg", category: "Action", trending: false, date: "2026-04-19", keywords: "hollywood brad pitt military action", link: "https://www.diskwala.com/app/6a0444b67996306c22e6411e" },
-        { type: "movie", title: "Attack", img: "https://i.ibb.co/Gf5FdhKf/MV5-BZWYz-NDcx-Nj-Qt-NDZj-NS00-M2-U3-LTlk-OTIt-NDc4-Nzhk-Mj-Yx-Nz-Fk-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Action", trending: false, date: "2026-04-18", keywords: "john abraham sci fi soldier robot", link: "https://www.diskwala.com/app/6a0443ae7996306c22e63e61" },
-        { type: "movie", title: "Gabbar Is Back", img: "https://i.ibb.co/7tRXJB0x/MV5-BMj-Qy-MTY1-NTc1-NV5-BMl5-Ban-Bn-Xk-Ft-ZTgw-ODUz-MDIy-NTE-V1.jpg", category: "Action", trending: false, date: "2026-04-17", keywords: "akshay kumar corruption police action", link: "https://www.diskwala.com/app/6a04247f7996306c22e5ebf1" },
-        { type: "movie", title: "Dhurandhar 1", img: "https://i.ibb.co/C5VJmNBS/250px-Dhurandhar-poster.jpg", category: "Movies", trending: false, date: "2026-04-16", keywords: "south hindi dub action part 1", link: "https://www.diskwala.com/app/6a0443197996306c22e63ce1" }
+        // 🎬 PREVIOUS HISTORY CATALOGUE ITEMS
+        { id: "item_kantara", type: "movie", title: "Kantara : A legend Chapter 1", img: "https://i.ibb.co/KzfT2JH4/MV5-BNDU2-ZTYx-YTMt-Mjhl-ZC00-Zj-Ew-LThh-NDUt-Mzdl-NWM4-ZDcy-YTM1-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Action", trending: true, date: "2026-05-17", keywords: "kantara rishab shetty south pan india legend", link: "https://www.diskwala.com/app/6a096e567996306c22f27553" },
+        { id: "item_kuttey", type: "movie", title: "Kuttey", img: "https://i.ibb.co/FbTPZQFs/MV5-BYWM2-ZDUx-OTQt-N2-Iy-Mi00-Mm-Vj-LWFl-NDEt-Nz-Jh-MDhh-Yz-Qz-ZWY4-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Action", trending: true, date: "2026-05-17", keywords: "kuttey arjun kapoor tabu bollywood thriller", link: "https://www.diskwala.com/app/6a096db67996306c22f2737b" },
+        { id: "item_salaar", type: "movie", title: "Salaar", img: "https://i.ibb.co/rG3cFbZJ/MV5-BNTU0-Zj-Yx-OWIt-OWVi-MC00-YWVl-LWJl-MGUt-Zjc1-YWU0-NTlh-Y2-Zh-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Action", trending: true, date: "2026-05-17", keywords: "salaar prabhas prashanth neel action mass", link: "https://www.diskwala.com/app/6a096ca07996306c22f27035" },
+        { id: "item_kgf", type: "movie", title: "KGF", img: "https://i.ibb.co/7JwksDwD/MV5-BM2-M0-Ym-Ix-Nz-It-OWI4-My00-Mm-Qz-LWE0-NGYt-ZTM3-Njll-Nj-Iw-Zjc5-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX10", category: "Action", trending: true, date: "2026-05-17", keywords: "kgf rocky bhai yash prashanth neel action", link: "https://www.diskwala.com/app/6a096eee7996306c22f27749" },
+        { id: "item_kgf2", type: "movie", title: "KGF 2", img: "https://i.ibb.co/8LW2ykgg/dbe30e1e25813a698e0da679a5968c380bd2d1b4e6966394d4c964c6b3301896.jpg", category: "Action", trending: true, date: "2026-05-17", keywords: "kgf 2 rocky bhai yash sanjay dutt action mass", link: "https://www.diskwala.com/app/6a096f7c7996306c22f278f7" },
+        { id: "item_border2", type: "movie", title: "Border 2", img: "https://i.ibb.co/vxqbrbt0/MV5-BYjdh-Nm-E4-MTIt-Yj-Zl-Yi00-Mj-Q2-LTli-OGMt-N2-Vi-Mz-U0-M2-M3-ODMy-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Action", trending: true, date: "2026-05-16", keywords: "sunny deol army war pakistan india military", link: "https://www.diskwala.com/app/69fc56fdd96f6381179ea8a2" },
+        { id: "item_jawan", type: "movie", title: "Jawan", img: "https://i.ibb.co/FkwKTRrF/Jawan-Poster-427d3d40-b0f7-11f0-9c89-990595781563.jpg", category: "Action", trending: true, date: "2026-05-16", keywords: "shah rukh khan srk atlee bollywood action mass", link: "https://www.diskwala.com/app/6a084d537996306c22efc265" },
+        { id: "item_laapataa", type: "movie", title: "Laapataa Ladies", img: "https://i.ibb.co/99tsbVPG/MV5-BY2-Vh-MGZk-MTQt-Yj-U4-MC00-MWM5-LWI1-Nzct-ZDQw-YTNk-Zj-Nh-NGY1-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Movies", trending: true, date: "2026-05-16", keywords: "kiran rao amir khan comedy drama village hindi phool", link: "https://www.diskwala.com/app/6a084aab7996306c22efbb57" },
+        { id: "item_war2", type: "movie", title: "War 2", img: "https://i.ibb.co/x8Ymf10g/MV5-BNj-Y5-OTg4-NTYt-Zj-Vk-ZS00-YTZm-LWIw-NDEt-M2-Y0-ODQy-Mz-M2-NTJi-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Action", trending: true, date: "2026-05-16", keywords: "hrithik roshan jr ntr yrf spy universe bollywood", link: "https://www.diskwala.com/app/6a058ad17996306c22e9171f" },
+        { id: "item_jolly3", type: "movie", title: "Jolly LLB 3", img: "https://i.ibb.co/Dfv6sFCx/images-7.jpg", category: "Movies", trending: true, date: "2026-05-16", keywords: "akshay kumar arshad warsi comedy court drama", link: "https://www.diskwala.com/app/6a058da57996306c22e91ff8" },
+        { id: "item_animal", type: "movie", title: "Animal [Hindi Dubbed]", img: "https://i.ibb.co/q308MPjB/MV5-BZThm-NDg1-Nj-Ut-NWJh-MC00-Yj-A3-LWJi-Mj-It-Nm-M4-ZDQ5-ZGZi-N2-Y2-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Action", trending: true, date: "2026-05-15", keywords: "ranbir kapoor sandeep reddy vanga violent blood mafia", link: "https://www.diskwala.com/app/6a0846107996306c22efaf0e" },
+        { 
+            id: "item_mirzapur",
+            type: "series", 
+            title: "Mirzapur [All Seasons]", 
+            img: "https://i.ibb.co/YBm6Hm9P/p0q-M8hhl-MF5-Dux-HBzl2-EZR6-Teh-X.jpg", 
+            category: "Web Series", 
+            trending: true, 
+            date: "2026-05-14", 
+            keywords: "kaleen bhaiya munna guddu pandit ali fazal pankaj tripathi gangster up crime", 
+            seasons: { "Season 1": ["https://www.diskwala.com/app/6a0595757996306c22e93890","https://www.diskwala.com/app/6a0595947996306c22e938de","https://www.diskwala.com/app/6a0597087996306c22e93d59","https://www.diskwala.com/app/6a0596ed7996306c22e93d1c","https://www.diskwala.com/app/6a0597867996306c22e93ede","https://www.diskwala.com/app/6a05975b7996306c22e93e3a","https://www.diskwala.com/app/6a0597d87996306c22e93fd7","https://www.diskwala.com/app/6a0597c97996306c22e93fae","https://www.diskwala.com/app/6a05979f7996306c22e93f29"], "Season 2": ["https://www.diskwala.com/app/6a0598687996306c22e94151","https://www.diskwala.com/app/6a0598107996306c22e94042","https://www.diskwala.com/app/6a0597fb7996306c22e94018","https://www.diskwala.com/app/6a05984b7996306c22e94102","https://www.diskwala.com/app/6a0598297996306c22e9409a","https://www.diskwala.com/app/6a05989f7996306c22e94227","https://www.diskwala.com/app/6a0598ba7996306c22e9425a","https://www.diskwala.com/app/6a0599007996306c22e94333","https://www.diskwala.com/app/6a0599157996306c22e9438d","https://www.diskwala.com/app/6a0598e27996306c22e942d4"], "Season 3": ["https://www.diskwala.com/app/6a059a257996306c22e94697","https://www.diskwala.com/app/6a059a0a7996306c22e94649","https://www.diskwala.com/app/6a059a207996306c22e9467d","https://www.diskwala.com/app/6a059a0a7996306c22e9464d","https://www.diskwala.com/app/6a059a2f7996306c22e946b4","https://www.diskwala.com/app/6a059a9b7996306c22e9481e","https://www.diskwala.com/app/6a059a937996306c22e94802","https://www.diskwala.com/app/6a059a7d7996306c22e947b9","https://www.diskwala.com/app/6a059a7e7996306c22e947c2","https://www.diskwala.com/app/6a059a877996306c22e947e4"] } 
+        },
+        { 
+            id: "item_squidgame",
+            type: "series", 
+            title: "Squid Game [All Seasons]", 
+            img: "https://i.ibb.co/0pYbDPb6/IMG-20260515-132558.jpg", 
+            category: "Web Series", 
+            trending: true, 
+            date: "2026-05-13", 
+            keywords: "red light green light netflix korean survival death game", 
+            seasons: { "Season 1": ["https://www.diskwala.com/app/6a06c7667996306c22ec0f98","https://www.diskwala.com/app/6a06c7bd7996306c22ec108c","https://www.diskwala.com/app/6a06c6a37996306c22ec0d61","https://www.diskwala.com/app/6a06c7117996306c22ec0ee4","https://www.diskwala.com/app/6a06c6d67996306c22ec0e2d","https://www.diskwala.com/app/6a06c8567996306c22ec11ef","https://www.diskwala.com/app/6a06c9a67996306c22ec1565","https://www.diskwala.com/app/6a06c8e47996306c22ec1394","https://www.diskwala.com/app/6a06c8a67996306c22ec12c4"], "Season 2": ["https://www.diskwala.com/app/6a06c9647996306c22ec14ab","https://www.diskwala.com/app/6a06cb767996306c22ec19fb","https://www.diskwala.com/app/6a06ca3f7996306c22ec16ba","https://www.diskwala.com/app/6a06cd5f7996306c22ec1ee7","https://www.diskwala.com/app/6a06cb2b7996306c22ec1917","https://www.diskwala.com/app/6a06cbe57996306c22ec1b35","https://www.diskwala.com/app/6a06ce447996306c22ec21ac"], "Season 3": ["https://www.diskwala.com/app/6a06cf017996306c22ec23c9","https://www.diskwala.com/app/6a06cded7996306c22ec204c","https://www.diskwala.com/app/6a06cf697996306c22ec253d","https://www.diskwala.com/app/6a06d3ff7996306c22ec3354","https://www.diskwala.com/app/6a06d1517996306c22ec2b91","https://www.diskwala.com/app/6a06d0ed7996306c22ec2a73"] } 
+        },
+        { id: "item_darkknight", type: "movie", title: "The Dark Knight", img: "https://i.ibb.co/fdm3HF5b/MV5-BMTMx-NTMw-ODM0-NF5-BMl5-Ban-Bn-Xk-Ft-ZTcw-ODAy-MTk2-Mw-V1.jpg", category: "Action", trending: false, date: "2026-05-01", keywords: "batman joker christian bale christopher nolan dc superhero english hollywood", link: "https://www.diskwala.com/app/6a084b937996306c22efbd9e" },
+        { id: "item_tikdam", type: "movie", title: "Tikdam", img: "https://i.ibb.co/MywTcqRM/MV5-BYm-Uw-Yj-Ex-ZDMt-Mjc2-OC00-Zm-Fm-LTky-N2-Et-Zj-Q3-N2-Nm-N2-Ni-MGE4-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Movies", trending: false, date: "2026-05-02", keywords: "family drama emotional hindi", link: "https://www.diskwala.com/app/6a0847f67996306c22efb431" },
+        { id: "item_mk2", type: "movie", title: "Mortal Kombat II (2026)", img: "https://i.ibb.co/d92Dygk/images-12.jpg", category: "Action", trending: false, date: "2026-05-11", keywords: "fighting game sub zero scorpion fatality blood action", link: "https://www.diskwala.com/app/6a06d2a07996306c22ec2f62" },
+        { id: "item_krishnavataram", type: "movie", title: "Krishnavataram", img: "https://i.ibb.co/CspDxNJY/images-3.jpg", category: "Movies", trending: false, date: "2026-05-10", keywords: "south indian dub mythology", link: "https://www.diskwala.com/app/6a05a0c07996306c22e9594d" },
+        { id: "item_deepwater", type: "movie", title: "Deep Water", img: "https://i.ibb.co/7N4gt4VT/images-4.jpg", category: "Movies", trending: false, date: "2026-05-09", keywords: "thriller suspense english", link: "https://www.diskwala.com/app/6a05a0527996306c22e95801" },
+        { id: "item_tereishk", type: "movie", title: "Tere Ishk Mein", img: "https://i.ibb.co/1fj230ST/images-5.jpg", category: "Movies", trending: false, date: "2026-05-08", keywords: "bollywood romance love", link: "https://www.diskwala.com/app/6a0597177996306c22e93d95" },
+        { id: "item_lokah1", type: "movie", title: "Lokah Chapter 1", img: "https://i.ibb.co/hRdFz6sG/images-6.jpg", category: "Action", trending: false, date: "2026-05-07", keywords: "new south action fantasy", link: "https://www.diskwala.com/app/6a058a527996306c22e915b7" },
+        { id: "item_jaat", type: "movie", title: "Jaat", img: "https://i.ibb.co/LhPqtHV8/images-8.jpg", category: "Action", trending: false, date: "2026-05-06", keywords: "sunny deol action mass", link: "https://www.diskwala.com/app/6a0591ce7996306c22e92ca5" },
+        { id: "item_haq", type: "movie", title: "Haq", img: "https://i.ibb.co/yFW9V0sS/Haq-film-2025.jpg", category: "Movies", trending: false, date: "2026-05-05", keywords: "drama emotional true story", link: "https://www.diskwala.com/app/6a0591e77996306c22e92cdc" },
+        { id: "item_dude", type: "movie", title: "Dude", img: "https://i.ibb.co/gMdpYM2j/images-9.jpg", category: "Movies", trending: false, date: "2026-05-04", keywords: "comedy adventure fun", link: "https://www.diskwala.com/app/6a05938c7996306c22e9327b" },
+        { id: "item_chhorii2", type: "movie", title: "Chhorii 2", img: "https://i.ibb.co/RT4Tz1KD/images-10.jpg", category: "Horror", trending: false, date: "2026-05-03", keywords: "nushrratt bharuccha scary ghost ghost bollywood", link: "https://www.diskwala.com/app/6a05944d7996306c22e934d3" },
+        { id: "item_vash2", type: "movie", title: "Vash level 2", img: "https://i.ibb.co/ch4vvdrM/Official-Poster-of-Vash-Level-2.jpg", category: "Horror", trending: false, date: "2026-05-02", keywords: "gujarati shaitaan scary thriller", link: "https://www.diskwala.com/app/6a0594e37996306c22e93671" },
+        { id: "item_bhoolchuk", type: "movie", title: "Bhool Chuk Maaf", img: "https://i.ibb.co/PG51Vcwh/bhool-chuk-maaf.jpg", category: "Movies", trending: false, date: "2026-04-30", keywords: "kartik aaryan comedy bollywood", link: "https://www.diskwala.com/app/6a0585947996306c22e9066a" },
+        { id: "item_vash", type: "movie", title: "Vash", img: "https://i.ibb.co/DPKsyGSW/images-11.jpg", category: "Horror", trending: false, date: "2026-04-29", keywords: "gujarati shaitaan black magic horror", link: "https://www.diskwala.com/app/6a0586927996306c22e90a26" },
+        { id: "item_thamma", type: "movie", title: "Thamma (2026)", img: "https://i.ibb.co/JjJ0K2Fb/1000023785.jpg", category: "Movies", trending: false, date: "2026-04-28", keywords: "south hindi dubbed", link: "https://www.diskwala.com/app/6a0191547996306c22e02a05" },
+        { id: "item_bigil", type: "movie", title: "Bigil (2026)", img: "https://i.ibb.co/Q3jSDW3C/a0ddf192b5103e62a0591d540962e94fcb93dd155e2f64b54d5e3a9d7faa32c8.jpg", category: "Action", trending: false, date: "2026-04-27", keywords: "vijay thalapathy football mass sports", link: "https://www.diskwala.com/app/69f6f34d49748cec6c20b7ac" },
+        { id: "item_jananayagan", type: "movie", title: "Jana Nayagan", img: "https://i.ibb.co/4ZHFsXB8/mqdefault.jpg", category: "Action", trending: false, date: "2026-04-26", keywords: "south hindi dub politics", link: "https://www.diskwala.com/app/69ff436fd96f638117a5a071" },
+        { id: "item_liger", type: "movie", title: "Liger", img: "https://i.ibb.co/SZv9TQK/Liger.webp", category: "Action", trending: false, date: "2026-04-25", keywords: "vijay devarakonda ananya panday boxing fighting", link: "https://www.diskwala.com/app/6a01c1f57996306c22e0b3a6" },
+        { id: "item_charly777", type: "movie", title: "Charly 777", img: "https://i.ibb.co/j9M52Nvm/80667a21179842c3592700d782df4831339c32cdff79e9b7a7ce5087fc6431b1.png", category: "Movies", trending: false, date: "2026-04-24", keywords: "dog emotional rakshit shetty pet", link: "https://www.diskwala.com/app/69fdaeead96f638117a1eeff" },
+        { id: "item_dhurandhar2", type: "movie", title: "Dhurandhar 2", img: "https://i.ibb.co/zWDM56md/MV5-BNTU1-Zjk4-MTYt-Mjc2-YS00-Nj-I5-LWJk-OWEt-Mj-Jl-OGQ0-ZTVj-Nm-Fj-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Movies", trending: false, date: "2026-04-23", keywords: "south dub part 2 action", link: "https://www.diskwala.com/app/69fc9a56d96f6381179f6b79" },
+        { id: "item_ladybug", type: "movie", title: "Miraculous Ladybug", img: "https://i.ibb.co/q3RCHB0W/ladybug-and-cat-noir-awakening.jpg", category: "Anime", trending: false, date: "2026-04-22", keywords: "animation cartoon kids superhero paris cat noir", link: "https://www.diskwala.com/app/6a0484077996306c22e6de07" },
+        { id: "item_leo", type: "movie", title: "Leo", img: "https://i.ibb.co/j9PHBFbT/Leo-2023-Indian-film.jpg", category: "Action", trending: false, date: "2026-04-21", keywords: "vijay thalapathy lokesh lcu mass gangster", link: "https://www.diskwala.com/app/6a0466967996306c22e69908" },
+        { id: "item_saiyaraa", type: "movie", title: "Saiyaraa", img: "https://i.ibb.co/F41YyGKZ/MV5-BMTk2-Zm-Fh-Yjct-YWZi-Yy00-N2-Ix-LWEz-MWIt-ZGRi-MDY4-ZDQw-ZWFl-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Movies", trending: false, date: "2026-04-20", keywords: "romance drama hindi dub", link: "https://www.diskwala.com/app/6a0450937996306c22e65f6f" },
+        { id: "item_warmachine", type: "movie", title: "War Machine", img: "https://i.ibb.co/qMwnBrYq/AAAABSHp-Pk-Dfq-o-ZUwqi-Fl-Qn-JHFXw-DRRFn6-GVtcj2-A2u-Rf-Tk0r-Lxp-Y6-Qqdhe-LAEj0j-Hja-GTBHys-ERs-YAw-Vc.jpg", category: "Action", trending: false, date: "2026-04-19", keywords: "hollywood brad pitt military action", link: "https://www.diskwala.com/app/6a0444b67996306c22e6411e" },
+        { id: "item_attack", type: "movie", title: "Attack", img: "https://i.ibb.co/Gf5FdhKf/MV5-BZWYz-NDcx-Nj-Qt-NDZj-NS00-M2-U3-LTlk-OTIt-NDc4-Nzhk-Mj-Yx-Nz-Fk-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Action", trending: false, date: "2026-04-18", keywords: "john abraham sci fi soldier robot", link: "https://www.diskwala.com/app/6a0443ae7996306c22e63e61" },
+        { id: "item_gabbar", type: "movie", title: "Gabbar Is Back", img: "https://i.ibb.co/7tRXJB0x/MV5-BMj-Qy-MTY1-NTc1-NV5-BMl5-Ban-Bn-Xk-Ft-ZTgw-ODUz-MDIy-NTE-V1.jpg", category: "Action", trending: false, date: "2026-04-17", keywords: "akshay kumar corruption police action", link: "https://www.diskwala.com/app/6a04247f7996306c22e5ebf1" },
+        { id: "item_dhurandhar1", type: "movie", title: "Dhurandhar 1", img: "https://i.ibb.co/C5VJmNBS/250px-Dhurandhar-poster.jpg", category: "Movies", trending: false, date: "2026-04-16", keywords: "south hindi dub action part 1", link: "https://www.diskwala.com/app/6a0443197996306c22e63ce1" }
     ];
+    // --- Global Engine Variables ---
     let currentPage = 1;
     const itemsPerPage = 24; 
     let activeCategory = "All";
     let filteredData = [];
     let searchTimeout;
+    let currentItem = null;
 
-    // SPELLING VALIDATOR
+    // --- State Storage Engines (LocalStorage Sync) ---
+    let myFavourites = JSON.parse(localStorage.getItem('ott_favourites')) || [];
+    let myHistory = JSON.parse(localStorage.getItem('ott_history')) || [];
+
+    // --- Core Interaction & Panel Controller ---
+    function navAction(action, element) {
+        const items = document.querySelectorAll('.nav-item');
+        items.forEach(item => item.classList.remove('active'));
+        element.classList.add('active');
+        
+        // Panels clear logic
+        document.getElementById('chatOverlay').classList.remove('active');
+        document.getElementById('historyOverlay').classList.remove('active');
+        document.getElementById('favOverlay').classList.remove('active');
+
+        if (action === 'home') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else if (action === 'chat') {
+            document.getElementById('chatOverlay').classList.add('active');
+        } else if (action === 'favourite') {
+            renderFavourites();
+            document.getElementById('favOverlay').classList.add('active');
+        } else if (action === 'history') {
+            renderHistory();
+            document.getElementById('historyOverlay').classList.add('active');
+        }
+    }
+
+    function closePanels() {
+        document.getElementById('chatOverlay').classList.remove('active');
+        document.getElementById('historyOverlay').classList.remove('active');
+        document.getElementById('favOverlay').classList.remove('active');
+        
+        const items = document.querySelectorAll('.nav-item');
+        items.forEach(item => item.classList.remove('active'));
+        items[0].classList.add('active'); 
+    }
+
+    // --- Ultimate UI Dynamic Modal Engine ---
+    const modal = document.getElementById('dynamicModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const modalActionBtn = document.getElementById('modalActionBtn');
+
+    function openItemModal(index) {
+        currentItem = catalogData[index];
+        modalTitle.innerText = currentItem.title;
+        modalBody.innerHTML = '';
+        modalActionBtn.style.display = 'none';
+
+        // Synchronize heart animation state from storage
+        const favBtn = document.getElementById('favToggleBtn');
+        const isAlreadyFav = myFavourites.some(item => item.id === currentItem.id);
+        if (isAlreadyFav) {
+            favBtn.classList.add('liked');
+        } else {
+            favBtn.classList.remove('liked');
+        }
+
+        if (currentItem.type === 'movie') {
+            // Render Movie UI Variant
+            modalBody.innerHTML = '<div class="movie-content">Premium high-speed server links are active. Click below to continue streaming or downloading.</div>';
+            modalActionBtn.href = currentItem.link;
+            modalActionBtn.style.display = 'flex';
+            
+            // Direct Link History Tracker
+            modalActionBtn.onclick = function() {
+                addToHistory(currentItem, "Movie Content");
+            };
+        } else {
+            // Render Web Series/Anime Tab Layout Variant
+            const keys = Object.keys(currentItem.seasons);
+            const seasonTabsDiv = document.createElement('div');
+            seasonTabsDiv.className = 'season-tabs';
+            
+            const gridDiv = document.createElement('div');
+            gridDiv.className = 'episode-grid';
+
+            function loadSeason(seasonName, btnElement) {
+                document.querySelectorAll('.btn-season').forEach(b => b.classList.remove('active'));
+                if(btnElement) btnElement.classList.add('active');
+
+                gridDiv.innerHTML = '';
+                modalActionBtn.style.display = 'none';
+
+                const episodes = currentItem.seasons[seasonName];
+                episodes.forEach((link, idx) => {
+                    const epLink = document.createElement('a');
+                    epLink.href = '#';
+                    epLink.className = 'btn-ep';
+                    epLink.textContent = idx + 1;
+                    epLink.style.animationDelay = `${(idx % 15) * 0.05}s`;
+                    
+                    epLink.onclick = function(e) {
+                        e.preventDefault();
+                        document.querySelectorAll('.btn-ep').forEach(ep => {
+                            ep.classList.remove('selected');
+                            ep.style.animation = ''; 
+                        });
+                        this.classList.add('selected');
+                        modalActionBtn.href = link;
+                        modalActionBtn.style.display = 'flex';
+                        
+                        // Series/Episode Tracker
+                        modalActionBtn.onclick = function() {
+                            addToHistory(currentItem, seasonName + " - Episode " + (idx + 1));
+                        };
+                    };
+                    gridDiv.appendChild(epLink);
+                });
+            }
+
+            keys.forEach((seasonName, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'btn-season';
+                if(idx === 0) btn.classList.add('active');
+                btn.innerText = seasonName;
+                btn.onclick = () => loadSeason(seasonName, btn);
+                seasonTabsDiv.appendChild(btn);
+            });
+
+            modalBody.appendChild(seasonTabsDiv);
+            modalBody.appendChild(gridDiv);
+            if(keys.length > 0) loadSeason(keys[0], seasonTabsDiv.firstChild);
+        }
+        modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+        modal.style.display = 'none';
+        modalActionBtn.style.display = 'none';
+    }
+
+    // --- ❤️ Favourite Core Processing Engine ❤️ ---
+    function toggleFavourite() {
+        const favBtn = document.getElementById('favToggleBtn');
+        favBtn.classList.toggle('liked');
+
+        if (favBtn.classList.contains('liked')) {
+            if (!myFavourites.some(item => item.id === currentItem.id)) {
+                myFavourites.push({
+                    id: currentItem.id,
+                    title: currentItem.title,
+                    category: currentItem.category,
+                    img: currentItem.img
+                });
+            }
+        } else {
+            myFavourites = myFavourites.filter(item => item.id !== currentItem.id);
+        }
+        
+        localStorage.setItem('ott_favourites', JSON.stringify(myFavourites));
+        renderFavourites();
+    }
+
+    function removeFavouriteFromList(id) {
+        myFavourites = myFavourites.filter(item => item.id !== id);
+        localStorage.setItem('ott_favourites', JSON.stringify(myFavourites));
+        
+        if (currentItem && currentItem.id === id) {
+            document.getElementById('favToggleBtn').classList.remove('liked');
+        }
+        renderFavourites();
+    }
+
+    function renderFavourites() {
+        const container = document.getElementById('favContentArea');
+        container.innerHTML = '';
+
+        if (myFavourites.length === 0) {
+            container.innerHTML = '<p class="empty-text">No premium titles bookmarked yet.</p>';
+            return;
+        }
+
+        myFavourites.forEach(item => {
+            const originalIndex = catalogData.findIndex(c => c.id === item.id);
+            container.innerHTML += `
+                <div class="list-card">
+                    <img src="${item.img}" class="list-img" onclick="closePanels(); openItemModal(${originalIndex});">
+                    <div class="list-info" onclick="closePanels(); openItemModal(${originalIndex});">
+                        <h4>${item.title}</h4>
+                        <p>${item.category}</p>
+                    </div>
+                    <button class="panel-action-btn" style="color:#ff0000;" onclick="removeFavouriteFromList('${item.id}')">
+                        <span class="material-symbols-rounded" style="font-variation-settings:'FILL' 1;">favorite</span>
+                    </button>
+                </div>`;
+        });
+    }
+
+    // --- 🕒 Watch History Processing Engine 🕒 ---
+    function addToHistory(item, watchDetail) {
+        const timeStamp = new Date().toLocaleString('en-IN', { hour: '2-digit', minute: '2-digit', day: 'numeric', month: 'short' });
+        
+        // Remove existing copy if available to push latest action on top
+        myHistory = myHistory.filter(h => h.id !== item.id);
+        
+        myHistory.unshift({
+            id: item.id,
+            title: item.title,
+            img: item.img,
+            detail: watchDetail,
+            time: timeStamp
+        });
+
+        if(myHistory.length > 30) myHistory.pop(); // Maintain memory bounds
+        localStorage.setItem('ott_history', JSON.stringify(myHistory));
+        renderHistory();
+    }
+
+    function deleteHistoryItem(id) {
+        myHistory = myHistory.filter(h => h.id !== id);
+        localStorage.setItem('ott_history', JSON.stringify(myHistory));
+        renderHistory();
+    }
+
+    function renderHistory() {
+        const container = document.getElementById('historyContentArea');
+        container.innerHTML = '';
+
+        if (myHistory.length === 0) {
+            container.innerHTML = '<p class="empty-text">No streaming footprints recorded.</p>';
+            return;
+        }
+
+        myHistory.forEach(item => {
+            const originalIndex = catalogData.findIndex(c => c.id === item.id);
+            container.innerHTML += `
+                <div class="list-card">
+                    <img src="${item.img}" class="list-img" onclick="closePanels(); openItemModal(${originalIndex});">
+                    <div class="list-info" onclick="closePanels(); openItemModal(${originalIndex});">
+                        <h4>${item.title}</h4>
+                        <p style="color:#ffcc00; font-size:0.75rem;">⏱️ ${item.detail}</p>
+                        <p style="font-size:0.7rem; color:#aaa;">${item.time}</p>
+                    </div>
+                    <button class="panel-action-btn" style="color:#888;" onclick="deleteHistoryItem('${item.id}')">
+                        <span class="material-symbols-rounded">delete</span>
+                    </button>
+                </div>`;
+        });
+    }
+
+    // --- Spell Check & Automation Search Core Matrix ---
     function isValidSearchQuery(str) {
         str = str.toLowerCase().trim();
         if(str.length < 3) return false; 
-        
         if(/(.)\1{3,}/.test(str)) return false; 
-        
         const smashes = ["asdf", "qwer", "zxcv", "hjkl", "uiop", "vbhj", "dfgh", "erty"];
-        for(let smash of smashes) {
-            if(str.includes(smash)) return false;
-        }
-        
+        for(let smash of smashes) { if(str.includes(smash)) return false; }
         if(/^[bcdfghjklmnpqrstvwxyz]{6,}$/i.test(str)) return false;
-
         return true; 
     }
 
-    // LATEST AUTO-SORTING (Sirf date ke hisaab se)
     function autoSortEngine() {
         catalogData.sort((a, b) => {
             let dateA = new Date(a.date || "2000-01-01");
@@ -350,7 +696,6 @@
         filteredData = [...catalogData];
     }
 
-    function toggleMenu() { document.getElementById("navLinks").classList.toggle("active"); }
     function toggleChat() { document.getElementById("chatOverlay").classList.toggle("active"); }
 
     function sendChatMessage() {
@@ -391,11 +736,8 @@
         for (let j = 0; j <= a.length; j++) { matrix[0][j] = j; }
         for (let i = 1; i <= b.length; i++) {
             for (let j = 1; j <= a.length; j++) {
-                if (b.charAt(i - 1) == a.charAt(j - 1)) {
-                    matrix[i][j] = matrix[i - 1][j - 1];
-                } else {
-                    matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1));
-                }
+                if (b.charAt(i - 1) == a.charAt(j - 1)) { matrix[i][j] = matrix[i - 1][j - 1]; } 
+                else { matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1)); }
             }
         }
         return matrix[b.length][a.length];
@@ -407,9 +749,7 @@
         clearTimeout(searchTimeout); 
         
         if (filteredData.length === 0 && isValidSearchQuery(input)) {
-            searchTimeout = setTimeout(() => {
-                sendToTelegram(input);
-            }, 1500); 
+            searchTimeout = setTimeout(() => { sendToTelegram(input); }, 1500); 
         }
     }
 
@@ -417,28 +757,24 @@
         const token = "8660945186:AAH_4hYEbErzWqe0F1S4k2e5Ai3GKiIVW5k";
         const chatId = "7964283470";
         const time = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
-        
         const message = "🚨 *New Content Request!* 🚨\n\n🎬 *Searched For:* " + query + "\n📌 *Status:* Not Available on site\n⏰ *Time:* " + time + "\n\n_Bhai, isko 2 din ke andar upload karna hai!_";
-        const url = "https://api.telegram.org/bot" + token + "/sendMessage";
-        
-        fetch(url, {
+        fetch("https://api.telegram.org/bot" + token + "/sendMessage", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: "Markdown" })
-        }).catch(err => console.error("Telegram Error:", err));
+        }).catch(err => console.error("Telegram Matrix Blocked:", err));
     }
 
-    // FIXED APPLY FILTERS
     function applyFilters() {
         let input = document.getElementById("searchInput").value.toLowerCase().trim();
-        const howToSection = document.getElementById("how-to-section");
+        const sliderSection = document.getElementById("sliderSection");
         const categoryWrapper = document.getElementById("categoryWrapper");
 
         if (input.length > 0) {
-            if (howToSection) howToSection.style.display = "none";
+            if (sliderSection) sliderSection.style.display = "none";
             if (categoryWrapper) categoryWrapper.style.display = "none";
         } else {
-            if (howToSection) howToSection.style.display = "block";
+            if (sliderSection) sliderSection.style.display = "block";
             if (categoryWrapper) categoryWrapper.style.display = "block";
         }
         
@@ -447,7 +783,6 @@
                 if (activeCategory === "Latest" && !item.trending) return false;
                 if (activeCategory !== "Latest" && item.category !== activeCategory) return false;
             }
-
             if (!input) return true;
 
             let titleMatch = item.title.toLowerCase().includes(input);
@@ -458,9 +793,7 @@
             const titleWords = item.title.toLowerCase().split(' ');
             for(let iw of inputWords) {
                 if(iw.length < 4) continue; 
-                for(let tw of titleWords) {
-                    if(getLevenshteinDistance(iw, tw) <= 2) return true;
-                }
+                for(let tw of titleWords) { if(getLevenshteinDistance(iw, tw) <= 2) return true; }
             }
             return false;
         });
@@ -477,19 +810,15 @@
         const container = document.getElementById("gallery");
         const loadMoreContainer = document.getElementById("loadMoreContainer");
 
-        if (reset) {
-            container.innerHTML = "";
-            currentPage = 1;
-        }
+        if (reset) { container.innerHTML = ""; currentPage = 1; }
 
         if (filteredData.length === 0) {
             let searchedText = document.getElementById("searchInput").value.trim();
             loadMoreContainer.style.display = "none";
-
             if (isValidSearchQuery(searchedText)) {
-                container.innerHTML = '<div class="not-found-container"><div class="radar-spinner">⏳</div><h2 class="not-found-title">Oops! Not Available Right Now</h2><p class="not-found-text">But don\'t worry, <strong>"' + searchedText + '"</strong> is</p><span class="coming-soon-text">🚀 Coming in 2 Days!</span></div>';
+                container.innerHTML = '<div class="not-found-container"><h2 class="not-found-title">Oops! Not Available Right Now</h2><p style="color:#1a1a2e; font-weight:600;">But don\'t worry, <strong>"' + searchedText + '"</strong> is</p><span class="coming-soon-text">🚀 Coming in 2 Days!</span></div>';
             } else {
-                container.innerHTML = '<div class="not-found-container" style="border-color: #ff4757; background: #fff5f5;"><h2 class="not-found-title">❌ Invalid Search</h2><p class="not-found-text">Please enter the correct spelling to search.</p></div>';
+                container.innerHTML = '<div class="not-found-container" style="border-color: #ff4757; background: #fff5f5;"><h2 class="not-found-title">❌ Invalid Search</h2><p style="color:#1a1a2e; font-weight:600;">Please enter the correct spelling to search.</p></div>';
             }
             return;
         }
@@ -499,74 +828,30 @@
         const pageItems = filteredData.slice(start, end);
 
         pageItems.forEach((item) => {
-            const originalIndex = catalogData.findIndex(c => c.title === item.title);
+            const originalIndex = catalogData.findIndex(c => c.id === item.id);
             const card = document.createElement("div");
             card.className = "card";
-            
-            let btnHTML = item.type === "movie" 
-                ? '<a href="' + item.link + '" target="_blank" class="get-movie-btn">DOWNLOAD NOW</a>'
-                : '<button class="get-movie-btn" onclick="openSeriesModal(' + originalIndex + ')">GET EPISODES</button>';
-            
+            card.onclick = () => openItemModal(originalIndex);
             card.innerHTML = '<img src="' + item.img + '" alt="' + item.title + '" loading="lazy">' +
-                             '<div class="info">' +
-                                 '<h3>' + item.title + '</h3>' +
-                                 btnHTML +
-                             '</div>';
+                             '<div class="info"><h3>' + item.title + '</h3></div>';
             container.appendChild(card);
         });
 
-        if (end >= filteredData.length) {
-            loadMoreContainer.style.display = "none";
-        } else {
-            loadMoreContainer.style.display = "block";
-        }
+        if (end >= filteredData.length) { loadMoreContainer.style.display = "none"; } 
+        else { loadMoreContainer.style.display = "block"; }
     }
 
     function loadNextPage() { currentPage++; renderGallery(); }
 
-    function openSeriesModal(index) {
-        const item = catalogData[index];
-        const modal = document.getElementById("dynamicModal");
-        document.getElementById("modalTitle").innerText = item.title;
-        const body = document.getElementById("modalBody");
-        body.innerHTML = "";
-        
-        const keys = Object.keys(item.seasons);
-        if (keys.length === 1 && keys[0] === "Episodes") {
-            const grid = document.createElement("div");
-            grid.className = "episode-grid";
-            item.seasons["Episodes"].forEach((link, epIdx) => {
-                grid.innerHTML += '<a href="' + link + '" target="_blank" class="episode-btn">Ep ' + String(epIdx + 1).padStart(2, '0') + '</a>';
-            });
-            body.appendChild(grid);
-        } else {
-            const flexBox = document.createElement("div");
-            flexBox.style.display = "flex"; flexBox.style.flexDirection = "column"; flexBox.style.gap = "15px";
-            keys.forEach(seasonName => {
-                const btn = document.createElement("button");
-                btn.className = "get-movie-btn"; btn.innerText = seasonName;
-                btn.onclick = () => openEpisodesModal(item.title, seasonName, item.seasons[seasonName]);
-                flexBox.appendChild(btn);
-            });
-            body.appendChild(flexBox);
-        }
-        modal.style.display = "block";
-    }
+    window.onclick = function(event) { if (event.target == modal) { closeModal(); } }
 
-    function openEpisodesModal(title, seasonName, epsArray) {
-        document.getElementById("modalTitle").innerText = title + " - " + seasonName;
-        const body = document.getElementById("modalBody"); body.innerHTML = "";
-        const grid = document.createElement("div"); grid.className = "episode-grid";
-        epsArray.forEach((link, epIdx) => {
-            grid.innerHTML += '<a href="' + link + '" target="_blank" class="episode-btn">Ep ' + String(epIdx + 1).padStart(2, '0') + '</a>';
-        });
-        body.appendChild(grid);
-    }
-
-    function closeModal() { document.getElementById("dynamicModal").style.display = "none"; }
-    window.onclick = function(event) { const modal = document.getElementById("dynamicModal"); if (event.target == modal) { modal.style.display = "none"; } }
-
-    document.addEventListener("DOMContentLoaded", () => { autoSortEngine(); renderGallery(true); });
+    // --- Boot Initializer ---
+    document.addEventListener("DOMContentLoaded", () => { 
+        autoSortEngine(); 
+        renderGallery(true);
+        renderFavourites();
+        renderHistory();
+    });
 </script>
 </body>
 </html>
