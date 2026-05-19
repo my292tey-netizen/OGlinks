@@ -54,7 +54,7 @@
         .slider-container { width: 100%; max-width: 900px; margin: 0 auto; overflow: hidden; position: relative; }
         .slider-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
         .slider-track::-webkit-scrollbar { display: none; }
-        .slider-link { min-width: 100%; display: block; scroll-snap-align: center; padding: 0 10px; }
+        .slider-link { min-width: 100%; display: block; scroll-snap-align: center; padding: 0 10px; cursor: pointer; }
         .slider-img { width: 100%; height: 220px; object-fit: contain; background-color: #000000; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: transform 0.2s ease; display: block; }
         .slider-img:active { transform: scale(0.99); }
 
@@ -147,7 +147,9 @@
         .episode-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 25px; }
         .btn-ep { display: flex; justify-content: center; align-items: center; aspect-ratio: 1; background: #ffffff; border: 2px solid #edf2f7; color: #2d3748; font-weight: 600; border-radius: 10px; transition: 0.25s; opacity: 0; transform: translateY(15px); animation: fadeInUp 0.4s forwards; }
         .btn-ep:hover { background: #ffcc00; border-color: #ffcc00; color: #1a1a2e; transform: translateY(-4px) scale(1.05); }
-        .btn-ep.selected { background: #ffcc00 !important; border-color: #ffcc00 !important; color: #1a1a2e !important; animation: epClickPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        
+        /* 🔥 THE FIX: opacity: 1 !important added so it doesn't vanish on click 🔥 */
+        .btn-ep.selected { background: #ffcc00 !important; border-color: #ffcc00 !important; color: #1a1a2e !important; opacity: 1 !important; animation: epClickPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
         
         .btn-action { display: none; justify-content: center; align-items: center; gap: 10px; width: 100%; padding: 15px; background: #ffcc00; color: #1a1a2e; font-weight: 700; border-radius: 12px; transition: 0.3s; box-shadow: 0 8px 20px rgba(255, 193, 7, 0.3); font-size: 1.05rem; }
         .btn-action:active { transform: scale(0.97); }
@@ -155,7 +157,8 @@
         .movie-content { text-align: center; margin-bottom: 25px; color: #4a5568; font-size: 1rem; font-weight: 600; }
 
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-        @keyframes epClickPop { 0% { transform: scale(0.9); } 50% { transform: scale(1.15); box-shadow: 0 0 15px rgba(255, 193, 7, 0.6); } 100% { transform: scale(1); box-shadow: 0 4px 10px rgba(255, 193, 7, 0.3); } }
+        /* 🔥 THE FIX: Added opacity 1 at all stages to prevent flickering 🔥 */
+        @keyframes epClickPop { 0% { transform: scale(0.9); opacity: 1; } 50% { transform: scale(1.15); box-shadow: 0 0 15px rgba(255, 193, 7, 0.6); opacity: 1; } 100% { transform: scale(1); box-shadow: 0 4px 10px rgba(255, 193, 7, 0.3); opacity: 1; } }
 
         @media (min-width: 769px) {
             .gallery { grid-template-columns: repeat(4, 1fr); }
@@ -180,11 +183,11 @@
     <div class="slider-section" id="sliderSection">
         <div class="slider-container">
             <div class="slider-track" id="featuredSlider">
-                <div class="slider-link"><img src="https://i.ibb.co/VcHzfQyF/Berlin-And-The-Lady-With-An-Ermine-Ending-Explained-What-Happened-In-The-Final-Heist-Of-This-Money-H.webp" class="slider-img"></div>
-                <div class="slider-link"><img src="https://i.ibb.co/h17ykPvg/Karuppu-cover-3e431ab0-13cb-11f1-8c32-a5338e06444d.jpg" class="slider-img"></div>
-                <div class="slider-link"><img src="https://i.ibb.co/Jw7WqVJj/maxresdefault.jpg" class="slider-img"></div>
-                <div class="slider-link"><img src="https://i.ibb.co/mVQt3b76/images-14.jpg" class="slider-img"></div>
-                <div class="slider-link"><img src="https://i.ibb.co/JjtH3GpT/images.webp" class="slider-img"></div>
+                <div class="slider-link" onclick="openItemModal(catalogData.findIndex(i => i.id === 'pinned_berlin'))"><img src="https://i.ibb.co/VcHzfQyF/Berlin-And-The-Lady-With-An-Ermine-Ending-Explained-What-Happened-In-The-Final-Heist-Of-This-Money-H.webp" class="slider-img"></div>
+                <div class="slider-link" onclick="openItemModal(catalogData.findIndex(i => i.id === 'pinned_karuppu'))"><img src="https://i.ibb.co/h17ykPvg/Karuppu-cover-3e431ab0-13cb-11f1-8c32-a5338e06444d.jpg" class="slider-img"></div>
+                <div class="slider-link" onclick="openItemModal(catalogData.findIndex(i => i.id === 'pinned_aot'))"><img src="https://i.ibb.co/Jw7WqVJj/maxresdefault.jpg" class="slider-img"></div>
+                <div class="slider-link" onclick="openItemModal(catalogData.findIndex(i => i.id === 'pinned_jjk'))"><img src="https://i.ibb.co/mVQt3b76/images-14.jpg" class="slider-img"></div>
+                <div class="slider-link" onclick="openItemModal(catalogData.findIndex(i => i.id === 'item_bloodhounds'))"><img src="https://i.ibb.co/JjtH3GpT/images.webp" class="slider-img"></div>
             </div>
         </div>
     </div>
@@ -844,6 +847,35 @@
     function loadNextPage() { currentPage++; renderGallery(); }
 
     window.onclick = function(event) { if (event.target == modal) { closeModal(); } }
+
+    // --- AUTO SLIDER ENGINE ---
+    const sliderTrack = document.getElementById('featuredSlider');
+    let autoSlideInterval;
+
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+            if (sliderTrack) {
+                let maxScroll = sliderTrack.scrollWidth - sliderTrack.clientWidth;
+                let nextScroll = sliderTrack.scrollLeft + sliderTrack.clientWidth;
+                
+                if (nextScroll >= maxScroll + 10) {
+                    sliderTrack.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    sliderTrack.scrollTo({ left: nextScroll, behavior: 'smooth' });
+                }
+            }
+        }, 3000); // 3 seconds per slide
+    }
+
+    if (sliderTrack) {
+        startAutoSlide();
+        
+        // Agar user manually touch/hover kare to auto-slide pause ho jaye
+        sliderTrack.addEventListener('touchstart', () => clearInterval(autoSlideInterval));
+        sliderTrack.addEventListener('touchend', startAutoSlide);
+        sliderTrack.addEventListener('mouseover', () => clearInterval(autoSlideInterval));
+        sliderTrack.addEventListener('mouseout', startAutoSlide);
+    }
 
     // --- Boot Initializer ---
     document.addEventListener("DOMContentLoaded", () => { 
