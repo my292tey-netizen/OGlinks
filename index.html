@@ -173,7 +173,8 @@
 <div class="top-header">
     <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search movies, series..." onkeyup="advancedSearchEngine()">
     
-    <a href="https://www.mediafire.com/file/1ochux34wjlxc97/freemovies.apk/file" target="_blank" class="download-app-btn">
+    <!-- Added id="downloadAppBtn" here for JavaScript detection -->
+    <a href="https://www.mediafire.com/file/1ochux34wjlxc97/freemovies.apk/file" target="_blank" class="download-app-btn" id="downloadAppBtn">
         <img src="https://i.ibb.co/35wbmNdV/app-logo-png.jpg" alt="App Logo" class="app-logo-img">
         <small>GET APP</small>
     </a>
@@ -316,7 +317,7 @@
             keywords: "eren yeager mikasa armin titan levi survey corps aot anime premium", 
             seasons: { 
                 "Season 1": ["https://www.diskwala.com/app/6a06d70b7996306c22ec3bf5","https://www.diskwala.com/app/6a06d74e7996306c22ec3ca6","https://www.diskwala.com/app/6a06d67e7996306c22ec3ac5","https://www.diskwala.com/app/6a06d64d7996306c22ec3a46","https://www.diskwala.com/app/6a06d6ce7996306c22ec3ba4","https://www.diskwala.com/app/6a06d8797996306c22ec3fc6","https://www.diskwala.com/app/6a06d84c7996306c22ec3f3d","https://www.diskwala.com/app/6a06d8167996306c22ec3ea5","https://www.diskwala.com/app/6a06d7dc7996306c22ec3e04","https://www.diskwala.com/app/6a06d79e7996306c22ec3d7e","https://www.diskwala.com/app/6a06d8da7996306c22ec4102","https://www.diskwala.com/app/6a06d91e7996306c22ec41fb","https://www.diskwala.com/app/6a06d9687996306c22ec42d0","https://www.diskwala.com/app/6a06d9997996306c22ec4382","https://www.diskwala.com/app/6a06d9c47996306c22ec4412","https://www.diskwala.com/app/6a06dafd7996306c22ec47b1","https://www.diskwala.com/app/6a06dac97996306c22ec4734","https://www.diskwala.com/app/6a06da357996306c22ec45ad","https://www.diskwala.com/app/6a06da717996306c22ec4629","https://www.diskwala.com/app/6a06db497996306c22ec489c","https://www.diskwala.com/app/6a0972137996306c22f280d3","https://www.diskwala.com/app/6a09729b7996306c22f2827a","https://www.diskwala.com/app/6a0973597996306c22f28571","https://www.diskwala.com/app/6a0973597996306c22f2856f","https://www.diskwala.com/app/6a0973097996306c22f283fe"], 
-                "Season 2": ["https://www.diskwala.com/app/6a09747c7996306c22f288d3","https://www.diskwala.com/app/6a0974ac7996306c22f2897d","https://www.diskwala.com/app/6a0974dc7996306c22f289fe","https://www.diskwala.com/app/6a09750b7996306c22f28a87","https://www.diskwala.com/app/6a09754c7996306c22f28b58","https://www.diskwala.com/app/6a0976097996306c22f28d03","https://www.diskwala.com/app/6a0975e37996306c22f28ca1","https://www.diskwala.com/app/6a0975947996306c22f28bf4","https://www.diskwala.com/app/6a0975b57996306c22f28c41","https://www.diskwala.com/app/6a0976367996306c22f28d79","https://www.diskwala.com/app/6a09775c7996306c22f290b7","https://www.diskwala.com/app/6a0977907996306c22f29150"], 
+                "Season 2": ["https://www.diskwala.com/app/6a09747c7996306c22f288d3","https://www.diskwala.com/app/6a0974ac7996306c22f2897d","https://www.diskwala.com/app/6a0974dc7996306c22f289fe","https://www.diskwala.com/app/6a09750b7996306c22f28a87","https://www.diskwala.com/app/6a09754c7996306c22f28b58","https://www.diskwala.com/app/6a0976097996306c22f28d03","https://www.diskwala.com/app/6a0975e37996306c22f28ca1","https://www.diskwala.com/app/6a0975947996306c22f28bf4","https://www.diskwala.com/app/6a097b557996306c22f28c41","https://www.diskwala.com/app/6a0976367996306c22f28d79","https://www.diskwala.com/app/6a09775c7996306c22f290b7","https://www.diskwala.com/app/6a0977907996306c22f29150"], 
                 "Season 3": ["https://www.diskwala.com/app/6a0976d37996306c22f28f78","https://www.diskwala.com/app/6a0977b17996306c22f291a7","https://www.diskwala.com/app/6a0977277996306c22f29028","https://www.diskwala.com/app/6a09792b7996306c22f295ab","https://www.diskwala.com/app/6a0979457996306c22f295ed","https://www.diskwala.com/app/6a0979607996306c22f29629","https://www.diskwala.com/app/6a0979047996306c22f29551","https://www.diskwala.com/app/6a0978e07996306c22f29515","https://www.diskwala.com/app/6a097a117996306c22f298a7","https://www.diskwala.com/app/6a0979977996306c22f296e3","https://www.diskwala.com/app/6a097a407996306c22f29976","https://www.diskwala.com/app/6a0979c37996306c22f2977e","https://www.diskwala.com/app/6a0979df7996306c22f297bc","https://www.diskwala.com/app/6a097b2a7996306c22f29c60","https://www.diskwala.com/app/6a097b4c7996306c22f29c9e","https://www.diskwala.com/app/6a097bc37996306c22f29e03","https://www.diskwala.com/app/6a097b7a7996306c22f29d31","https://www.diskwala.com/app/6a097ba87996306c22f29db7","https://www.diskwala.com/app/6a097bfc7996306c22f29e94","https://www.diskwala.com/app/6a097c897996306c22f2a0b9","https://www.diskwala.com/app/6a097c2f7996306c22f29f78","https://www.diskwala.com/app/6a097c647996306c22f2a036"], 
                 "Season 4": ["https://www.diskwala.com/app/6a097c457996306c22f29fc8","https://www.diskwala.com/app/6a097d197996306c22f2a247","https://www.diskwala.com/app/6a097d507996306c22f2a2d1","https://www.diskwala.com/app/6a097cc77996306c22f2a15d","https://www.diskwala.com/app/6a097cec7996306c22f2a1c2","https://www.diskwala.com/app/6a097d377996306c22f2a292","https://www.diskwala.com/app/6a097dd37996306c22f2a45e","https://www.diskwala.com/app/6a097db67996306c22f2a41f","https://www.diskwala.com/app/6a097e4b7996306c22f2a5bd","https://www.diskwala.com/app/6a097dfb7996306c22f2a4d6","https://www.diskwala.com/app/6a097e237996306c22f2a557","https://www.diskwala.com/app/6a097ec27996306c22f2a754","https://www.diskwala.com/app/6a097f1c7996306c22f2a8a6","https://www.diskwala.com/app/6a097ee47996306c22f2a7d2","https://www.diskwala.com/app/6a097f457996306c22f2a93a","https://www.diskwala.com/app/6a097e907996306c22f2a6c8","https://www.diskwala.com/app/6a097fd57996306c22f2ab0e","https://www.diskwala.com/app/6a097fa07996306c22f2aa5a","https://www.diskwala.com/app/6a0980357996306c22f2acc9","https://www.diskwala.com/app/6a0980097996306c22f2ac17","https://www.diskwala.com/app/6a09805f7996306c22f2ad47","https://www.diskwala.com/app/6a0980ee7996306c22f2af32","https://www.diskwala.com/app/6a0980a97996306c22f2ae30","https://www.diskwala.com/app/6a0980c97996306c22f2aeb7","https://www.diskwala.com/app/6a0981347996306c22f2b045","https://www.diskwala.com/app/6a09810f7996306c22f2afaf","https://www.diskwala.com/app/6a09816b7996306c22f2b10d","https://www.diskwala.com/app/6a0981917996306c22f2b184","https://www.diskwala.com/app/6a0982687996306c22f2b436","https://www.diskwala.com/app/6a0983f37996306c22f2b9b8"] 
             } 
@@ -345,7 +346,7 @@
             img: "https://i.ibb.co/xSZt0qrQ/images-16.jpg",
             category: "Web Series",
             trending: true,
-            date: "2026-05-26", // Latest date to keep it at top
+            date: "2026-05-26",
             keywords: "superhero action thriller amazon homelander butcher",
             seasons: {
                 "Season 1": [
@@ -387,7 +388,7 @@
             img: "https://i.ibb.co/pjn0nFb9/MV5-BM2-M4-Yzdk-MTEt-Mj-Uy-Yy00-ZWY0-LWI5-ODQt-NGRk-ZWQ1-Mz-U5-MWM2-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg",
             category: "Anime",
             trending: true,
-            date: "2026-05-26", // Latest date to keep it at top
+            date: "2026-05-26",
             keywords: "anime action magic monster hunter sung jinwoo",
             seasons: {
                 "Season 1": [
@@ -410,7 +411,7 @@
             }
         },
 
-        // 🆕 LATEST ITEMS DATABASE
+        // 🎬 LATEST ITEMS DATABASE
         { 
             id: "item_bloodhounds",
             type: "series", 
@@ -446,7 +447,7 @@
         { id: "item_salaar", type: "movie", title: "Salaar", img: "https://i.ibb.co/rG3cFbZJ/MV5-BNTU0-Zj-Yx-OWIt-OWVi-MC00-YWVl-LWJl-MGUt-Zjc1-YWU0-NTlh-Y2-Zh-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Action", trending: true, date: "2026-05-17", keywords: "salaar prabhas prashanth neel action mass", link: "https://www.diskwala.com/app/6a096ca07996306c22f27035" },
         { id: "item_kgf", type: "movie", title: "KGF", img: "https://i.ibb.co/7JwksDwD/MV5-BM2-M0-Ym-Ix-Nz-It-OWI4-My00-Mm-Qz-LWE0-NGYt-ZTM3-Njll-Nj-Iw-Zjc5-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX10", category: "Action", trending: true, date: "2026-05-17", keywords: "kgf rocky bhai yash prashanth neel action", link: "https://www.diskwala.com/app/6a096eee7996306c22f27749" },
         { id: "item_kgf2", type: "movie", title: "KGF 2", img: "https://i.ibb.co/8LW2ykgg/dbe30e1e25813a698e0da679a5968c380bd2d1b4e6966394d4c964c6b3301896.jpg", category: "Action", trending: true, date: "2026-05-17", keywords: "kgf 2 rocky bhai yash sanjay dutt action mass", link: "https://www.diskwala.com/app/6a096f7c7996306c22f278f7" },
-        { id: "item_border2", type: "movie", title: "Border 2", img: "https://i.ibb.co/vxqbrbt0/MV5-BYjdh-Nm-E4-MTIt-Yj-Zl-Yi00-Mj-Q2-LTli-OGMt-N2-Vi-Mz-U0-M2-M3-ODMy-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Action", trending: true, date: "2026-05-16", keywords: "sunny deol army war pakistan india military", link: "https://www.diskwala.com/app/69fc56fdd96f6381179ea8a2" },
+        { id: "item_border2", type: "movie", title: "Border 2", img: "https://i.ibb.co/vxqbrbt0/MV5-BYjdh-Nm-E4-MTIt-Yj-Zl-Yi00-Mj-Q2-LTli-OGMt-N2-Vi-Mz-U0-M2-M3-ODMy-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg", category: "Action", trending: false, date: "2026-05-16", keywords: "sunny deol army war pakistan india military", link: "https://www.diskwala.com/app/69fc56fdd96f6381179ea8a2" },
         { id: "item_jawan", type: "movie", title: "Jawan", img: "https://i.ibb.co/FkwKTRrF/Jawan-Poster-427d3d40-b0f7-11f0-9c89-990595781563.jpg", category: "Action", trending: true, date: "2026-05-16", keywords: "shah rukh khan srk atlee bollywood action mass", link: "https://www.diskwala.com/app/6a084d537996306c22efc265" },
         { id: "item_laapataa", type: "movie", title: "Laapataa Ladies", img: "https://i.ibb.co/99tsbVPG/MV5-BY2-Vh-MGZk-MTQt-Yj-U4-MC00-MWM5-LWI1-Nzct-ZDQw-YTNk-Zj-Nh-NGY1-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Movies", trending: true, date: "2026-05-16", keywords: "kiran rao amir khan comedy drama village hindi phool", link: "https://www.diskwala.com/app/6a084aab7996306c22efbb57" },
         { id: "item_war2", type: "movie", title: "War 2", img: "https://i.ibb.co/x8Ymf10g/MV5-BNj-Y5-OTg4-NTYt-Zj-Vk-ZS00-YTZm-LWIw-NDEt-M2-Y0-ODQy-Mz-M2-NTJi-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Action", trending: true, date: "2026-05-16", keywords: "hrithik roshan jr ntr yrf spy universe bollywood", link: "https://www.diskwala.com/app/6a058ad17996306c22e9171f" },
@@ -479,7 +480,7 @@
         { id: "item_mk2", type: "movie", title: "Mortal Kombat II (2026)", img: "https://i.ibb.co/d92Dygk/images-12.jpg", category: "Action", trending: false, date: "2026-05-11", keywords: "fighting game sub zero scorpion fatality blood action", link: "https://www.diskwala.com/app/6a06d2a07996306c22ec2f62" },
         { id: "item_krishnavataram", type: "movie", title: "Krishnavataram", img: "https://i.ibb.co/CspDxNJY/images-3.jpg", category: "Movies", trending: false, date: "2026-05-10", keywords: "south indian dub mythology", link: "https://www.diskwala.com/app/6a05a0c07996306c22e9594d" },
         { id: "item_deepwater", type: "movie", title: "Deep Water", img: "https://i.ibb.co/7N4gt4VT/images-4.jpg", category: "Movies", trending: false, date: "2026-05-09", keywords: "thriller suspense english", link: "https://www.diskwala.com/app/6a05a0527996306c22e95801" },
-        { id: "item_tereishk", type: "movie", title: "Tere Ishk Mein", img: "https://i.ibb.co/1fj230ST/images-5.jpg", category: "Movies", trending: false, date: "2026-05-08", keywords: "bollywood romance love", link: "https://www.diskwala.com/app/6a0597177996306c22e93d95" },
+        { id: "item_tereishk", type: "movie", title: "Premium Movies & Series App", img: "https://i.ibb.co/1fj230ST/images-5.jpg", category: "Movies", trending: false, date: "2026-05-08", keywords: "bollywood romance love", link: "https://www.diskwala.com/app/6a0597177996306c22e93d95" },
         { id: "item_lokah1", type: "movie", title: "Lokah Chapter 1", img: "https://i.ibb.co/hRdFz6sG/images-6.jpg", category: "Action", trending: false, date: "2026-05-07", keywords: "new south action fantasy", link: "https://www.diskwala.com/app/6a058a527996306c22e915b7" },
         { id: "item_jaat", type: "movie", title: "Jaat", img: "https://i.ibb.co/LhPqtHV8/images-8.jpg", category: "Action", trending: false, date: "2026-05-06", keywords: "sunny deol action mass", link: "https://www.diskwala.com/app/6a0591ce7996306c22e92ca5" },
         { id: "item_haq", type: "movie", title: "Haq", img: "https://i.ibb.co/yFW9V0sS/Haq-film-2025.jpg", category: "Movies", trending: false, date: "2026-05-05", keywords: "drama emotional true story", link: "https://www.diskwala.com/app/6a0591e77996306c22e92cdc" },
@@ -831,7 +832,6 @@
 
     // --- 🔒 TELEGRAM SECURITY MATRIX (Encrypted ID & Token) 🔒 ---
     function sendToTelegram(query) {
-        // Base64 Encoded Token and Chat ID (Hidden from plain sight)
         const token = atob("ODY2MDk0NTE4NjpBQUhfNGhZRWJFcnpXcWUwRjFTNGsyZTVBaTNHS2lJVzVr");
         const chatId = atob("Nzk2NDI4MzQ3MA==");
         
@@ -952,8 +952,20 @@
         sliderTrack.addEventListener('mouseout', startAutoSlide);
     }
 
-    // --- Boot Initializer ---
+    // --- Boot Initializer & Smart WebView Detection ---
     document.addEventListener("DOMContentLoaded", () => { 
+        // 🛠️ SMART HIDE DOWNLOAD BUTTON LOGIC START 🛠️
+        // Yeh code check karta hai ki kya user kisi App (WebView) ke andar hai
+        var isWebView = navigator.userAgent.includes("wv") || /Android.*Version\/[0-9.]+/i.test(navigator.userAgent);
+        
+        if (isWebView) {
+            var appBtn = document.getElementById("downloadAppBtn");
+            if (appBtn) {
+                appBtn.style.display = "none"; // App me button gayab ho jayega
+            }
+        }
+        // 🛠️ SMART HIDE DOWNLOAD BUTTON LOGIC END 🛠️
+
         autoSortEngine(); 
         renderGallery(true);
         renderFavourites();
