@@ -332,6 +332,45 @@
 <script>
     // --- 🗃️ ORIGINAL MASSIVE DATA ARRAY (PART 1) ---
     const catalogData = [
+            // 🚀 NEW ADDITIONS (MONEY HEIST & JACK RYAN)
+        {
+            id: "item_jackryan", 
+            type: "movie", 
+            title: "Tom Clancy's Jack Ryan Ghost War [Hindi]", 
+            img: "https://i.ibb.co/V0bxS8dt/images-18.jpg", 
+            heroImg: "https://i.ibb.co/8LTKMbCz/images-19.jpg", // Trending Section Image
+            category: "Action", 
+            trending: true, 
+            tags: "Action Thriller", 
+            link: "https://www.diskwala.com/app/6a0ef32f7996306c2200096c" 
+        },
+        {
+            id: "item_moneyheist", 
+            type: "series", 
+            title: "Money Heist [All Seasons]", 
+            img: "https://i.ibb.co/Q7XGV1r4/MV5-BZjkx-ZWJi-NTUt-Yj-Qw-YS00-MTBl-LTgw-ODQt-M2-Fk-NWMy-Mj-Mw-OGZi-Xk-Ey-Xk-Fqc-Gc-V1.jpg", 
+            category: "Web Series", 
+            trending: true, 
+            tags: "Crime Heist", 
+            seasons: {
+                "Season 1": [
+                    "https://www.diskwala.com/app/6a0ef52f7996306c22000ed0", "https://www.diskwala.com/app/6a0ef4e47996306c22000e0c", "https://www.diskwala.com/app/6a0ef4637996306c22000cb3", "https://www.diskwala.com/app/6a0ef57b7996306c22000f75", "https://www.diskwala.com/app/6a0ef4a27996306c22000d60", "https://www.diskwala.com/app/6a0ef5de7996306c22001073", "https://www.diskwala.com/app/6a0ef8687996306c2200170f", "https://www.diskwala.com/app/6a0ef8ba7996306c220017dc", "https://www.diskwala.com/app/6a0ef6a07996306c22001220", "https://www.diskwala.com/app/6a0ef63f7996306c22001145", "https://www.diskwala.com/app/6a0ef8957996306c22001785", "https://www.diskwala.com/app/6a0ef7fd7996306c220015d8", "https://www.diskwala.com/app/6a0ef7a47996306c220014c3"
+                ],
+                "Season 2": [
+                    "https://www.diskwala.com/app/6a0ef9277996306c220018ce", "https://www.diskwala.com/app/6a0ef9ac7996306c22001a3d", "https://www.diskwala.com/app/6a0ef9477996306c22001918", "https://www.diskwala.com/app/6a0ef96d7996306c22001995", "https://www.diskwala.com/app/6a0ef98d7996306c22001a04", "https://www.diskwala.com/app/6a0efb877996306c22001ed5", "https://www.diskwala.com/app/6a0efbac7996306c22001f40", "https://www.diskwala.com/app/6a0efb107996306c22001d83", "https://www.diskwala.com/app/6a0efb387996306c22001dfe"
+                ],
+                "Season 3": [
+                    "https://www.diskwala.com/app/6a0efb617996306c22001ie78", "https://www.diskwala.com/app/6a0efc537996306c220020b6", "https://www.diskwala.com/app/6a0efcca7996306c220021e8", "https://www.diskwala.com/app/6a0efd177996306c2200226e", "https://www.diskwala.com/app/6a0efcf37996306c2200223e", "https://www.diskwala.com/app/6a0efca17996306c22002183", "https://www.diskwala.com/app/6a0efd717996306c2200233e", "https://www.diskwala.com/app/6a0efed47996306c22002645"
+                ],
+                "Season 4": [
+                    "https://www.diskwala.com/app/6a0efdc47996306c22002425", "https://www.diskwala.com/app/6a0efe277996306c220024f9", "https://www.diskwala.com/app/6a0efe897996306c220025e3", "https://www.diskwala.com/app/6a0eff5c7996306c2200274d", "https://www.diskwala.com/app/6a0effd57996306c2200285d", "https://www.diskwala.com/app/6a0eff9b7996306c220027ec", "https://www.diskwala.com/app/6a0f00007996306c220028c5", "https://www.diskwala.com/app/6a0f00237996306c22002921"
+                ],
+                "Season 5": [
+                    "https://www.diskwala.com/app/6a0f03117996306c22002fcf", "https://www.diskwala.com/app/6a0f02957996306c22002eb4", "https://www.diskwala.com/app/6a0f02d37996306c22002f4e", "https://www.diskwala.com/app/6a0f02047996306c22002d62", "https://www.diskwala.com/app/6a0f024b7996306c22002df0", "https://www.diskwala.com/app/6a0f03a27996306c220030ee", "https://www.diskwala.com/app/6a0f03807996306c220030a0", "https://www.diskwala.com/app/6a0f041a7996306c220031fe", "https://www.diskwala.com/app/6a0f03c97996306c22003161", "https://www.diskwala.com/app/6a0f03fd7996306c220031ae"
+                ]
+            }
+        },
+
         { 
             id: "pinned_berlin", type: "series", title: "Berlin and the Lady with an Ermine [Hindi]", img: "https://i.ibb.co/PZVxz70T/MV5-BODAw-OGFi-ZDIt-NGZk-Ny00-Zjdk-LThk-Mjkt-ZGY4-ZDE3-MDMy-ZWRh-Xk-Ey-Xk-Fqc-Gc-V1.jpg", category: "Web Series", trending: true, tags: "Thriller Drama", seasons: { 
                 "Episodes": [
@@ -506,8 +545,7 @@
             `;
         });
     }
-
-    // --- 🎬 HERO BANNER ROTATION ---
+    // --- 🎬 HERO BANNER ROTATION (UPDATED FOR LANDSCAPE BANNER) ---
     function rotateHero() {
         const trendingItems = catalogData.filter(i => i.trending);
         if(trendingItems.length === 0) return;
@@ -519,13 +557,15 @@
         heroBg.style.opacity = 0;
         
         setTimeout(() => {
-            heroBg.src = item.img;
+            // Agar heroImg data mein hai toh wahi landscape banner dikhega
+            heroBg.src = item.heroImg ? item.heroImg : item.img;
             document.getElementById('heroTitle').innerText = item.title;
             document.getElementById('heroBadge').innerText = item.type === 'movie' ? 'BLOCKBUSTER MOVIE' : 'TOP RATED SERIES';
             document.getElementById('heroTags').innerHTML = `<span>2026</span> • <span style="border:1px solid #fff; padding:0 4px; border-radius:3px;">A</span> • <span>${item.category}</span>`;
             heroBg.style.opacity = 1;
         }, 500);
     }
+
     
     function playHeroTrailer() {
         const trendingItems = catalogData.filter(i => i.trending);
