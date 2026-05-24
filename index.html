@@ -55,6 +55,7 @@
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover; z-index: 0; transition: opacity 1s ease, transform 10s ease;
             transform: scale(1.05);
+            will-change: transform, opacity;
         }
         .hero-gradient {
             position: absolute; inset: 0; z-index: 1;
@@ -76,6 +77,7 @@
             position: fixed; top: 0; left: 0; width: 100%; padding: 15px 20px; z-index: 1000;
             display: flex; justify-content: space-between; align-items: center; gap: 10px;
             background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); transition: background 0.3s;
+            will-change: background;
         }
         .navbar.scrolled { background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.05); }
         .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -1px; color: var(--brand-color); flex-shrink: 0; }
@@ -89,29 +91,30 @@
         .app-btn img { width: 20px; height: 20px; border-radius: 4px; }
         .app-btn small { font-size: 0.55rem; font-weight: 700; margin-top: 2px;}
 
-        /* 📜 HORIZONTAL CONTENT ROWS */
-        .content-container { max-width: 1400px; margin: 0 auto; padding: 0 20px; margin-top: -30px; position: relative; z-index: 10; }
-        .row-section { margin-bottom: 40px; }
+        /* 📜 HORIZONTAL CONTENT ROWS (GPU ACCELERATED) */
+        .content-container { max-width: 1400px; margin: 0 auto; padding: 0 20px; margin-top: -30px; position: relative; z-index: 10; contain: layout; }
+        .row-section { margin-bottom: 40px; contain: content; }
         .row-header { font-size: 1.2rem; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
         
-        .row-slider { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 15px; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
+        .row-slider { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 15px; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; contain: content; }
         .row-slider::-webkit-scrollbar { display: none; }
         
-        .card-portrait { flex: 0 0 calc(33.33% - 12px); max-width: 180px; scroll-snap-align: start; position: relative; border-radius: var(--radius-md); overflow: hidden; cursor: pointer; transition: var(--transition-bounce); }
+        .card-portrait { flex: 0 0 calc(33.33% - 12px); max-width: 180px; scroll-snap-align: start; position: relative; border-radius: var(--radius-md); overflow: hidden; cursor: pointer; transition: var(--transition-bounce); will-change: transform; transform: translateZ(0); }
         .card-portrait:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); z-index: 2; }
         .card-portrait img { width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block; border-radius: var(--radius-md); }
         
-        .card-landscape { flex: 0 0 calc(60% - 10px); max-width: 300px; scroll-snap-align: start; position: relative; border-radius: var(--radius-md); overflow: hidden; cursor: pointer; transition: var(--transition-bounce); }
+        .card-landscape { flex: 0 0 calc(60% - 10px); max-width: 300px; scroll-snap-align: start; position: relative; border-radius: var(--radius-md); overflow: hidden; cursor: pointer; transition: var(--transition-bounce); will-change: transform; transform: translateZ(0); }
         .card-landscape:hover { transform: scale(1.05); z-index: 2; }
         .card-landscape img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; border-radius: var(--radius-md); }
-        
         .play-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; opacity: 0; transition: var(--transition-smooth); }
         .card-portrait:hover .play-overlay, .card-landscape:hover .play-overlay { opacity: 1; }
         .play-overlay .material-symbols-rounded { font-size: 40px; color: #fff; transform: scale(0.5); transition: var(--transition-bounce); }
         .card-portrait:hover .play-overlay .material-symbols-rounded, .card-landscape:hover .play-overlay .material-symbols-rounded { transform: scale(1); }
 
         .card-label { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 10px; font-size: 0.85rem; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
-        .explore-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 15px; padding-top: 10px; }
+        /* GPU Accelerated Grid */
+        .explore-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 15px; padding-top: 10px; contain: content; }
+        
         /* 📱 BOTTOM NAV FLOATING ISLAND */
         .bottom-dock-wrapper { position: fixed; bottom: 20px; left: 0; width: 100%; display: flex; justify-content: center; z-index: 2000; pointer-events: none; }
         .bottom-dock { 
@@ -126,7 +129,7 @@
         .nav-item.active .material-symbols-rounded { font-variation-settings: 'FILL' 1; transform: translateY(-4px); color: var(--brand-color); }
 
         /* 💬 SLIDING PANELS SYSTEM */
-        .side-panel { position: fixed; top: 0; right: -100%; width: 100%; max-width: 450px; height: 100vh; background: var(--bg-base); z-index: 1005; display: flex; flex-direction: column; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); border-left: 1px solid rgba(255,255,255,0.05); }
+        .side-panel { position: fixed; top: 0; right: -100%; width: 100%; max-width: 450px; height: 100vh; background: var(--bg-base); z-index: 1005; display: flex; flex-direction: column; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); border-left: 1px solid rgba(255,255,255,0.05); will-change: right; }
         .side-panel.active { right: 0; }
         .panel-header { background: var(--bg-surface); color: var(--text-primary); padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .panel-header h3 { font-size: 1.2rem; display: flex; align-items: center; gap: 10px; font-weight: 700; }
@@ -134,7 +137,8 @@
         .panel-close:hover { color: var(--text-primary); }
         
         .panel-content { flex-grow: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
-        .list-card { background: var(--bg-surface); border-radius: var(--radius-md); padding: 10px; display: flex; align-items: center; gap: 15px; border: 1px solid rgba(255,255,255,0.05); cursor: pointer;}
+        .list-card { background: var(--bg-surface); border-radius: var(--radius-md); padding: 10px; display: flex; align-items: center; gap: 15px; border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: transform 0.2s; will-change: transform; transform: translateZ(0);}
+        .list-card:hover { transform: scale(1.02); }
         .list-img { width: 85px; height: 60px; border-radius: 8px; object-fit: cover; background: #000; }
         .list-info { flex-grow: 1; }
         .list-info h4 { font-size: 0.95rem; margin-bottom: 4px; font-weight: 600; line-height: 1.2; color: #fff;}
@@ -153,7 +157,7 @@
         /* 🎬 BOTTOM-SHEET CINEMATIC MODAL */
         .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 3000; align-items: flex-end; justify-content: center; opacity: 0; transition: opacity 0.3s; }
         .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-sheet { background: var(--bg-surface); width: 100%; max-width: 600px; max-height: 90vh; border-radius: 24px 24px 0 0; padding: 0; overflow: hidden; position: relative; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); display: flex; flex-direction: column; }
+        .modal-sheet { background: var(--bg-surface); width: 100%; max-width: 600px; max-height: 90vh; border-radius: 24px 24px 0 0; padding: 0; overflow: hidden; position: relative; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); display: flex; flex-direction: column; will-change: transform; }
         .modal-overlay.active .modal-sheet { transform: translateY(0); }
         
         .modal-header-img { width: 100%; height: 250px; object-fit: cover; position: relative; }
@@ -196,10 +200,12 @@
 <body>
 
 <nav class="navbar" id="navbar">
-    <div class="logo">STREAM<span style="color:#fff">VIBE</span></div>
+    <div class="logo" style="letter-spacing: 1px;">OG<span style="color:#fff">LINKS</span></div>
+
     
     <div class="search-container">
-        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search movies, series..." onkeyup="advancedSearchEngine()">
+        <!-- Debounced search function applied for lag-free typing -->
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search movies, series..." onkeyup="debounceSearch()">
     </div>
 
     <div class="nav-actions">
@@ -229,7 +235,6 @@
         </div>
     </div>
 </header>
-
 <main class="content-container">
     
     <div class="row-section">
@@ -241,12 +246,28 @@
         <h2 class="row-header">Epic Anime Series</h2>
         <div class="row-slider" id="animeRow"></div>
     </div>
+    
+    <div class="row-section">
+        <h2 class="row-header">Trending Webseries <span class="material-symbols-rounded" style="color:var(--brand-color); font-size:20px;">local_fire_department</span></h2>
+        <div class="row-slider" id="webseriesRow"></div>
+    </div>
+    
+    <div class="row-section">
+        <h2 class="row-header">Hollywood Blockbusters</h2>
+        <div class="row-slider" id="hollywoodRow"></div>
+    </div>
 
     <div class="row-section">
         <h2 class="row-header" id="allGridTitle">Explore All Movies & Series</h2>
         <div class="explore-grid" id="allGrid"></div>
     </div>
 </main>
+
+    <div style="text-align: center; padding: 15px; color: #a1a1aa; font-size: 0.85rem; font-weight: 500;">
+        Sponsor and Collab :- <a href="mailto:jacksay11068@gmail.com" style="color: #e50914; text-decoration: none;">jacksay11068@gmail.com</a>
+    </div>
+
+
 <div class="bottom-dock-wrapper">
     <div class="bottom-dock">
         <div class="nav-item active" onclick="navAction('home', this)">
@@ -328,11 +349,88 @@
         </div>
     </div>
 </div>
-
 <script>
     // --- 🗃️ ORIGINAL MASSIVE DATA ARRAY (PART 1) ---
     const catalogData = [
-            // 🚀 NEW ADDITIONS (MONEY HEIST & JACK RYAN)
+        // 🚀 NEW ADDITIONS (MONEY HEIST & JACK RYAN)
+        {
+            id: "item_weakhero", 
+            type: "series", 
+            title: "Weak Hero Class", 
+            img: "https://i.ibb.co/Qv5NTzY0/images-20.jpg", 
+            category: "Web Series", 
+            trending: true, 
+            tags: "Action Drama", 
+            seasons: {
+                "Season 1": [
+                    "https://www.diskwala.com/app/6a1244627996306c2207f3d7",
+                    "https://www.diskwala.com/app/6a1243487996306c2207f21d",
+                    "https://www.diskwala.com/app/6a1248707996306c2207f90d",
+                    "https://www.diskwala.com/app/6a12479a7996306c2207f7e2",
+                    "https://www.diskwala.com/app/6a1246e77996306c2207f6ea",
+                    "https://www.diskwala.com/app/6a1256bf7996306c220811a1",
+                    "https://www.diskwala.com/app/6a12596a7996306c220816f0",
+                    "https://www.diskwala.com/app/6a125aef7996306c220819d7"
+                ],
+                "Season 2": [
+                    "https://www.diskwala.com/app/6a125bbd7996306c22081bab",
+                    "https://www.diskwala.com/app/6a125b4e7996306c22081a97",
+                    "https://www.diskwala.com/app/6a1259fc7996306c220817e8",
+                    "https://www.diskwala.com/app/6a1262317996306c22082a79",
+                    "https://www.diskwala.com/app/6a1262bc7996306c22082bc7"
+                ]
+            }
+        },
+        {
+            id: "item_allofusaredead", 
+            type: "series", 
+            title: "All of Us Are Dead", 
+            img: "https://i.ibb.co/LTyqtGj/All-of-Us-Are-Dead.jpg", 
+            category: "Web Series", 
+            trending: true, 
+            tags: "Zombie Thriller", 
+            seasons: {
+                "Season 1": [
+                    "https://www.diskwala.com/app/6a1237e27996306c2207e5cd",
+                    "https://www.diskwala.com/app/6a1239b77996306c2207e70f",
+                    "https://www.diskwala.com/app/6a1239127996306c2207e697",
+                    "https://www.diskwala.com/app/6a1239b77996306c2207e711",
+                    "https://www.diskwala.com/app/6a1239667996306c2207e6cc",
+                    "https://www.diskwala.com/app/6a123a187996306c2207e77d",
+                    "https://www.diskwala.com/app/6a123b977996306c2207e8d2",
+                    "https://www.diskwala.com/app/6a123aea7996306c2207e850",
+                    "https://www.diskwala.com/app/6a123a947996306c2207e829",
+                    "https://www.diskwala.com/app/6a123a517996306c2207e7b7",
+                    "https://www.diskwala.com/app/6a123c2b7996306c2207e994",
+                    "https://www.diskwala.com/app/6a123c5d7996306c2207e9b9"
+                ]
+            }
+        },
+        {
+            id: "item_detectivedead", 
+            type: "series", 
+            title: "The Detective Is Already Dead", 
+            img: "https://i.ibb.co/cX2GPQq5/81-GPt-HTn-VLS.jpg", 
+            category: "Anime", 
+            trending: true, 
+            tags: "Mystery Anime", 
+            seasons: {
+                "Season 1": [
+                    "https://www.diskwala.com/app/6a1197b47996306c220685f5",
+                    "https://www.diskwala.com/app/6a11984d7996306c2206872d",
+                    "https://www.diskwala.com/app/6a1196417996306c220681df",
+                    "https://www.diskwala.com/app/6a11947f7996306c22067de2",
+                    "https://www.diskwala.com/app/6a11984b7996306c22068729",
+                    "https://www.diskwala.com/app/6a1198fc7996306c220688f1",
+                    "https://www.diskwala.com/app/6a1199b77996306c22068a61",
+                    "https://www.diskwala.com/app/6a119a257996306c22068b8c",
+                    "https://www.diskwala.com/app/6a119a907996306c22068c9a",
+                    "https://www.diskwala.com/app/6a119aaa7996306c22068cd8",
+                    "https://www.diskwala.com/app/6a119aea7996306c22068d86",
+                    "https://www.diskwala.com/app/6a119b297996306c22068e21"
+                ]
+            }
+        },
         {
             id: "item_jackryan", 
             type: "movie", 
@@ -424,7 +522,6 @@
                 ]
             }
         },
-
         // 🎬 LATEST ITEMS DATABASE
         { 
             id: "item_bloodhounds", type: "series", title: "Bloodhounds [All Seasons]", img: "https://i.ibb.co/CKtrR04K/p24811658-b-v8-ac.jpg", category: "Web Series", trending: true, tags: "Action Fight", seasons: { 
@@ -506,46 +603,81 @@
     let filteredData = [...catalogData];
     let searchTimeout;
 
-    // --- 🎨 UI RENDER ENGINE (StreamVibe Layout) ---
+    // Hollywood detect karne ki list aur function (Naya add kiya)
+    const hollywoodKeywords = ["dark knight", "mortal kombat", "deep water", "war machine", "jack ryan"];
+
+    function isHollywood(title) {
+        let lowerTitle = title.toLowerCase();
+        return hollywoodKeywords.some(keyword => lowerTitle.includes(keyword));
+    }
+    // --- 🎨 UI RENDER ENGINE (BATCH DOM RENDERING - LAG FREE) ---
     function renderApp() {
         const trendingRow = document.getElementById('trendingRow');
         const animeRow = document.getElementById('animeRow');
+        const webseriesRow = document.getElementById('webseriesRow');
+        const hollywoodRow = document.getElementById('hollywoodRow');
         const allGrid = document.getElementById('allGrid');
 
-        trendingRow.innerHTML = '';
-        animeRow.innerHTML = '';
-        allGrid.innerHTML = '';
+        // String buffers for batch rendering (Prevents DOM layout thrashing & Lag)
+        let trendingHTML = '';
+        let animeHTML = '';
+        let webseriesHTML = '';
+        let hollywoodHTML = '';
+        let allGridHTML = '';
 
         filteredData.forEach((item) => {
             const index = catalogData.findIndex(c => c.id === item.id);
             const isLandscape = item.type === 'series'; 
             const cardClass = isLandscape ? 'card-landscape' : 'card-portrait';
             
+            // --- SMART CHECK: [HINDI] lagane ka logic ---
+            let displayTitle = item.title;
+            if (!displayTitle.toLowerCase().includes("hindi")) {
+                displayTitle = displayTitle + " [HINDI]";
+            }
+            
             const cardHTML = `
                 <div class="${cardClass}" onclick="openItemModal(${index})">
                     <img src="${item.img}" alt="${item.title}" loading="lazy">
                     <div class="play-overlay"><span class="material-symbols-rounded" style="font-variation-settings:'FILL' 1;">play_circle</span></div>
-                    <div class="card-label">${item.title}</div>
+                    <div class="card-label">${displayTitle}</div>
                 </div>
             `;
 
             if (item.trending && filteredData.length === catalogData.length) {
-                trendingRow.innerHTML += cardHTML;
-            }
-            if ((item.category === 'Anime' || item.category === 'Animation Kids') && filteredData.length === catalogData.length) {
-                animeRow.innerHTML += cardHTML;
+                trendingHTML += cardHTML;
             }
             
-            allGrid.innerHTML += `
+            if ((item.category === 'Anime' || item.category === 'Animation Kids') && filteredData.length === catalogData.length) {
+                animeHTML += cardHTML;
+            }
+
+            if (item.type === 'series' && item.category === 'Web Series' && item.trending && filteredData.length === catalogData.length) {
+                webseriesHTML += cardHTML;
+            }
+            
+            if (isHollywood(item.title) && filteredData.length === catalogData.length) {
+                hollywoodHTML += cardHTML;
+            }
+            
+            allGridHTML += `
                 <div class="card-portrait" style="flex:auto; max-width:100%; width: 100%;" onclick="openItemModal(${index})">
                     <img src="${item.img}" loading="lazy" style="width:100%; aspect-ratio:2/3; object-fit:cover;">
                     <div class="play-overlay"><span class="material-symbols-rounded" style="font-variation-settings:'FILL' 1;">play_circle</span></div>
-                    <div class="card-label" style="font-size: 0.75rem;">${item.title}</div>
+                    <div class="card-label" style="font-size: 0.75rem;">${displayTitle}</div>
                 </div>
             `;
         });
+
+        // Single DOM update per container (Zero Lag)
+        if(trendingRow && filteredData.length === catalogData.length) trendingRow.innerHTML = trendingHTML;
+        if(animeRow && filteredData.length === catalogData.length) animeRow.innerHTML = animeHTML;
+        if(webseriesRow && filteredData.length === catalogData.length) webseriesRow.innerHTML = webseriesHTML;
+        if(hollywoodRow && filteredData.length === catalogData.length) hollywoodRow.innerHTML = hollywoodHTML;
+        if(allGrid) allGrid.innerHTML = allGridHTML;
     }
-    // --- 🎬 HERO BANNER ROTATION (UPDATED FOR LANDSCAPE BANNER) ---
+
+    // --- 🎬 HERO BANNER ROTATION ---
     function rotateHero() {
         const trendingItems = catalogData.filter(i => i.trending);
         if(trendingItems.length === 0) return;
@@ -557,7 +689,6 @@
         heroBg.style.opacity = 0;
         
         setTimeout(() => {
-            // Agar heroImg data mein hai toh wahi landscape banner dikhega
             heroBg.src = item.heroImg ? item.heroImg : item.img;
             document.getElementById('heroTitle').innerText = item.title;
             document.getElementById('heroBadge').innerText = item.type === 'movie' ? 'BLOCKBUSTER MOVIE' : 'TOP RATED SERIES';
@@ -566,7 +697,6 @@
         }, 500);
     }
 
-    
     function playHeroTrailer() {
         const trendingItems = catalogData.filter(i => i.trending);
         const item = trendingItems[currentHeroIndex];
@@ -607,7 +737,7 @@
         const item = catalogData[index];
         
         document.getElementById('modalImg').src = item.img;
-        document.getElementById('mTitle').innerText = item.title;
+        document.getElementById('mTitle').innerText = item.title + (!item.title.toLowerCase().includes("hindi") ? " [HINDI]" : "");
         document.getElementById('mCategory').innerText = item.category;
         
         const favBtn = document.getElementById('favToggleBtn');
@@ -651,10 +781,10 @@
         if(btnEl) btnEl.classList.add('active');
         
         const epCont = document.getElementById('episodesContainer');
-        epCont.innerHTML = '';
+        let epHTML = '';
         
         linksArray.forEach((link, idx) => {
-            epCont.innerHTML += `
+            epHTML += `
                 <a href="${link}" target="_blank" class="ep-card" onclick="addToHistoryWrapper(${catalogData.indexOf(itemObj)}, '${seasonName} - Episode ${idx + 1}')">
                     <div class="ep-num">${idx + 1}</div>
                     <div style="flex-grow:1;">
@@ -665,6 +795,7 @@
                 </a>
             `;
         });
+        epCont.innerHTML = epHTML; // Update innerHTML once
     }
 
     function closeModal() {
@@ -708,14 +839,14 @@
 
     function renderHistory() {
         const container = document.getElementById('historyContentArea');
-        container.innerHTML = '';
         if (myHistory.length === 0) {
-            container.innerHTML = '<p class="empty-text" style="color:white;">No streaming footprints recorded.</p>';
+            container.innerHTML = '<p class="empty-text" style="color:white; text-align:center; margin-top:20px;">No streaming footprints recorded.</p>';
             return;
         }
+        let histHTML = '';
         myHistory.forEach(item => {
             const originalIndex = catalogData.findIndex(c => c.id === item.id);
-            container.innerHTML += `
+            histHTML += `
                 <div class="list-card" style="background:#1e1e1e; color:white; border:none;">
                     <img src="${item.img}" class="list-img" onclick="closePanels(); openItemModal(${originalIndex});">
                     <div class="list-info" onclick="closePanels(); openItemModal(${originalIndex});">
@@ -728,18 +859,19 @@
                     </button>
                 </div>`;
         });
+        container.innerHTML = histHTML;
     }
 
     function renderFavourites() {
         const container = document.getElementById('favContentArea');
-        container.innerHTML = '';
         if (myFavourites.length === 0) {
-            container.innerHTML = '<p class="empty-text" style="color:white;">No titles bookmarked yet.</p>';
+            container.innerHTML = '<p class="empty-text" style="color:white; text-align:center; margin-top:20px;">No titles bookmarked yet.</p>';
             return;
         }
+        let favHTML = '';
         myFavourites.forEach(item => {
             const originalIndex = catalogData.findIndex(c => c.id === item.id);
-            container.innerHTML += `
+            favHTML += `
                 <div class="list-card" style="background:#1e1e1e; color:white; border:none;">
                     <img src="${item.img}" class="list-img" onclick="closePanels(); openItemModal(${originalIndex});">
                     <div class="list-info" onclick="closePanels(); openItemModal(${originalIndex});">
@@ -751,6 +883,7 @@
                     </button>
                 </div>`;
         });
+        container.innerHTML = favHTML;
     }
 
     // --- 💬 CHAT ENGINE ---
@@ -777,7 +910,16 @@
     }
     function handleChatKey(event) { if (event.key === "Enter") { sendChatMessage(); } }
 
-    // --- 🔍 TELEGRAM SEARCH ENGINE ---
+    // --- 🔍 DEBOUNCED SEARCH ENGINE (LAG FREE) ---
+    let debounceTimer;
+    function debounceSearch() {
+        clearTimeout(debounceTimer);
+        // Add 300ms delay to stop keyboard lag while typing fast
+        debounceTimer = setTimeout(() => {
+            advancedSearchEngine();
+        }, 300); 
+    }
+
     function advancedSearchEngine() {
         let input = document.getElementById("searchInput").value.trim().toLowerCase();
         clearTimeout(searchTimeout); 
