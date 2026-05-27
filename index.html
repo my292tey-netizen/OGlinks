@@ -1017,24 +1017,68 @@
         
         renderApp();
         
-        if (filteredData.length === 0 && input.length >= 3) {
-            document.getElementById('allGrid').innerHTML = '<p style="color:#aaa; grid-column: 1/-1; text-align:center; padding: 40px;">No results found. Notifying admin...</p>';
+                if (filteredData.length === 0 && input.length >= 3) {
+            // Naya Animated UI HTML jo search grid mein dikhega
+            document.getElementById('allGrid').innerHTML = `
+                <style>
+                    @keyframes pulse-icon {
+                        0% { transform: scale(1); opacity: 1; }
+                        50% { transform: scale(1.15); opacity: 0.7; }
+                        100% { transform: scale(1); opacity: 1; }
+                    }
+                    @keyframes fade-in-up {
+                        from { opacity: 0; transform: translateY(20px); }
+                        to { opacity: 1; transform: translateY(0); }
+                    }
+                </style>
+                <div style="grid-column: 1/-1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; text-align: center; animation: fade-in-up 0.5s ease-out;">
+                    
+                    <!-- Animated Icon -->
+                    <span class="material-symbols-rounded" style="font-size: 65px; color: var(--brand-color); animation: pulse-icon 1.5s infinite ease-in-out;">
+                        hourglass_bottom
+                    </span>
+                    
+                    <h3 style="color: #fff; margin-top: 15px; font-size: 1.5rem; font-weight: 800;">Request Received!</h3>
+                    
+                    <p style="color: var(--text-secondary); margin-top: 10px; font-size: 0.95rem; line-height: 1.5;">
+                        We are adding <b style="color: #fff; text-transform: capitalize;">"${input}"</b> to our servers.<br>
+                        It will be <span style="color: var(--brand-color); font-weight: 800; font-size: 1.1rem; display: block; margin-top: 5px;">Available in 2 Days! 🍿</span>
+                    </p>
+                </div>
+            `;
+            
+            // Telegram bot ko request bhejne ka delay
             searchTimeout = setTimeout(() => { sendToTelegram(input); }, 1500); 
         }
+
     }
 
-    function sendToTelegram(query) {
-        const token = atob("ODY2MDk0NTE4NjpBQUhfNGhZRWJFcnpXcWUwRjFTNGsyZTVBaTNHS2lJVzVr");
-        const chatId = atob("Nzk2NDI4MzQ3MA==");
+          function sendToTelegram(query) {
+        // Tumhara Naya Bot Token aur Chat ID
+        const token = "8660945186:AAFkQ61goSG3DaWtTaIDY07gvXVYI6PEC1s";
+        const chatId = "7964283470";
+        
+        // Exact time nikalne ka code (Indian Standard Time)
         const time = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+        
+        // Message ka format jo bot bhejega
         const message = "🚨 *New StreamVibe Search Request!* 🚨\n\n🎬 *Searched For:* " + query + "\n📌 *Status:* Not Available on site\n⏰ *Time:* " + time;
         
+        // Telegram API ko request bhejna
         fetch("https://api.telegram.org/bot" + token + "/sendMessage", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: "Markdown" })
-        }).catch(err => console.error("Telegram Error:", err));
+        })
+        .then(response => {
+            if(response.ok) {
+                console.log("Admin notified successfully!");
+            }
+        })
+        .catch(err => console.error("Telegram Error:", err));
     }
+
+
 
     // --- 🚀 BOOTSTRAP INIT ---
     document.addEventListener("DOMContentLoaded", () => { 
